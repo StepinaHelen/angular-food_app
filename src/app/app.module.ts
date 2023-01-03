@@ -9,11 +9,12 @@ import { firebaseConfig } from 'src/environments/environment';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { HeroComponent } from './main-page/components/hero/hero.component';
 import { CategoriesComponent } from './main-page/components/categories/categories.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 
 @NgModule({
 
-  declarations: [AppComponent, HeaderComponent, HeroComponent, CategoriesComponent],
+  declarations: [AppComponent, HeaderComponent, HeroComponent, CategoriesComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

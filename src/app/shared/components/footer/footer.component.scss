@@ -1,0 +1,27 @@
+@import "variables";
+footer {
+  background-color: $primary;
+  color: $secondaryFont;
+  width: 100%;
+  display: block;
+  position: fixed;
+  bottom: 0;
+}
+
+div {
+  margin: 0 auto;
+  p {
+    padding: 40px 0;
+    text-align: center;
+    margin: 0px;
+  }
+  span {
+    color: $error;
+  }
+  a {
+    display: inline-block;
+    text-decoration: underline;
+    cursor: pointer;
+    color: $secondaryFont;
+  }
+}
