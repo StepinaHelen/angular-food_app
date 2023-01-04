@@ -6,19 +6,20 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AppComponent } from './app.component';
 
 import { firebaseConfig } from 'src/environments/environment';
-
+import { HeroComponent } from './main-page/components/hero/hero.component';
+import { CategoriesComponent } from './main-page/components/categories/categories.component';
+import { FooterModule } from './shared/modules/footer/footer/footer.module';
 
 @NgModule({
-
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeroComponent, CategoriesComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    FooterModule,
   ],
 
   providers: [],
   bootstrap: [AppComponent],
 })
-
 export class AppModule {}
