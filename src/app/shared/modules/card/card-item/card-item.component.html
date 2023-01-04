@@ -1,0 +1,25 @@
+<li class="card" *ngIf="food">
+  <img class="card-image" [src]="food.img" />
+  <div class="card-content">
+    <h1>{{ food.title }}</h1>
+    <p class="card-content-price">
+      Price: <span> {{ food.price }}$ </span>
+    </p>
+    <div class="card-amount-container">
+      <p class="card-amount-container-text">Amount:</p>
+      <button class="card-amount-container-button" (click)="decrement()">
+        -
+      </button>
+      <p class="card-amount-container-text">{{ foodAmount }}</p>
+
+      <button class="card-amount-container-button" (click)="increment()">
+        +
+      </button>
+    </div>
+    <food-button
+      class="left"
+      (click)="handleAdd()"
+      [buttonText]="'Add'"
+    ></food-button>
+  </div>
+</li>

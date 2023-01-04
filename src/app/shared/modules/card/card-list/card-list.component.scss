@@ -1,0 +1,18 @@
+.list {
+  list-style-type: none;
+  display: flex;
+  margin: 1rem -1rem;
+  flex-wrap: wrap;
+}
+
+.item {
+  margin: 1rem;
+  width: calc((100% - 1 * 1rem) / 1);
+
+  @media screen and (min-width: 768px) {
+    width: calc((100% - 4 * 1rem) / 2);
+  }
+  @media screen and (min-width: 1200px) {
+    width: calc((100% - 6 * 1rem) / 3);
+  }
+}
