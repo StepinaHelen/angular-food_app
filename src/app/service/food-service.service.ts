@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { FoodInterface } from './types';
 
 @Injectable({
   providedIn: 'root',
@@ -9,11 +10,11 @@ import { map } from 'rxjs/operators';
 export class FoodServiceService {
   constructor(private afs: AngularFirestore) {}
 
-  getFoodsList(): Observable<any> {
-    const listCollection = this.afs.collection('foods');
+  getFoodsList(): Observable<FoodInterface[]> {
+    const listCollection = this.afs.collection<FoodInterface>('foods');
     return listCollection.stateChanges().pipe(
       map((dataRes) => {
-        return dataRes.map((list: any) => ({
+        return dataRes.map((list) => ({
           ...list.payload.doc.data(),
           id: list.payload.doc.id,
           type: list.type,
