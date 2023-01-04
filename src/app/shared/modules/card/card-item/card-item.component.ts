@@ -12,7 +12,9 @@ export class CardItemComponent implements OnInit {
   public foodAmount: number = 1;
 
   decrement() {
-    if (this.foodAmount === 1) return;
+    if (this.foodAmount === 1) {
+      return;
+    }
     this.foodAmount -= 1;
   }
 
