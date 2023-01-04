@@ -1,0 +1,19 @@
+@import "variables";
+h2 {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 47px;
+  color: $primary;
+}
+.wrapper {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+food-form::ng-deep {
+  width: calc(50% - 15px);
+  margin-right: 30px;
+}
+food-orders-items::ng-deep {
+  width: calc(50% - 15px);
+}

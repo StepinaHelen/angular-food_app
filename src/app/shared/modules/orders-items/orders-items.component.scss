@@ -1,0 +1,26 @@
+li {
+  border-bottom: dotted;
+  // border-color: ${({ theme }) => theme.colors.borderColor};
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  p {
+    margin: 5px;
+  }
+  p:first-child {
+    width: 150px;
+  }
+  p:last-child {
+    width: 30px;
+  }
+  p {
+    //   ${({ theme }) =>
+    //     theme.fontText({ fontWeight: 500, fontSize: 20, lineHeight: 23 })}
+    //   ${({ theme }) =>
+    //     theme.flex({
+    //       alignItems: "center",
+    //     })}
+    //   color: ${({ theme }) => theme.colors.mainFont};
+  }
+}
