@@ -1,0 +1,64 @@
+@import "variables";
+
+.card {
+  display: flex;
+  align-items: center;
+  box-shadow: $boxShadow;
+  flex-direction: column;
+
+  &-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  &-amount-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &-button {
+      background-color: $primary;
+      height: 20px;
+      width: 20px;
+      outline: none;
+      border: none;
+      border-radius: 5px;
+      color: #ffffff;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        background-color: $secondary;
+      }
+    }
+
+    &-text {
+      font-weight: bold;
+    }
+  }
+
+  &-content {
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &-price {
+      font-weight: bold;
+    }
+  }
+
+  &-content h1 {
+    margin-bottom: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.left {
+  margin-left: auto;
+}

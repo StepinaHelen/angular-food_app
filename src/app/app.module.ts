@@ -10,6 +10,7 @@ import { HeroComponent } from './main-page/components/hero/hero.component';
 import { CategoriesComponent } from './main-page/components/categories/categories.component';
 import { FooterModule } from './shared/modules/footer/footer/footer.module';
 import { OrderFormPageModule } from './order-form-page/order-form-page.module';
+import { MainPageModule } from './main-page/main-page.module';
 
 @NgModule({
   declarations: [AppComponent, HeroComponent, CategoriesComponent],
@@ -19,6 +20,7 @@ import { OrderFormPageModule } from './order-form-page/order-form-page.module';
     AngularFireModule.initializeApp(firebaseConfig),
     FooterModule,
     OrderFormPageModule,
+    MainPageModule,
   ],
 
   providers: [],

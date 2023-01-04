@@ -1,0 +1,40 @@
+@import "variables";
+
+.button {
+  color: #ffffff;
+  background-color: $primary;
+  padding: 5px 27px;
+  border-radius: 15px;
+  font-size: 24px;
+  line-height: 28px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &.login {
+    padding: 9px 51px;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+  }
+
+  &:hover {
+    background-color: $secondary;
+  }
+
+  &.categories {
+    margin-bottom: 12px;
+    padding: 4px 12px;
+    margin-right: 12px;
+  }
+
+  &.cardItem {
+    padding: 5px 27px;
+  }
+
+  &.goToOrder {
+    padding: 13px 54px;
+    font-weight: 600;
+  }
+}
