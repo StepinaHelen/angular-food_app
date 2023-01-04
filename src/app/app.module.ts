@@ -6,23 +6,20 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AppComponent } from './app.component';
 
 import { firebaseConfig } from 'src/environments/environment';
-import { HeaderComponent } from './shared/components/header/header.component';
 import { HeroComponent } from './main-page/components/hero/hero.component';
 import { CategoriesComponent } from './main-page/components/categories/categories.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
-
+import { FooterModule } from './shared/modules/footer/footer/footer.module';
 
 @NgModule({
-
-  declarations: [AppComponent, HeaderComponent, HeroComponent, CategoriesComponent, FooterComponent],
+  declarations: [AppComponent, HeroComponent, CategoriesComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    FooterModule,
   ],
 
   providers: [],
   bootstrap: [AppComponent],
 })
-
 export class AppModule {}

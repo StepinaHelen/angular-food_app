@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CATEGORIES } from '../../../shared/constants';
 
 @Component({
   selector: 'food-categories',
@@ -6,15 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categories.component.scss'],
 })
 export class CategoriesComponent implements OnInit {
-  CATEGORIES = [
-    'All',
-    'Pizza',
-    'Sushi',
-    'Drinks',
-    'Noodles',
-    'Roles',
-    'Salads',
-  ];
+  categories: string[] = CATEGORIES;
   constructor() {}
 
   ngOnInit(): void {}
