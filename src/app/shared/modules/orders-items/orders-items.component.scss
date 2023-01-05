@@ -1,12 +1,17 @@
+@import "variables";
+
 li {
   border-bottom: dotted;
-  // border-color: ${({ theme }) => theme.colors.borderColor};
+  margin-bottom: 20px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   p {
     margin: 5px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
   }
   p:first-child {
     width: 150px;
@@ -14,13 +19,9 @@ li {
   p:last-child {
     width: 30px;
   }
-  p {
-    //   ${({ theme }) =>
-    //     theme.fontText({ fontWeight: 500, fontSize: 20, lineHeight: 23 })}
-    //   ${({ theme }) =>
-    //     theme.flex({
-    //       alignItems: "center",
-    //     })}
-    //   color: ${({ theme }) => theme.colors.mainFont};
-  }
+}
+h3 {
+  font-size: 24px;
+  line-height: 28px;
+  color: $primary;
 }

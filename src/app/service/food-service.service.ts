@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { FoodInterface } from './types';
+import { FoodInterface, IOrderItemsHistory } from '../shared/types/types';
 
 @Injectable({
   providedIn: 'root',
@@ -21,5 +21,9 @@ export class FoodServiceService {
         }));
       })
     );
+  }
+
+  addOrderItemToHistory(orders: IOrderItemsHistory[]): void {
+    this.afs.collection('ordersHistory').add({ orders });
   }
 }

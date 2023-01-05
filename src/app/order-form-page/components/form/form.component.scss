@@ -23,12 +23,9 @@ input {
   line-height: 28px;
   border: 1px solid $primary;
   width: 100%;
-  //   @media screen and (min-width: 768px) {
-  //     max-width: 420px;
-  //   }
 }
 
 input:focus {
-  border-bottom: 1px solid orange;
+  border: 1px solid $primary;
   outline: none;
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FoodInterface } from 'src/app/service/types';
+import { FoodInterface } from 'src/app/shared/types/types';
 
 @Component({
   selector: 'food-card-list',

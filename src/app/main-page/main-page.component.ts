@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FoodInterface } from '../service/types';
+import { FoodInterface } from '../shared/types/types';
 import { FoodServiceService } from 'src/app/service/food-service.service';
 
 @Component({

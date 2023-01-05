@@ -1,11 +1,17 @@
 <header>
   <div class="layout wrapper">
-    <span class="material-symbols-outlined"> fastfood </span>
+    <a [routerLink]="'/'">
+      <span class="material-symbols-outlined"> fastfood </span>
+    </a>
     <h2>Simple food</h2>
     <div class="icon-container">
-      <span class="material-symbols-outlined"> shopping_cart </span>
+      <a [routerLink]="'/cart'">
+        <span class="material-symbols-outlined"> shopping_cart </span>
+      </a>
       <hr />
-      <span class="material-symbols-outlined"> receipt_long </span>
+      <a [routerLink]="'/history-orders'">
+        <span class="material-symbols-outlined"> receipt_long </span>
+      </a>
     </div>
   </div>
 </header>
