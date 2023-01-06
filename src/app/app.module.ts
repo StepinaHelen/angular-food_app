@@ -6,18 +6,22 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AppComponent } from './app.component';
 
 import { firebaseConfig } from 'src/environments/environment';
-import { HeroComponent } from './main-page/components/hero/hero.component';
-import { CategoriesComponent } from './main-page/components/categories/categories.component';
+// import { HeroComponent } from './main-page/components/hero/hero.component';
+
 import { FooterModule } from './shared/modules/footer/footer/footer.module';
+import { OrderFormPageModule } from './order-form-page/order-form-page.module';
 import { MainPageModule } from './main-page/main-page.module';
+import { HeaderModule } from './shared/modules/header/header/header.module';
 
 @NgModule({
-  declarations: [AppComponent, HeroComponent, CategoriesComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     FooterModule,
+    HeaderModule,
+    OrderFormPageModule,
     MainPageModule,
   ],
 

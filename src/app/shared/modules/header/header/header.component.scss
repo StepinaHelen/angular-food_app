@@ -9,6 +9,9 @@ header {
   z-index: 10;
   background-color: $primary;
   color: $secondaryFont;
+  a {
+    color: $secondaryFont;
+  }
 }
 
 .wrapper {
