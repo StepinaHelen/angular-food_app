@@ -1,5 +1,16 @@
 @import "variables";
 
+.delete-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.delete-icon {
+  color: $primary;
+  font-size: 2rem;
+}
+
 .card {
   display: flex;
   align-items: center;

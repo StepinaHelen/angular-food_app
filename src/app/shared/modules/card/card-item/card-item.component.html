@@ -7,16 +7,40 @@
     </p>
     <div class="card-amount-container">
       <p class="card-amount-container-text">Amount:</p>
-      <button class="card-amount-container-button" (click)="decrement()">
+      <button
+        *ngIf="url !== '/cart'"
+        class="card-amount-container-button"
+        (click)="decrement()"
+      >
         -
       </button>
-      <p class="card-amount-container-text">{{ foodAmount }}</p>
+      <p *ngIf="url === '/cart'" class="card-amount-container-text">
+        {{ food.amount }}
+      </p>
 
-      <button class="card-amount-container-button" (click)="increment()">
+      <p *ngIf="url !== '/cart'" class="card-amount-container-text">
+        {{ foodAmount }}
+      </p>
+
+      <button
+        *ngIf="url !== '/cart'"
+        class="card-amount-container-button"
+        (click)="increment()"
+      >
         +
       </button>
     </div>
+
+    <button
+      (click)="handleDelete()"
+      *ngIf="url === '/cart'"
+      class="delete-button left"
+    >
+      <span class="material-symbols-outlined delete-icon"> delete </span>
+    </button>
+
     <food-button
+      *ngIf="url !== '/cart'"
       class="left"
       (click)="handleAdd()"
       [buttonText]="'Add'"
