@@ -12,6 +12,8 @@ import { FooterModule } from './shared/modules/footer/footer/footer.module';
 import { OrderFormPageModule } from './order-form-page/order-form-page.module';
 import { MainPageModule } from './main-page/main-page.module';
 import { HeaderModule } from './shared/modules/header/header/header.module';
+import { CartPageModule } from './cart-page/cart-page.module';
+import { CartService } from './service/cart.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,9 +25,10 @@ import { HeaderModule } from './shared/modules/header/header/header.module';
     HeaderModule,
     OrderFormPageModule,
     MainPageModule,
+    CartPageModule,
   ],
 
-  providers: [],
+  providers: [CartService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
