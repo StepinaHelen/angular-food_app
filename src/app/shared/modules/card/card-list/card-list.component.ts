@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FoodInterface } from 'src/app/shared/types/types';
+import {
+  FoodInterface,
+  FoodWithAmountInterface,
+} from 'src/app/shared/types/types';
 
 @Component({
   selector: 'food-card-list',
@@ -10,7 +13,7 @@ export class CardListComponent implements OnInit {
   constructor() {}
 
   @Input()
-  foods: FoodInterface[] | null = [];
+  foods: FoodWithAmountInterface[] | null = [];
 
   ngOnInit(): void {}
 }

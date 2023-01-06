@@ -5,7 +5,8 @@
     </a>
     <h2>Simple food</h2>
     <div class="icon-container">
-      <a [routerLink]="'/cart'">
+      <a class="cart-link" [routerLink]="'/cart'">
+        <div class="cart-amount">{{ cartItemAmount$ | async }}</div>
         <span class="material-symbols-outlined"> shopping_cart </span>
       </a>
       <hr />
