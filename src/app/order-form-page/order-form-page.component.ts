@@ -1,10 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-  ViewContainerRef,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FoodServiceService } from '../service/food-service.service';
 import { FormComponent } from './components/form/form.component';
 
@@ -20,7 +14,10 @@ export class OrderFormPageComponent implements OnInit {
   ngOnInit(): void {}
 
   submitHandler() {
-    this.foodServiceService.addOrderItemToHistory(this.myForm.orderForm.value);
+    this.foodServiceService.addOrderItemToHistory({
+      ...this.myForm.orderForm.value,
+      date: new Date().toString(),
+    });
     this.myForm.orderForm.reset();
   }
 }

@@ -1,4 +1,6 @@
-export const CATEGORIES = [
+import { IOrdersHistoryItem } from './types/types';
+
+export const CATEGORIES: string[] = [
   'All',
   'Pizza',
   'Sushi',
@@ -6,4 +8,11 @@ export const CATEGORIES = [
   'Noodles',
   'Roles',
   'Salads',
+];
+
+//temporary
+export const ELEMENTS: IOrdersHistoryItem[] = [
+  { price: 10, title: 'pizza', amount: 2 },
+  { price: 10, title: 'pizza', amount: 2 },
+  { price: 10, title: 'pizza', amount: 2 },
 ];

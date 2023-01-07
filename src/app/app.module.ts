@@ -6,12 +6,12 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AppComponent } from './app.component';
 
 import { firebaseConfig } from 'src/environments/environment';
-// import { HeroComponent } from './main-page/components/hero/hero.component';
 
 import { FooterModule } from './shared/modules/footer/footer/footer.module';
 import { OrderFormPageModule } from './order-form-page/order-form-page.module';
 import { MainPageModule } from './main-page/main-page.module';
 import { HeaderModule } from './shared/modules/header/header/header.module';
+import { OrderHistoryPageModule } from './order-history-page/order-history-page.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +23,7 @@ import { HeaderModule } from './shared/modules/header/header/header.module';
     HeaderModule,
     OrderFormPageModule,
     MainPageModule,
+    OrderHistoryPageModule,
   ],
 
   providers: [],

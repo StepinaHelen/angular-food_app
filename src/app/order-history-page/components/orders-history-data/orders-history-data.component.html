@@ -1,0 +1,28 @@
+<ul class="adress-details">
+  <li *ngFor="let order of ordersHistory$ | async" class="details">
+    <div class="user_data">
+      <h3 class="title">Details:</h3>
+      <ul>
+        <li>
+          <h3>First and last name:</h3>
+          <p>{{ order.firstName }} &nbsp; {{ order.lastName }}</p>
+        </li>
+        <li>
+          <h3>Phone number:</h3>
+          <p>{{ order.phone }}</p>
+        </li>
+        <li>
+          <h3>Adress:</h3>
+          <p>{{ order.city }}, &nbsp; {{ order.street }}</p>
+        </li>
+      </ul>
+      <div class="date">
+        <h3>Date:</h3>
+        <p>{{ order.date | date }}</p>
+      </div>
+    </div>
+
+    <hr />
+    <food-orders-items [foodItems]="foodItems"></food-orders-items>
+  </li>
+</ul>

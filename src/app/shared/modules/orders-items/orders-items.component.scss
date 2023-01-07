@@ -25,3 +25,8 @@ h3 {
   line-height: 28px;
   color: $primary;
 }
+.amount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
