@@ -10,6 +10,10 @@ export interface FoodInterface extends FoodInterfaceInput {
   type: string;
 }
 
+export interface FoodWithAmountInterface extends FoodInterface {
+  amount: number;
+}
+
 export interface IForm {
   firstName: string;
   lastName: string;

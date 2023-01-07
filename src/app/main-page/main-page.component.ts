@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FoodInterface } from '../shared/types/types';
+import { FoodInterface, FoodWithAmountInterface } from '../shared/types/types';
 import { FoodServiceService } from 'src/app/service/food-service.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { FoodServiceService } from 'src/app/service/food-service.service';
   styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent implements OnInit {
-  public $foods: Observable<FoodInterface[]> = new Observable();
+  public $foods: Observable<FoodWithAmountInterface[]> = new Observable();
 
   constructor(private foodServiceService: FoodServiceService) {}
 

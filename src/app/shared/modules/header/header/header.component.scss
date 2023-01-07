@@ -9,9 +9,26 @@ header {
   z-index: 10;
   background-color: $primary;
   color: $secondaryFont;
+
   a {
     color: $secondaryFont;
   }
+}
+
+.cart-link {
+  position: relative;
+}
+
+.cart-amount {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: $secondary;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .wrapper {
@@ -32,6 +49,7 @@ h2 {
   margin: 0;
   font-size: 32px;
   line-height: 35px;
+
   @media screen and (min-width: 768px) {
     font-size: 52px;
     line-height: 57px;
@@ -41,6 +59,7 @@ h2 {
 .icon-container {
   display: flex;
   align-items: center;
+
   hr {
     transform: rotate(180deg);
     height: 56px;
@@ -53,6 +72,7 @@ h2 {
 span {
   font-size: 24px;
   cursor: pointer;
+
   &:hover {
     color: $secondary;
   }
