@@ -4,6 +4,8 @@ import { CartService } from '../service/cart.service';
 import { FoodServiceService } from '../service/food-service.service';
 import { FormComponent } from './components/form/form.component';
 import { IOrdersHistoryItem } from '../shared/types/types';
+import { OrderHistoryService } from '../service/order-history-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'food-order-form-page',
@@ -12,12 +14,15 @@ import { IOrdersHistoryItem } from '../shared/types/types';
 })
 export class OrderFormPageComponent implements OnInit, OnDestroy {
   @ViewChild('orderForm') myForm: FormComponent;
-  constructor(
-    private foodServiceService: FoodServiceService,
-    private cartService: CartService
-  ) {}
+
   orderList: IOrdersHistoryItem[];
   destroyed$: Subject<boolean> = new Subject();
+
+  constructor(
+    private orderHistoryService: OrderHistoryService,
+    private cartService: CartService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.cartService
@@ -29,12 +34,14 @@ export class OrderFormPageComponent implements OnInit, OnDestroy {
   }
 
   submitHandler() {
-    this.foodServiceService.addOrderItemToHistory({
+    this.orderHistoryService.addOrderItemToHistory({
       ...this.myForm.orderForm.value,
       date: new Date().toString(),
       foods: this.orderList,
     });
+    this.cartService.clearCart();
     this.myForm.orderForm.reset();
+    this.router.navigate(['/order-history']);
   }
   ngOnDestroy() {
     this.destroyed$.next(true);

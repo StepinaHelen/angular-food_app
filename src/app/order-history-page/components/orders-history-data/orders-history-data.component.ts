@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FoodServiceService } from 'src/app/service/food-service.service';
+import { OrderHistoryService } from 'src/app/service/order-history-service.service';
 import {
   IOrdersHistoryItem,
   IOrderItemsHistory,
@@ -14,9 +14,9 @@ import {
 export class OrdersHistoryDataComponent implements OnInit {
   ordersHistory$: Observable<IOrderItemsHistory[]>;
 
-  constructor(private foodServiceService: FoodServiceService) {}
+  constructor(private orderHistoryService: OrderHistoryService) {}
 
   ngOnInit(): void {
-    this.ordersHistory$ = this.foodServiceService.getHistoryOrderItem();
+    this.ordersHistory$ = this.orderHistoryService.getHistoryOrderItem();
   }
 }
