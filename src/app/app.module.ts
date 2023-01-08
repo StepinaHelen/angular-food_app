@@ -14,11 +14,13 @@ import { HeaderModule } from './shared/modules/header/header/header.module';
 import { OrderHistoryPageModule } from './order-history-page/order-history-page.module';
 import { CartPageModule } from './cart-page/cart-page.module';
 import { CartService } from './service/cart.service';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    NoopAnimationsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     FooterModule,
