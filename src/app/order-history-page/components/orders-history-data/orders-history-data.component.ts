@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FoodServiceService } from 'src/app/service/food-service.service';
-import { ELEMENTS } from 'src/app/shared/constants';
 import {
   IOrdersHistoryItem,
   IOrderItemsHistory,
@@ -14,7 +13,6 @@ import {
 })
 export class OrdersHistoryDataComponent implements OnInit {
   ordersHistory$: Observable<IOrderItemsHistory[]>;
-  foodItems: IOrdersHistoryItem[] = ELEMENTS;
 
   constructor(private foodServiceService: FoodServiceService) {}
 

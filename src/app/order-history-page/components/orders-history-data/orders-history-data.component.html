@@ -21,8 +21,7 @@
         <p>{{ order.date | date }}</p>
       </div>
     </div>
-
     <hr />
-    <food-orders-items [foodItems]="foodItems"></food-orders-items>
+    <food-orders-items [foodItems]="order.foods"></food-orders-items>
   </li>
 </ul>

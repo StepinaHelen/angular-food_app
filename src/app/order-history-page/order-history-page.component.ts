@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IOrdersHistoryItem } from '../shared/types/types';
 
 @Component({
   selector: 'app-order-history-page',

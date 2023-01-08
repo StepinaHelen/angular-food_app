@@ -2,14 +2,14 @@
   <h2>Order summaries:</h2>
   <div class="wrapper">
     <food-form #orderForm></food-form>
-    <food-orders-items></food-orders-items>
+    <food-orders-items [foodItems]="orderList"></food-orders-items>
   </div>
   <div class="wrapper_btn">
-  <food-button
-    type="submit"
-    (click)="submitHandler()"
-    buttonText="Order"
-    className="order"
-  ></food-button>
-</div>
+    <food-button
+      type="submit"
+      (click)="submitHandler()"
+      buttonText="Order"
+      className="order"
+    ></food-button>
+  </div>
 </div>

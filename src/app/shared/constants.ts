@@ -9,10 +9,3 @@ export const CATEGORIES: string[] = [
   'Roles',
   'Salads',
 ];
-
-//temporary
-export const ELEMENTS: IOrdersHistoryItem[] = [
-  { price: 10, title: 'pizza', amount: 2 },
-  { price: 10, title: 'pizza', amount: 2 },
-  { price: 10, title: 'pizza', amount: 2 },
-];

@@ -24,7 +24,7 @@ export interface IForm {
 }
 
 export interface IOrderItemsHistory extends IForm {
-  foods?: IOrdersHistoryItem[];
+  foods: IOrdersHistoryItem[];
 }
 
 export interface IOrdersHistoryItem {
