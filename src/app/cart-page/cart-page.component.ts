@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CartService } from '../service/cart.service';
+import { CartServiceInterface } from '../service/types';
 import { FoodWithAmountInterface } from '../shared/types/types';
 
 @Component({
@@ -11,9 +12,9 @@ import { FoodWithAmountInterface } from '../shared/types/types';
 export class CartPageComponent implements OnInit {
   constructor(private cartService: CartService) {}
 
-  cartItems$: Observable<FoodWithAmountInterface[]>;
+  cart$: Observable<CartServiceInterface>;
 
   ngOnInit(): void {
-    this.cartItems$ = this.cartService.getCartItems();
+    this.cart$ = this.cartService.getCartData();
   }
 }
