@@ -13,11 +13,11 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     this.orderForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      phone: ['', Validators.required],
-      city: ['', Validators.required],
-      street: ['', Validators.required],
+      firstName: ['', [Validators.required, Validators.minLength(3)]],
+      lastName: ['', [Validators.required, Validators.minLength(3)]],
+      phone: ['', [Validators.required, Validators.pattern('[0-9 ]{12}')]],
+      city: ['', [Validators.required, Validators.minLength(3)]],
+      street: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 }

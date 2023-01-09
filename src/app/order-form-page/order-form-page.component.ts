@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { CartService } from '../service/cart.service';
-import { FoodServiceService } from '../service/food-service.service';
 import { FormComponent } from './components/form/form.component';
 import { IOrdersHistoryItem } from '../shared/types/types';
 import { OrderHistoryService } from '../service/order-history-service.service';
@@ -34,15 +33,20 @@ export class OrderFormPageComponent implements OnInit, OnDestroy {
   }
 
   submitHandler() {
-    this.orderHistoryService.addOrderItemToHistory({
-      ...this.myForm.orderForm.value,
-      date: new Date().toString(),
-      foods: this.orderList,
-    });
-    this.cartService.clearCart();
-    this.myForm.orderForm.reset();
-    this.router.navigate(['/order-history']);
+    if (this.myForm.orderForm.valid) {
+      this.orderHistoryService.addOrderItemToHistory({
+        ...this.myForm.orderForm.value,
+        date: new Date().toString(),
+        foods: this.orderList,
+      });
+      this.cartService.clearCart();
+      this.myForm.orderForm.reset();
+      this.router.navigate(['/order-history']);
+    } else {
+      return;
+    }
   }
+
   ngOnDestroy() {
     this.destroyed$.next(true);
     this.destroyed$.complete();

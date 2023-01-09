@@ -16,7 +16,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [FormComponent, OrderFormPageComponent, OrderFormPageComponent],
+  declarations: [FormComponent, OrderFormPageComponent],
   imports: [
     CommonModule,
     FormsModule,
