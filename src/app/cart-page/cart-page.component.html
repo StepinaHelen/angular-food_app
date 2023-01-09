@@ -1,7 +1,10 @@
-// TODO add margin
 <div class="layout">
-  <food-card-list [foods]="cartItems$ | async"></food-card-list>
-  <a [routerLink]="'/order-form'">
+  <food-card-list [foods]="(cart$ | async)?.items ?? []"></food-card-list>
+  <div class="total-container">
+    <h1>Total:</h1>
+    <h1>{{ (cart$ | async)?.total }}$</h1>
+  </div>
+  <a class="order-link" [routerLink]="'/order-form'">
     <food-button buttonText="Go to order"></food-button>
   </a>
 </div>

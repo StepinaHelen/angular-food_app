@@ -1,43 +1,55 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { calculateTotal } from '../shared/cart.helpers';
 import { FoodWithAmountInterface } from '../shared/types/types';
+import { CartServiceInterface } from './types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private subject = new BehaviorSubject<FoodWithAmountInterface[]>([]);
+  private subject = new BehaviorSubject<CartServiceInterface>({
+    items: [],
+    total: 0,
+  });
 
-  cartItems$: Observable<FoodWithAmountInterface[]> =
-    this.subject.asObservable();
+  cart$: Observable<CartServiceInterface> = this.subject.asObservable();
 
   addToCart(cartItem: FoodWithAmountInterface): void {
-    const cartItems = this.subject.getValue();
+    const cart = this.subject.getValue();
 
-    const index = cartItems.findIndex(({ id }) => id === cartItem.id);
+    const index = cart.items.findIndex(({ id }) => id === cartItem.id);
 
     if (index !== -1) {
-      const newItems: FoodWithAmountInterface[] = cartItems.slice(0);
+      const newItems: FoodWithAmountInterface[] = cart.items.slice(0);
 
       newItems[index].amount += cartItem.amount;
 
-      return this.subject.next(newItems);
+      const total = calculateTotal(newItems);
+
+      return this.subject.next({ items: newItems, total });
     }
 
-    this.subject.next([...cartItems, cartItem]);
+    const items = [...cart.items, cartItem];
+    const total = calculateTotal(items);
+
+    this.subject.next({ items, total });
   }
 
   removeFromCart(itemId: string): void {
     const cartItems = this.subject.getValue();
-    const filtered = cartItems.filter((item) => item.id !== itemId);
-    this.subject.next(filtered);
+    const filtered = cartItems.items.filter((item) => item.id !== itemId);
+
+    const total = calculateTotal(filtered);
+
+    this.subject.next({ items: filtered, total });
   }
 
   clearCart(): void {
-    this.subject.next([]);
+    this.subject.next({ items: [], total: 0 });
   }
 
-  getCartItems(): Observable<FoodWithAmountInterface[]> {
-    return this.cartItems$;
+  getCartData(): Observable<CartServiceInterface> {
+    return this.cart$;
   }
 }

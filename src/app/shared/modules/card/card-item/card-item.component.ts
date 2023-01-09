@@ -1,11 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/service/cart.service';
-import {
-  FoodInterface,
-  FoodWithAmountInterface,
-} from 'src/app/shared/types/types';
+import { FoodWithAmountInterface } from 'src/app/shared/types/types';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -17,7 +13,7 @@ export class CardItemComponent implements OnInit {
   @Input()
   food: FoodWithAmountInterface | null = null;
   public foodAmount: number = 1;
-  url = this.router.url;
+  isCart = this.router.url === '/cart';
 
   constructor(
     private cartService: CartService,
