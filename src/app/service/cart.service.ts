@@ -2,16 +2,21 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { calculateTotal } from '../shared/cart.helpers';
 import { FoodWithAmountInterface } from '../shared/types/types';
-import { CartServiceInterface } from './types';
+import { LocalStorageService } from './local-storage.service';
+import { CartServiceInterface, LocalStorageKeys } from './types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private subject = new BehaviorSubject<CartServiceInterface>({
-    items: [],
-    total: 0,
-  });
+  private subject = new BehaviorSubject<CartServiceInterface>(
+    this.localStorageService.getLocalStorageItem(LocalStorageKeys.cart) ?? {
+      items: [],
+      total: 0,
+    }
+  );
+
+  constructor(private localStorageService: LocalStorageService) {}
 
   cart$: Observable<CartServiceInterface> = this.subject.asObservable();
 
@@ -27,11 +32,27 @@ export class CartService {
 
       const total = calculateTotal(newItems);
 
-      return this.subject.next({ items: newItems, total });
+      const nextData = { items: newItems, total };
+
+      this.localStorageService.setLocalstorageItem(
+        LocalStorageKeys.cart,
+        nextData
+      );
+
+      this.subject.next(nextData);
+
+      return;
     }
 
     const items = [...cart.items, cartItem];
     const total = calculateTotal(items);
+
+    const nextData = { items, total };
+
+    this.localStorageService.setLocalstorageItem(
+      LocalStorageKeys.cart,
+      nextData
+    );
 
     this.subject.next({ items, total });
   }
@@ -42,11 +63,25 @@ export class CartService {
 
     const total = calculateTotal(filtered);
 
-    this.subject.next({ items: filtered, total });
+    const nextData = { items: filtered, total };
+
+    this.localStorageService.setLocalstorageItem(
+      LocalStorageKeys.cart,
+      nextData
+    );
+
+    this.subject.next(nextData);
   }
 
   clearCart(): void {
-    this.subject.next({ items: [], total: 0 });
+    const initalData = { items: [], total: 0 };
+
+    this.localStorageService.setLocalstorageItem(
+      LocalStorageKeys.cart,
+      initalData
+    );
+
+    this.subject.next(initalData);
   }
 
   getCartData(): Observable<CartServiceInterface> {

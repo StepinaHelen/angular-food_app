@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FoodInterface, FoodWithAmountInterface } from '../shared/types/types';
+import { FoodWithAmountInterface } from '../shared/types/types';
 import { FoodServiceService } from 'src/app/service/food-service.service';
 import { LocalStorageService } from '../service/local-storage.service';
+import { LocalStorageKeys } from '../service/types';
 
 @Component({
   selector: 'food-main-page',
@@ -12,8 +13,11 @@ import { LocalStorageService } from '../service/local-storage.service';
 export class MainPageComponent implements OnInit {
   public $foods: Observable<FoodWithAmountInterface[]> = new Observable();
   category: string =
-    this.localStorageService.getLocalStorageItem('category') || null;
-  sort: string = this.localStorageService.getLocalStorageItem('sort') || 'asc';
+    this.localStorageService.getLocalStorageItem(LocalStorageKeys.category) ??
+    '';
+  sort: string =
+    this.localStorageService.getLocalStorageItem(LocalStorageKeys.sort) ||
+    'asc';
 
   constructor(
     private foodServiceService: FoodServiceService,
@@ -38,7 +42,10 @@ export class MainPageComponent implements OnInit {
     } else {
       this.$foods = this.foodServiceService.getFoodsList(category, this.sort);
     }
-    this.localStorageService.setLocalstorageItem('category', this.category);
+    this.localStorageService.setLocalstorageItem(
+      LocalStorageKeys.category,
+      this.category
+    );
   }
 
   sortedItemsHandler(sort: string) {
@@ -47,6 +54,9 @@ export class MainPageComponent implements OnInit {
       this.category,
       this.sort
     )),
-      this.localStorageService.setLocalstorageItem('sort', this.sort);
+      this.localStorageService.setLocalstorageItem(
+        LocalStorageKeys.sort,
+        this.sort
+      );
   }
 }

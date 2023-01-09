@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LocalStorageKeys } from './types';
 
 @Injectable({
   providedIn: 'root',
@@ -6,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class LocalStorageService {
   constructor() {}
 
-  setLocalstorageItem(key: string, data: any): void {
+  setLocalstorageItem<T>(key: LocalStorageKeys, data: T): void {
     try {
       localStorage.setItem(key, JSON.stringify(data));
     } catch (e) {
@@ -14,9 +15,13 @@ export class LocalStorageService {
     }
   }
 
-  getLocalStorageItem(key: string): any {
+  getLocalStorageItem<R>(key: LocalStorageKeys): R | null {
     try {
-      return JSON.parse(localStorage.getItem(key)!);
+      const data = localStorage.getItem(key);
+      if (data) {
+        return JSON.parse(data);
+      }
+      return null;
     } catch {
       console.log('Error getting data from LocalStorage');
       return null;

@@ -79,13 +79,21 @@
 .left {
   margin-left: auto;
 }
-::ng-deep .mat-snack-bar-container {
-  background-color: $background;
-  font-weight: 600;
-  color: $primary;
-  box-shadow: $boxShadow;
-  .mat-simple-snackbar-action {
-    color: $secondary;
+::ng-deep {
+  .mat-snack-bar-container {
+    background-color: $background;
+    font-weight: 600;
+
+    color: $primary;
+    box-shadow: $boxShadow;
+
+    .mat-simple-snackbar-action {
+      color: $secondary;
+    }
+  }
+
+  .mat-snack-bar-container.mat-snack-bar-top {
+    margin: 55px;
   }
 }
 
