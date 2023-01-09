@@ -14,10 +14,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartItemAmount$ = this.cartService
-      .getCartItems()
+      .getCartData()
       .pipe(
-        map((items) =>
-          items.reduce((acc, item) => (acc += item.amount ?? 0), 0)
+        map((cart) =>
+          cart.items.reduce((acc, item) => (acc += item.amount ?? 0), 0)
         )
       );
   }

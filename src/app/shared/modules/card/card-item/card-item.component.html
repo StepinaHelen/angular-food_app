@@ -1,5 +1,8 @@
-<li class="card" *ngIf="food">
-  <img class="card-image" [src]="food.img" />
+<li [ngClass]="{ 'cart-layout': isCart }" class="card" *ngIf="food">
+  <div class="card-image-container">
+    <img class="card-image" [src]="food.img" />
+  </div>
+
   <div class="card-content">
     <h1>{{ food.title }}</h1>
     <p class="card-content-price">
@@ -8,39 +11,31 @@
     <div class="card-amount-container">
       <p class="card-amount-container-text">Amount:</p>
       <button
-        *ngIf="url !== '/cart'"
+        *ngIf="!isCart"
         class="card-amount-container-button"
         (click)="decrement()"
       >
         -
       </button>
-      <p *ngIf="url === '/cart'" class="card-amount-container-text">
+      <p *ngIf="isCart" class="card-amount-container-text">
         {{ food.amount }}
       </p>
-
-      <p *ngIf="url !== '/cart'" class="card-amount-container-text">
+      <p *ngIf="!isCart" class="card-amount-container-text">
         {{ foodAmount }}
       </p>
-
       <button
-        *ngIf="url !== '/cart'"
+        *ngIf="!isCart"
         class="card-amount-container-button"
         (click)="increment()"
       >
         +
       </button>
     </div>
-
-    <button
-      (click)="handleDelete()"
-      *ngIf="url === '/cart'"
-      class="delete-button left"
-    >
+    <button (click)="handleDelete()" *ngIf="isCart" class="delete-button left">
       <span class="material-symbols-outlined delete-icon"> delete </span>
     </button>
-
     <food-button
-      *ngIf="url !== '/cart'"
+      *ngIf="!isCart"
       class="left"
       (click)="handleAdd()"
       [buttonText]="'Add'"

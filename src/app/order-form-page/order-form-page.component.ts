@@ -26,10 +26,10 @@ export class OrderFormPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.cartService
-      .getCartItems()
+      .getCartData()
       .pipe(takeUntil(this.destroyed$))
       .subscribe((data) => {
-        this.orderList = data;
+        this.orderList = data.items;
       });
   }
 

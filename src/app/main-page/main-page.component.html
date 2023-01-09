@@ -4,5 +4,5 @@
     (selectedCategory)="filterItemsHandler($event)"
     (sortItems)="sortedItemsHandler($event)"
   ></food-categories>
-  <food-card-list [foods]="$foods | async"></food-card-list>
+  <food-card-list [foods]="($foods | async) ?? []"></food-card-list>
 </div>
