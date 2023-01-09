@@ -11,7 +11,7 @@ export class CartService {
   cartItems$: Observable<FoodWithAmountInterface[]> =
     this.subject.asObservable();
 
-  addToCart(cartItem: FoodWithAmountInterface) {
+  addToCart(cartItem: FoodWithAmountInterface): void {
     const cartItems = this.subject.getValue();
 
     const index = cartItems.findIndex(({ id }) => id === cartItem.id);
@@ -24,13 +24,17 @@ export class CartService {
       return this.subject.next(newItems);
     }
 
-    return this.subject.next([...cartItems, cartItem]);
+    this.subject.next([...cartItems, cartItem]);
   }
 
-  removeFromCart(itemId: string) {
+  removeFromCart(itemId: string): void {
     const cartItems = this.subject.getValue();
     const filtered = cartItems.filter((item) => item.id !== itemId);
-    return this.subject.next(filtered);
+    this.subject.next(filtered);
+  }
+
+  clearCart(): void {
+    this.subject.next([]);
   }
 
   getCartItems(): Observable<FoodWithAmountInterface[]> {

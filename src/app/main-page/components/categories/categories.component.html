@@ -1,8 +1,10 @@
 <div class="categories">
   <ul>
     <li *ngFor="let category of categories">
-      <button>{{ category }}</button>
+      <button (click)="chooseCategory(category)">{{ category }}</button>
     </li>
   </ul>
-  <span class="material-symbols-outlined"> text_rotate_vertical </span>
+  <span class="material-symbols-outlined" (click)="sortItem()">
+    sort_by_alpha
+  </span>
 </div>

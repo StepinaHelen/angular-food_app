@@ -2,11 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import {
-  FoodInterface,
-  FoodWithAmountInterface,
-  IOrderItemsHistory,
-} from '../shared/types/types';
+import { FoodWithAmountInterface } from '../shared/types/types';
 
 @Injectable({
   providedIn: 'root',
@@ -14,9 +10,20 @@ import {
 export class FoodServiceService {
   constructor(private afs: AngularFirestore) {}
 
-  getFoodsList(): Observable<FoodWithAmountInterface[]> {
-    const listCollection =
-      this.afs.collection<FoodWithAmountInterface>('foods');
+  getFoodsList(
+    fieldCategory: string,
+    sortField: any
+  ): Observable<FoodWithAmountInterface[]> {
+    console.log(fieldCategory, sortField);
+    const listCollection = this.afs.collection<FoodWithAmountInterface>(
+      'foods',
+      fieldCategory
+        ? (ref) =>
+            ref
+              .orderBy('title', sortField)
+              .where('category', '==', fieldCategory)
+        : (ref) => ref.orderBy('title', sortField)
+    );
     return listCollection.stateChanges().pipe(
       map((dataRes) => {
         return dataRes.map((list) => ({
@@ -27,9 +34,5 @@ export class FoodServiceService {
         }));
       })
     );
-  }
-
-  addOrderItemToHistory(orders: IOrderItemsHistory[]): void {
-    this.afs.collection('ordersHistory').add({ orders });
   }
 }

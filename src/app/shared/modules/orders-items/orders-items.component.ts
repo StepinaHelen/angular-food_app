@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IOrdersHistoryItem } from '../../types/types';
 
 @Component({
   selector: 'food-orders-items',
@@ -6,11 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./orders-items.component.scss'],
 })
 export class OrdersItemsComponent implements OnInit {
-  elements = [
-    { price: 10, title: 'pizza', amount: 2 },
-    { price: 10, title: 'pizza', amount: 2 },
-    { price: 10, title: 'pizza', amount: 2 },
-  ];
+  @Input() foodItems: IOrdersHistoryItem[] = [];
+
   constructor() {}
 
   ngOnInit(): void {}

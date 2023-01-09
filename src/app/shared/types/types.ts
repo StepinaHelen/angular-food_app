@@ -20,8 +20,15 @@ export interface IForm {
   phone: string;
   city: string;
   street: string;
+  date: string;
 }
 
 export interface IOrderItemsHistory extends IForm {
-  foods?: FoodInterfaceInput[];
+  foods: IOrdersHistoryItem[];
+}
+
+export interface IOrdersHistoryItem {
+  price: number;
+  title: string;
+  amount: number;
 }

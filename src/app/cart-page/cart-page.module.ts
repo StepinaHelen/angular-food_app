@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CartPageComponent } from './cart-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CardModule } from '../shared/modules/card/card.module';
+import { ButtonModule } from '../shared/modules/button/button.module';
 
 const routes: Routes = [
   {
@@ -14,6 +15,11 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [CartPageComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), CardModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    CardModule,
+    ButtonModule,
+  ],
 })
 export class CartPageModule {}

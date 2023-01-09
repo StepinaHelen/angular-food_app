@@ -6,6 +6,7 @@ import {
   FoodInterface,
   FoodWithAmountInterface,
 } from 'src/app/shared/types/types';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'food-card-item',
@@ -18,7 +19,11 @@ export class CardItemComponent implements OnInit {
   public foodAmount: number = 1;
   url = this.router.url;
 
-  constructor(private cartService: CartService, private router: Router) {}
+  constructor(
+    private cartService: CartService,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
   decrement() {
     if (this.foodAmount === 1) {
@@ -41,6 +46,12 @@ export class CardItemComponent implements OnInit {
     }
 
     this.cartService.addToCart({ ...this.food, amount: this.foodAmount });
+
+    this.snackBar.open(this.food.title + ' add to your Cart', 'Close', {
+      duration: 2 * 1000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+    });
 
     this.foodAmount = 1;
   }
