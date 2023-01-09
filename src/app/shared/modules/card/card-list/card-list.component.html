@@ -1,4 +1,4 @@
-<ul class="list" [ngClass]="cartStyling()">
+<ul class="list" [ngClass]="{ 'cart-layout': isCart }">
   <ng-container *ngFor="let food of foods">
     <food-card-item class="item" [food]="food"></food-card-item>
   </ng-container>

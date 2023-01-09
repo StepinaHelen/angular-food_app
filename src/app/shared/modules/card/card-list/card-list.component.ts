@@ -17,8 +17,4 @@ export class CardListComponent implements OnInit {
   foods: FoodWithAmountInterface[] = [];
 
   ngOnInit(): void {}
-
-  cartStyling() {
-    return { 'cart-layout': this.isCart };
-  }
 }

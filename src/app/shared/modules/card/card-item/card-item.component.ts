@@ -52,9 +52,5 @@ export class CardItemComponent implements OnInit {
     this.foodAmount = 1;
   }
 
-  cartStyling() {
-    return { 'cart-layout': this.isCart };
-  }
-
   ngOnInit(): void {}
 }

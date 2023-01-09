@@ -1,4 +1,4 @@
-<li [ngClass]="cartStyling()" class="card" *ngIf="food">
+<li [ngClass]="{ 'cart-layout': isCart }" class="card" *ngIf="food">
   <div class="card-image-container">
     <img class="card-image" [src]="food.img" />
   </div>
