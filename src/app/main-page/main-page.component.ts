@@ -10,10 +10,36 @@ import { FoodServiceService } from 'src/app/service/food-service.service';
 })
 export class MainPageComponent implements OnInit {
   public $foods: Observable<FoodWithAmountInterface[]> = new Observable();
+  category: string = '';
+  sort: string = 'asc';
 
   constructor(private foodServiceService: FoodServiceService) {}
 
   ngOnInit(): void {
-    this.$foods = this.foodServiceService.getFoodsList();
+    this.$foods = this.foodServiceService.getFoodsList(
+      this.category,
+      this.sort
+    );
+  }
+
+  filterItemsHandler(category: string) {
+    this.category = category;
+    if (category === 'all') {
+      this.category = '';
+      this.$foods = this.foodServiceService.getFoodsList(
+        this.category,
+        this.sort
+      );
+    } else {
+      this.$foods = this.foodServiceService.getFoodsList(category, this.sort);
+    }
+  }
+
+  sortedItemsHandler(sort: string) {
+    this.sort = sort;
+    this.$foods = this.foodServiceService.getFoodsList(
+      this.category,
+      this.sort
+    );
   }
 }

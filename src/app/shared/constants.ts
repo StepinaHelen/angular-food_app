@@ -6,6 +6,5 @@ export const CATEGORIES: string[] = [
   'Sushi',
   'Drinks',
   'Noodles',
-  'Roles',
   'Salads',
 ];
