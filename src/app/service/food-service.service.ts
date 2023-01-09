@@ -12,6 +12,7 @@ export class FoodServiceService {
 
   getFoodsList(
     fieldCategory: string,
+    //TODO: fix any
     sortField: any
   ): Observable<FoodWithAmountInterface[]> {
     console.log(fieldCategory, sortField);

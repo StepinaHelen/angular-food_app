@@ -23,9 +23,26 @@ input {
   line-height: 28px;
   border: 1px solid $primary;
   width: 100%;
+  &.invalid {
+    border: 1px solid $error;
+  }
 }
 
 input:focus {
   border: 1px solid $primary;
   outline: none;
+}
+
+.field-wrapper {
+  position: relative;
+}
+
+.error-mesage {
+  position: absolute;
+  top: 80px;
+  color: $error;
+  font-size: 12px;
+}
+.error-wrapper {
+  display: flex;
 }
