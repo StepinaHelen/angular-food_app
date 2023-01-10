@@ -1,0 +1,19 @@
+<div class="field-wrapper">
+  <label [for]="inputId"> {{ label }} </label>
+  <input
+    [ngClass]="{
+      invalid: control.invalid && (control.dirty || control.touched)
+    }"
+    [id]="inputId"
+    type="text"
+    [formControl]="control"
+  />
+  <div class="error-wrapper" *ngFor="let error of control.errors | keyvalue">
+    <p
+      class="error-mesage"
+      *ngIf="(control.hasError(error.key) && control.touched) || control.dirty"
+    >
+      {{ generateErrors(control.errors, error.key) }}
+    </p>
+  </div>
+</div>

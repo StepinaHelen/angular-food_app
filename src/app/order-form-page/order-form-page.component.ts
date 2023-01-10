@@ -5,6 +5,7 @@ import { FormComponent } from './components/form/form.component';
 import { IOrdersHistoryItem } from '../shared/types/types';
 import { OrderHistoryService } from '../service/order-history-service.service';
 import { Router } from '@angular/router';
+import { validateAllFormFields } from '../shared/form.helpers';
 
 @Component({
   selector: 'food-order-form-page',
@@ -35,7 +36,7 @@ export class OrderFormPageComponent implements OnInit, OnDestroy {
   submitHandler() {
     if (this.myForm.orderForm.valid) {
       this.orderHistoryService.addOrderItemToHistory({
-        ...this.myForm.orderForm.value,
+        ...this.myForm.orderForm.getRawValue(),
         date: new Date().toString(),
         foods: this.orderList,
       });
@@ -43,6 +44,8 @@ export class OrderFormPageComponent implements OnInit, OnDestroy {
       this.myForm.orderForm.reset();
       this.router.navigate(['/order-history']);
     } else {
+      validateAllFormFields(this.myForm.orderForm);
+
       return;
     }
   }

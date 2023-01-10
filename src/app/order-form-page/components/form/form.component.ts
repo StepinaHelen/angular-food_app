@@ -1,5 +1,11 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from '@angular/forms';
+import { FormGoupInterface } from 'src/app/shared/types/types';
 
 @Component({
   selector: 'food-form',
@@ -7,17 +13,32 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements OnInit {
-  orderForm: FormGroup;
+  orderForm: FormGroup<FormGoupInterface>;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.orderForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.minLength(3)]],
-      lastName: ['', [Validators.required, Validators.minLength(3)]],
-      phone: ['', [Validators.required, Validators.pattern('[0-9 ]{12}')]],
-      city: ['', [Validators.required, Validators.minLength(3)]],
-      street: ['', [Validators.required, Validators.minLength(3)]],
+      firstName: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required, Validators.minLength(3)],
+      }),
+      lastName: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required, Validators.minLength(3)],
+      }),
+      phone: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required, Validators.pattern('[0-9 ]{12}')],
+      }),
+      city: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required, Validators.minLength(3)],
+      }),
+      street: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required, Validators.minLength(3)],
+      }),
     });
   }
 }
