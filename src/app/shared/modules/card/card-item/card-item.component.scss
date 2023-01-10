@@ -81,22 +81,28 @@
 }
 ::ng-deep {
   .mat-snack-bar-container {
-    background-color: $background;
+    background-color: $secondary;
     font-weight: 600;
 
-    color: $primary;
+    color: $secondaryFont;
     box-shadow: $boxShadow;
 
     .mat-simple-snackbar-action {
-      color: $secondary;
+      color: $primary;
+      button {
+        font-size: 18px;
+        font-weight: 600;
+      }
     }
-  }
-
-  .mat-snack-bar-container.mat-snack-bar-top {
-    margin: 55px;
+    .mat-simple-snackbar {
+      font-size: 18px;
+    }
   }
 }
 
 .cart-layout {
-  flex-direction: row;
+  flex-direction: column;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 }

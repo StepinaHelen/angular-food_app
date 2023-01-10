@@ -1,12 +1,14 @@
-<h3>Order list:</h3>
-<ul>
-  <li *ngFor="let el of foodItems">
-    <p>{{ el.title }}</p>
-    <p>x{{ el.amount }}</p>
-    <p>{{ el.price }}$</p>
-  </li>
-</ul>
-<div class="amount">
-  <h3>Amount:</h3>
-  <p>30$</p>
+<div [ngClass]="{ shadow: withShadow }">
+  <h3>Order list:</h3>
+  <ul>
+    <li *ngFor="let el of foodItems">
+      <p>{{ el.title }}</p>
+      <p>x{{ el.amount }}</p>
+      <p>{{ el.price }}$</p>
+    </li>
+  </ul>
+  <div class="amount">
+    <h3>Amount:</h3>
+    <p>30$</p>
+  </div>
 </div>

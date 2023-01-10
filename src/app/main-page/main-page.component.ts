@@ -4,6 +4,7 @@ import { FoodWithAmountInterface } from '../shared/types/types';
 import { FoodServiceService } from 'src/app/service/food-service.service';
 import { LocalStorageService } from '../service/local-storage.service';
 import { LocalStorageKeys } from '../service/types';
+import { OrderByDirection } from 'firebase/firestore';
 
 @Component({
   selector: 'food-main-page',
@@ -15,7 +16,7 @@ export class MainPageComponent implements OnInit {
   category: string =
     this.localStorageService.getLocalStorageItem(LocalStorageKeys.category) ??
     '';
-  sort: string =
+  sort: OrderByDirection =
     this.localStorageService.getLocalStorageItem(LocalStorageKeys.sort) ||
     'asc';
 
@@ -48,7 +49,7 @@ export class MainPageComponent implements OnInit {
     );
   }
 
-  sortedItemsHandler(sort: string) {
+  sortedItemsHandler(sort: OrderByDirection) {
     this.sort = sort;
     (this.$foods = this.foodServiceService.getFoodsList(
       this.category,

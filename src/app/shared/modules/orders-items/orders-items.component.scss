@@ -29,4 +29,27 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  h3 {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    color: $primary;
+  }
+  p {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: $mainFont;
+  }
+}
+.shadow {
+  box-shadow: $boxShadow;
+  padding: 20px 40px;
+  margin-top: 30px;
+  .amount p,
+  h3 {
+    font-size: 32px;
+    line-height: 38px;
+    color: $primary;
+  }
 }

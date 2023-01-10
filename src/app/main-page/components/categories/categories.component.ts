@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CATEGORIES } from '../../../shared/constants';
+import { OrderByDirection } from 'firebase/firestore';
 
 @Component({
   selector: 'food-categories',
@@ -8,10 +9,10 @@ import { CATEGORIES } from '../../../shared/constants';
 })
 export class CategoriesComponent implements OnInit {
   categories: string[] = CATEGORIES;
-  sort: string;
+  sort: OrderByDirection;
 
   @Output() selectedCategory = new EventEmitter<string>;
-  @Output() sortItems = new EventEmitter<string>;
+  @Output() sortItems = new EventEmitter<OrderByDirection>;
 
   constructor() { }
 

@@ -5,6 +5,6 @@
     <h1>{{ (cart$ | async)?.total }}$</h1>
   </div>
   <a class="order-link" [routerLink]="'/order-form'">
-    <food-button buttonText="Go to order"></food-button>
+    <food-button className="order" buttonText="Go to order"></food-button>
   </a>
 </div>

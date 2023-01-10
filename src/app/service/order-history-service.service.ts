@@ -17,11 +17,10 @@ export class OrderHistoryService {
   getHistoryOrderItem(): Observable<IOrderItemsHistory[]> {
     const listCollection =
       this.afs.collection<IOrderItemsHistory>('ordersHistory');
-    return listCollection.stateChanges().pipe(
-      map((dataRes) => {
-        return dataRes.map((list) => ({
-          ...list.payload.doc.data(),
-        }));
+
+    return listCollection.valueChanges().pipe(
+      map((data) => {
+        return data;
       })
     );
   }

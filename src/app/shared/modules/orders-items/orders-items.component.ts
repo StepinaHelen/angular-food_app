@@ -8,6 +8,7 @@ import { IOrdersHistoryItem } from '../../types/types';
 })
 export class OrdersItemsComponent implements OnInit {
   @Input() foodItems: IOrdersHistoryItem[] = [];
+  @Input() withShadow: boolean = false;
 
   constructor() {}
 

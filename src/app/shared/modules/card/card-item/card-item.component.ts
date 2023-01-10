@@ -46,7 +46,7 @@ export class CardItemComponent implements OnInit {
     this.snackBar.open(this.food.title + ' add to your Cart', 'Close', {
       duration: 2 * 1000,
       horizontalPosition: 'right',
-      verticalPosition: 'top',
+      verticalPosition: 'bottom',
     });
 
     this.foodAmount = 1;
