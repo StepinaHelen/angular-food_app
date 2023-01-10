@@ -20,12 +20,9 @@
 }
 
 .cart-layout {
+  flex-wrap: nowrap;
+  flex-direction: column;
   .item {
-    @media screen and (min-width: 768px) {
-      width: calc((100% - 1 * 1rem) / 1);
-    }
-    @media screen and (min-width: 1200px) {
-      width: calc((100% - 4 * 1rem) / 2);
-    }
+    width: calc(100% - 2 * 1rem);
   }
 }

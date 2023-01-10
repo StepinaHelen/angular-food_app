@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FoodWithAmountInterface } from '../shared/types/types';
+import { OrderByDirection } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -12,10 +13,8 @@ export class FoodServiceService {
 
   getFoodsList(
     fieldCategory: string,
-    //TODO: fix any
-    sortField: any
+    sortField: OrderByDirection
   ): Observable<FoodWithAmountInterface[]> {
-    console.log(fieldCategory, sortField);
     const listCollection = this.afs.collection<FoodWithAmountInterface>(
       'foods',
       fieldCategory
@@ -25,6 +24,7 @@ export class FoodServiceService {
               .where('category', '==', fieldCategory)
         : (ref) => ref.orderBy('title', sortField)
     );
+
     return listCollection.stateChanges().pipe(
       map((dataRes) => {
         return dataRes.map((list) => ({
