@@ -10,7 +10,7 @@ import { IOrderItemsHistory } from '../shared/types/types';
 export class OrderHistoryService {
   constructor(private afs: AngularFirestore) {}
 
-  addOrderItemToHistory(orders: IOrderItemsHistory[]): void {
+  addOrderItemToHistory(orders: IOrderItemsHistory): void {
     this.afs.collection('ordersHistory').add(orders);
   }
 

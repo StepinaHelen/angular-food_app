@@ -1,3 +1,5 @@
+import { FormControl } from '@angular/forms';
+
 export interface FoodInterfaceInput {
   category: string;
   img: string;
@@ -12,6 +14,14 @@ export interface FoodInterface extends FoodInterfaceInput {
 
 export interface FoodWithAmountInterface extends FoodInterface {
   amount: number;
+}
+
+export interface FormGoupInterface {
+  firstName: FormControl<string>;
+  lastName: FormControl<string>;
+  phone: FormControl<string>;
+  city: FormControl<string>;
+  street: FormControl<string>;
 }
 
 export interface IForm {
