@@ -22,7 +22,6 @@ export class CartService {
 
   addToCart(cartItem: FoodWithAmountInterface): void {
     const cart = this.subject.getValue();
-
     const index = cart.items.findIndex(({ id }) => id === cartItem.id);
 
     if (index !== -1) {
@@ -31,7 +30,6 @@ export class CartService {
       newItems[index].amount += cartItem.amount;
 
       const total = calculateTotal(newItems);
-
       const nextData = { items: newItems, total };
 
       this.localStorageService.setLocalstorageItem(
@@ -46,7 +44,6 @@ export class CartService {
 
     const items = [...cart.items, cartItem];
     const total = calculateTotal(items);
-
     const nextData = { items, total };
 
     this.localStorageService.setLocalstorageItem(
@@ -60,9 +57,7 @@ export class CartService {
   removeFromCart(itemId: string): void {
     const cartItems = this.subject.getValue();
     const filtered = cartItems.items.filter((item) => item.id !== itemId);
-
     const total = calculateTotal(filtered);
-
     const nextData = { items: filtered, total };
 
     this.localStorageService.setLocalstorageItem(

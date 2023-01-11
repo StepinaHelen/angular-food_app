@@ -15,6 +15,7 @@ import { OrderHistoryPageModule } from './order-history-page/order-history-page.
 import { CartPageModule } from './cart-page/cart-page.module';
 import { CartService } from './service/cart.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { SpinnerModule } from './shared/modules/spinner/spinner.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +30,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     MainPageModule,
     OrderHistoryPageModule,
     CartPageModule,
+    SpinnerModule,
   ],
 
   providers: [CartService],

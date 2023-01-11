@@ -5,6 +5,7 @@ import { FoodServiceService } from 'src/app/service/food-service.service';
 import { LocalStorageService } from '../service/local-storage.service';
 import { LocalStorageKeys } from '../service/types';
 import { OrderByDirection } from 'firebase/firestore';
+import { SpinnerService } from '../service/spinner.service';
 
 @Component({
   selector: 'food-main-page',
@@ -22,10 +23,12 @@ export class MainPageComponent implements OnInit {
 
   constructor(
     private foodServiceService: FoodServiceService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private spinnerService: SpinnerService
   ) {}
 
   ngOnInit(): void {
+    this.spinnerService.loadingOn();
     this.$foods = this.foodServiceService.getFoodsList(
       this.category,
       this.sort
@@ -36,11 +39,13 @@ export class MainPageComponent implements OnInit {
     this.category = category;
     if (category === 'all') {
       this.category = '';
+
       this.$foods = this.foodServiceService.getFoodsList(
         this.category,
         this.sort
       );
     } else {
+      this.spinnerService.loadingOn();
       this.$foods = this.foodServiceService.getFoodsList(category, this.sort);
     }
     this.localStorageService.setLocalstorageItem(
@@ -50,7 +55,9 @@ export class MainPageComponent implements OnInit {
   }
 
   sortedItemsHandler(sort: OrderByDirection) {
+    this.spinnerService.loadingOn();
     this.sort = sort;
+
     (this.$foods = this.foodServiceService.getFoodsList(
       this.category,
       this.sort
