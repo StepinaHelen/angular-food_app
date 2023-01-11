@@ -1,10 +1,8 @@
-@import "variables";
-
 h2 {
   font-weight: 500;
   font-size: 40px;
   line-height: 47px;
-  color: $primary;
+  color: var(--primary);
 }
 .wrapper {
   display: flex;

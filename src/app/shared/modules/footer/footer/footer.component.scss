@@ -1,7 +1,6 @@
-@import "variables";
 footer {
-  background-color: $primary;
-  color: $secondaryFont;
+  background-color: var(--primary);
+  color: var(--white);
   width: 100%;
   display: block;
 }
@@ -14,12 +13,12 @@ div {
     margin: 0px;
   }
   span {
-    color: $error;
+    color: var(--error);
   }
   a {
     display: inline-block;
     text-decoration: underline;
     cursor: pointer;
-    color: $secondaryFont;
+    color: var(--white);
   }
 }

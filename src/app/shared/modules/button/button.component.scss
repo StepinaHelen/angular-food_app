@@ -1,8 +1,6 @@
-@import "variables";
-
 .button {
-  color: #ffffff;
-  background-color: $primary;
+  color: var(--white);
+  background-color: var(--primary);
   padding: 5px 27px;
   border-radius: 15px;
   font-size: 24px;
@@ -20,7 +18,7 @@
   }
 
   &:hover {
-    background-color: $secondary;
+    background-color: var(--secondary);
   }
 
   &.categories {
