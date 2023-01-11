@@ -1,20 +1,25 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { Observable, finalize, tap } from 'rxjs';
+import { map, shareReplay, delay } from 'rxjs/operators';
 import { FoodWithAmountInterface } from '../shared/types/types';
 import { OrderByDirection } from 'firebase/firestore';
+import { SpinnerService } from './spinner.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FoodServiceService {
-  constructor(private afs: AngularFirestore) {}
+  constructor(
+    private afs: AngularFirestore,
+    private spinnerService: SpinnerService
+  ) {}
 
   getFoodsList(
     fieldCategory: string,
     sortField: OrderByDirection
   ): Observable<FoodWithAmountInterface[]> {
+    this.spinnerService.loadingOn();
     const listCollection = this.afs.collection<FoodWithAmountInterface>(
       'foods',
       fieldCategory
@@ -34,7 +39,9 @@ export class FoodServiceService {
           amount: 1,
         }));
       }),
-      shareReplay()
+      tap(() => {
+        this.spinnerService.loadingOff();
+      })
     );
   }
 }

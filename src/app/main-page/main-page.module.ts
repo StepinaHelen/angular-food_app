@@ -6,7 +6,6 @@ import { ButtonModule } from '../shared/modules/button/button.module';
 import { CardModule } from '../shared/modules/card/card.module';
 import { HeroComponent } from './components/hero/hero.component';
 import { CategoriesComponent } from './components/categories/categories.component';
-import { SpinnerComponent } from '../shared/modules/spinner/spinner.component';
 
 const routes: Routes = [
   {
@@ -17,12 +16,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    MainPageComponent,
-    HeroComponent,
-    CategoriesComponent,
-    SpinnerComponent,
-  ],
+  declarations: [MainPageComponent, HeroComponent, CategoriesComponent],
   imports: [CommonModule, RouterModule.forChild(routes), CardModule],
   exports: [ButtonModule],
 })

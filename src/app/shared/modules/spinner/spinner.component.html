@@ -1,3 +1,17 @@
-<div class="spinner-container" *ngIf="spinnerService.spinner$ | async">
-  <div class="lds-heart"><div></div></div>
+<div *ngIf="spinnerService.spinner$ | async">
+  <div class="backdrop">
+    <div class="row">
+      <div id="loader">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="loading"></div>
+      </div>
+    </div>
+  </div>
 </div>
