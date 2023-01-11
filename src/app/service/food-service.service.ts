@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable, finalize, tap } from 'rxjs';
-import { map, shareReplay, delay } from 'rxjs/operators';
+import { Observable, tap } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { FoodWithAmountInterface } from '../shared/types/types';
 import { OrderByDirection } from 'firebase/firestore';
 import { SpinnerService } from './spinner.service';
