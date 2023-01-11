@@ -1,5 +1,3 @@
-@import "variables";
-
 li {
   border-bottom: dotted;
   margin-bottom: 20px;
@@ -7,6 +5,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: var(--mainFont);
   p {
     margin: 5px;
     font-weight: 500;
@@ -23,7 +22,7 @@ li {
 h3 {
   font-size: 24px;
   line-height: 28px;
-  color: $primary;
+  color: var(--primary);
 }
 .amount {
   display: flex;
@@ -33,23 +32,23 @@ h3 {
     font-weight: 600;
     font-size: 24px;
     line-height: 28px;
-    color: $primary;
+    color: var(--primary);
   }
   p {
     font-weight: 400;
     font-size: 20px;
     line-height: 23px;
-    color: $mainFont;
+    color: var(--mainFont);
   }
 }
 .shadow {
-  box-shadow: $boxShadow;
+  box-shadow: var(--boxShadow);
   padding: 20px 40px;
   margin-top: 30px;
   .amount p,
   h3 {
     font-size: 32px;
     line-height: 38px;
-    color: $primary;
+    color: var(--primary);
   }
 }

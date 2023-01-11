@@ -42,3 +42,21 @@ export interface IOrdersHistoryItem {
   title: string;
   amount: number;
 }
+
+export interface ITHEMES {
+  default: ITheme;
+  dark: ITheme;
+}
+
+export interface ITheme {
+  primary: string;
+  secondary: string;
+  secondaryShadow: string;
+  error: string;
+  mainFont: string;
+  white: string;
+  secondaryFont: string;
+  background: string;
+  borderColor: string;
+  boxShadow: string;
+}

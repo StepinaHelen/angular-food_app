@@ -15,4 +15,20 @@
       </a>
     </div>
   </div>
+  <div class="mode-wrapper">
+    <span
+      *ngIf="theme === 'dark'"
+      class="material-symbols-outlined"
+      (click)="changeTheme('default')"
+    >
+      light_mode
+    </span>
+    <span
+      *ngIf="theme === 'default'"
+      class="material-symbols-outlined"
+      (click)="changeTheme('dark')"
+    >
+      dark_mode
+    </span>
+  </div>
 </header>
