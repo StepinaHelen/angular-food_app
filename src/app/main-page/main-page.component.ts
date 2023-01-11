@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { finalize, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { FoodWithAmountInterface } from '../shared/types/types';
 import { FoodServiceService } from 'src/app/service/food-service.service';
 import { LocalStorageService } from '../service/local-storage.service';

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Subject, takeUntil, finalize } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { CartService } from '../service/cart.service';
 import { FormComponent } from './components/form/form.component';
 import { IOrdersHistoryItem } from '../shared/types/types';
