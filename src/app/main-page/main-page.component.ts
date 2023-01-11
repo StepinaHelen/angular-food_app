@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
 import { FoodWithAmountInterface } from '../shared/types/types';
 import { FoodServiceService } from 'src/app/service/food-service.service';
 import { LocalStorageService } from '../service/local-storage.service';
 import { LocalStorageKeys } from '../service/types';
 import { OrderByDirection } from 'firebase/firestore';
+import { SpinnerService } from '../shared/modules/spinner/spinner.service';
 
 @Component({
   selector: 'food-main-page',
@@ -22,26 +23,43 @@ export class MainPageComponent implements OnInit {
 
   constructor(
     private foodServiceService: FoodServiceService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private spinnerService: SpinnerService
   ) {}
 
   ngOnInit(): void {
-    this.$foods = this.foodServiceService.getFoodsList(
-      this.category,
-      this.sort
-    );
+    this.spinnerService.loadingOn();
+    this.$foods = this.foodServiceService
+      .getFoodsList(this.category, this.sort)
+      .pipe(
+        finalize(() => {
+          this.spinnerService.loadingOff();
+        })
+      );
   }
 
   filterItemsHandler(category: string) {
+    this.spinnerService.loadingOn();
     this.category = category;
     if (category === 'all') {
       this.category = '';
-      this.$foods = this.foodServiceService.getFoodsList(
-        this.category,
-        this.sort
-      );
+
+      this.$foods = this.foodServiceService
+        .getFoodsList(this.category, this.sort)
+        .pipe(
+          finalize(() => {
+            this.spinnerService.loadingOff();
+          })
+        );
     } else {
-      this.$foods = this.foodServiceService.getFoodsList(category, this.sort);
+      this.spinnerService.loadingOn();
+      this.$foods = this.foodServiceService
+        .getFoodsList(category, this.sort)
+        .pipe(
+          finalize(() => {
+            this.spinnerService.loadingOff();
+          })
+        );
     }
     this.localStorageService.setLocalstorageItem(
       LocalStorageKeys.category,
@@ -50,11 +68,16 @@ export class MainPageComponent implements OnInit {
   }
 
   sortedItemsHandler(sort: OrderByDirection) {
+    this.spinnerService.loadingOn();
     this.sort = sort;
-    (this.$foods = this.foodServiceService.getFoodsList(
-      this.category,
-      this.sort
-    )),
+
+    (this.$foods = this.foodServiceService
+      .getFoodsList(this.category, this.sort)
+      .pipe(
+        finalize(() => {
+          this.spinnerService.loadingOff();
+        })
+      )),
       this.localStorageService.setLocalstorageItem(
         LocalStorageKeys.sort,
         this.sort

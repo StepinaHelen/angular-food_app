@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 import { FoodWithAmountInterface } from '../shared/types/types';
 import { OrderByDirection } from 'firebase/firestore';
 
@@ -33,7 +33,8 @@ export class FoodServiceService {
           type: list.type,
           amount: 1,
         }));
-      })
+      }),
+      shareReplay()
     );
   }
 }
