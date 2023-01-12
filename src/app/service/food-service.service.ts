@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, tap } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FoodWithAmountInterface } from '../shared/types/types';
-import { OrderByDirection } from 'firebase/firestore';
+import { OrderByDirection, startAfter } from 'firebase/firestore';
 import { SpinnerService } from './spinner.service';
 
 @Injectable({
@@ -17,17 +17,26 @@ export class FoodServiceService {
 
   getFoodsList(
     fieldCategory: string,
-    sortField: OrderByDirection
+    sortField: OrderByDirection,
+    item?: FoodWithAmountInterface | null
   ): Observable<FoodWithAmountInterface[]> {
+    console.log(item);
     this.spinnerService.loadingOn();
     const listCollection = this.afs.collection<FoodWithAmountInterface>(
       'foods',
-      fieldCategory
+      fieldCategory !== 'all'
         ? (ref) =>
             ref
               .orderBy('title', sortField)
+              .startAfter(item?.title ?? null)
               .where('category', '==', fieldCategory)
-        : (ref) => ref.orderBy('title', sortField)
+              .limit(2)
+        : (ref) =>
+            ref
+
+              .orderBy('title', sortField)
+              .startAfter(item?.title ?? null)
+              .limit(2)
     );
 
     return listCollection.stateChanges().pipe(

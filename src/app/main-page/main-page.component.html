@@ -4,5 +4,6 @@
     (selectedCategory)="filterItemsHandler($event)"
     (sortItems)="sortedItemsHandler($event)"
   ></food-categories>
-  <food-card-list [foods]="($foods | async) ?? []"></food-card-list>
+  <button (click)="nextPage()">adsasd</button>
+  <food-card-list [foods]="foods"></food-card-list>
 </div>
