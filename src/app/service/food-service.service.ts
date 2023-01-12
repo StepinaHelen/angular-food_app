@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFirestore, Query } from '@angular/fire/compat/firestore';
 import { Observable, tap } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FoodWithAmountInterface } from '../shared/types/types';
-import { OrderByDirection, startAfter } from 'firebase/firestore';
+import { OrderByDirection } from 'firebase/firestore';
 import { SpinnerService } from './spinner.service';
+
+const DEFAULT_FETCH_LIMIT = 2;
 
 @Injectable({
   providedIn: 'root',
@@ -15,28 +17,46 @@ export class FoodServiceService {
     private spinnerService: SpinnerService
   ) {}
 
+  private orderBy(order: OrderByDirection, ref: Query) {
+    return ref.orderBy('title', order);
+  }
+
+  private categorize(category: string, ref: Query) {
+    if (category === 'all') {
+      return ref;
+    }
+    return ref.where('category', '==', category);
+  }
+
+  private paginate(
+    limit: number,
+    item: FoodWithAmountInterface | undefined,
+    ref: Query
+  ) {
+    if (item) {
+      return ref.startAfter(item.title).limit(limit);
+    }
+    return ref.limit(limit);
+  }
+
   getFoodsList(
     fieldCategory: string,
-    sortField: OrderByDirection,
-    item?: FoodWithAmountInterface | null
+    order: OrderByDirection,
+    item?: FoodWithAmountInterface
   ): Observable<FoodWithAmountInterface[]> {
-    console.log(item);
     this.spinnerService.loadingOn();
     const listCollection = this.afs.collection<FoodWithAmountInterface>(
       'foods',
-      fieldCategory !== 'all'
-        ? (ref) =>
-            ref
-              .orderBy('title', sortField)
-              .startAfter(item?.title ?? null)
-              .where('category', '==', fieldCategory)
-              .limit(2)
-        : (ref) =>
-            ref
-
-              .orderBy('title', sortField)
-              .startAfter(item?.title ?? null)
-              .limit(2)
+      (ref) => {
+        const categorizedRef = this.categorize(fieldCategory, ref);
+        const orderedRef = this.orderBy(order, categorizedRef);
+        const paginatedRef = this.paginate(
+          DEFAULT_FETCH_LIMIT,
+          item,
+          orderedRef
+        );
+        return paginatedRef;
+      }
     );
 
     return listCollection.stateChanges().pipe(
