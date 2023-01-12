@@ -4,6 +4,7 @@
     (selectedCategory)="filterItemsHandler($event)"
     (sortItems)="sortedItemsHandler($event)"
   ></food-categories>
-  <button (click)="nextPage()">adsasd</button>
-  <food-card-list [foods]="foods"></food-card-list>
+  <infinite-scroll (scrolled)="fetchMore()">
+    <food-card-list [foods]="foods"></food-card-list>
+  </infinite-scroll>
 </div>

@@ -14,11 +14,11 @@ import { SpinnerService } from '../service/spinner.service';
 })
 export class MainPageComponent implements OnInit {
   public foods: FoodWithAmountInterface[] = [];
-  public lastItem: FoodWithAmountInterface | null = null;
 
   private subject = new BehaviorSubject<{
     category: string;
     sort: OrderByDirection;
+    cursor: FoodWithAmountInterface | undefined;
   }>({
     category:
       this.localStorageService.getLocalStorageItem(LocalStorageKeys.category) ??
@@ -26,11 +26,13 @@ export class MainPageComponent implements OnInit {
     sort:
       this.localStorageService.getLocalStorageItem(LocalStorageKeys.sort) ||
       'asc',
+    cursor: undefined,
   });
 
   filter$: Observable<{
     category: string;
     sort: OrderByDirection;
+    cursor: FoodWithAmountInterface | undefined;
   }> = this.subject.asObservable();
 
   constructor(
@@ -46,11 +48,10 @@ export class MainPageComponent implements OnInit {
       .pipe(
         switchMap((data) => {
           return this.foodServiceService
-            .getFoodsList(data.category, data.sort)
+            .getFoodsList(data.category, data.sort, data.cursor)
             .pipe(
               map((data) => {
-                this.foods = data;
-                this.lastItem = data[data.length - 1];
+                this.foods.push(...data);
               })
             );
         })
@@ -59,10 +60,9 @@ export class MainPageComponent implements OnInit {
   }
 
   filterItemsHandler(category: string) {
+    this.foods = [];
     const value = this.subject.getValue();
-
-    this.subject.next({ ...value, category });
-
+    this.subject.next({ ...value, category, cursor: undefined });
     this.localStorageService.setLocalstorageItem(
       LocalStorageKeys.category,
       category
@@ -70,24 +70,13 @@ export class MainPageComponent implements OnInit {
   }
 
   sortedItemsHandler(sort: OrderByDirection) {
+    this.foods = [];
     const value = this.subject.getValue();
-    this.subject.next({ ...value, sort });
+    this.subject.next({ ...value, sort, cursor: undefined });
   }
 
-  nextPage() {
+  fetchMore() {
     const value = this.subject.getValue();
-
-    this.foodServiceService
-      .getFoodsList(
-        value.category,
-        value.sort,
-        this.foods[this.foods.length - 1]
-      )
-      .pipe(
-        map((data) => {
-          this.foods.push(...data);
-        })
-      )
-      .subscribe();
+    this.subject.next({ ...value, cursor: this.foods[this.foods.length - 1] });
   }
 }

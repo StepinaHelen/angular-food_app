@@ -6,6 +6,7 @@ import { ButtonModule } from '../shared/modules/button/button.module';
 import { CardModule } from '../shared/modules/card/card.module';
 import { HeroComponent } from './components/hero/hero.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { InfiniteScrollComponent } from './components/infinite-scroll/infinite-scroll.component';
 
 const routes: Routes = [
   {
@@ -16,8 +17,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [MainPageComponent, HeroComponent, CategoriesComponent],
+  declarations: [
+    MainPageComponent,
+    HeroComponent,
+    CategoriesComponent,
+    InfiniteScrollComponent,
+  ],
   imports: [CommonModule, RouterModule.forChild(routes), CardModule],
-  exports: [ButtonModule],
+  exports: [ButtonModule, InfiniteScrollComponent],
 })
 export class MainPageModule {}
