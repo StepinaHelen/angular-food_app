@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, switchMap } from 'rxjs';
 import { FoodWithAmountInterface } from '../shared/types/types';
 import { FoodServiceService } from 'src/app/service/food-service.service';
 import { LocalStorageService } from '../service/local-storage.service';
@@ -13,13 +13,27 @@ import { SpinnerService } from '../service/spinner.service';
   styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent implements OnInit {
-  public $foods: Observable<FoodWithAmountInterface[]> = new Observable();
-  category: string =
-    this.localStorageService.getLocalStorageItem(LocalStorageKeys.category) ??
-    '';
-  sort: OrderByDirection =
-    this.localStorageService.getLocalStorageItem(LocalStorageKeys.sort) ||
-    'asc';
+  public foods: FoodWithAmountInterface[] = [];
+
+  private subject = new BehaviorSubject<{
+    category: string;
+    sort: OrderByDirection;
+    cursor: FoodWithAmountInterface | null;
+  }>({
+    category:
+      this.localStorageService.getLocalStorageItem(LocalStorageKeys.category) ??
+      'all',
+    sort:
+      this.localStorageService.getLocalStorageItem(LocalStorageKeys.sort) ||
+      'asc',
+    cursor: null,
+  });
+
+  filter$: Observable<{
+    category: string;
+    sort: OrderByDirection;
+    cursor: FoodWithAmountInterface | null;
+  }> = this.subject.asObservable();
 
   constructor(
     private foodServiceService: FoodServiceService,
@@ -29,42 +43,40 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.spinnerService.loadingOn();
-    this.$foods = this.foodServiceService.getFoodsList(
-      this.category,
-      this.sort
-    );
+
+    this.filter$
+      .pipe(
+        switchMap((data) => {
+          return this.foodServiceService
+            .getFoodsList(data.category, data.sort, data.cursor)
+            .pipe(
+              map((data) => {
+                this.foods.push(...data);
+              })
+            );
+        })
+      )
+      .subscribe();
   }
 
   filterItemsHandler(category: string) {
-    this.category = category;
-    if (category === 'all') {
-      this.category = '';
-
-      this.$foods = this.foodServiceService.getFoodsList(
-        this.category,
-        this.sort
-      );
-    } else {
-      this.spinnerService.loadingOn();
-      this.$foods = this.foodServiceService.getFoodsList(category, this.sort);
-    }
+    this.foods = [];
+    const value = this.subject.getValue();
+    this.subject.next({ ...value, category, cursor: null });
     this.localStorageService.setLocalstorageItem(
       LocalStorageKeys.category,
-      this.category
+      category
     );
   }
 
   sortedItemsHandler(sort: OrderByDirection) {
-    this.spinnerService.loadingOn();
-    this.sort = sort;
+    this.foods = [];
+    const value = this.subject.getValue();
+    this.subject.next({ ...value, sort, cursor: null });
+  }
 
-    (this.$foods = this.foodServiceService.getFoodsList(
-      this.category,
-      this.sort
-    )),
-      this.localStorageService.setLocalstorageItem(
-        LocalStorageKeys.sort,
-        this.sort
-      );
+  fetchMore() {
+    const value = this.subject.getValue();
+    this.subject.next({ ...value, cursor: this.foods[this.foods.length - 1] });
   }
 }
