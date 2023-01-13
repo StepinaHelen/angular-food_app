@@ -6,7 +6,7 @@ import { FoodWithAmountInterface } from '../shared/types/types';
 import { OrderByDirection } from 'firebase/firestore';
 import { SpinnerService } from './spinner.service';
 
-const DEFAULT_FETCH_LIMIT = 2;
+const DEFAULT_FETCH_LIMIT = 6;
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +30,7 @@ export class FoodServiceService {
 
   private paginate(
     limit: number,
-    item: FoodWithAmountInterface | undefined,
+    item: FoodWithAmountInterface | null,
     ref: Query
   ) {
     if (item) {
@@ -42,7 +42,7 @@ export class FoodServiceService {
   getFoodsList(
     fieldCategory: string,
     order: OrderByDirection,
-    item?: FoodWithAmountInterface
+    item: FoodWithAmountInterface | null
   ): Observable<FoodWithAmountInterface[]> {
     this.spinnerService.loadingOn();
     const listCollection = this.afs.collection<FoodWithAmountInterface>(
@@ -55,6 +55,7 @@ export class FoodServiceService {
           item,
           orderedRef
         );
+
         return paginatedRef;
       }
     );

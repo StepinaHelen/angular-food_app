@@ -31,7 +31,7 @@ export class InfiniteScrollComponent implements OnDestroy {
       root: this.isHostScrollable()
         ? this.host.nativeElement
         : this.host.nativeElement.querySelector("[id='scrollable']"),
-      threshold: 0.9,
+      threshold: 0.8,
       ...this.options,
     };
 

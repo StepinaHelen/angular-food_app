@@ -18,7 +18,7 @@ export class MainPageComponent implements OnInit {
   private subject = new BehaviorSubject<{
     category: string;
     sort: OrderByDirection;
-    cursor: FoodWithAmountInterface | undefined;
+    cursor: FoodWithAmountInterface | null;
   }>({
     category:
       this.localStorageService.getLocalStorageItem(LocalStorageKeys.category) ??
@@ -26,13 +26,13 @@ export class MainPageComponent implements OnInit {
     sort:
       this.localStorageService.getLocalStorageItem(LocalStorageKeys.sort) ||
       'asc',
-    cursor: undefined,
+    cursor: null,
   });
 
   filter$: Observable<{
     category: string;
     sort: OrderByDirection;
-    cursor: FoodWithAmountInterface | undefined;
+    cursor: FoodWithAmountInterface | null;
   }> = this.subject.asObservable();
 
   constructor(
@@ -62,7 +62,7 @@ export class MainPageComponent implements OnInit {
   filterItemsHandler(category: string) {
     this.foods = [];
     const value = this.subject.getValue();
-    this.subject.next({ ...value, category, cursor: undefined });
+    this.subject.next({ ...value, category, cursor: null });
     this.localStorageService.setLocalstorageItem(
       LocalStorageKeys.category,
       category
@@ -72,7 +72,7 @@ export class MainPageComponent implements OnInit {
   sortedItemsHandler(sort: OrderByDirection) {
     this.foods = [];
     const value = this.subject.getValue();
-    this.subject.next({ ...value, sort, cursor: undefined });
+    this.subject.next({ ...value, sort, cursor: null });
   }
 
   fetchMore() {
