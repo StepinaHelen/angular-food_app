@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-import { CartService } from '../service/cart.service';
+import { CartService } from 'src/app/service/cart.service';
 import { FormComponent } from './components/form/form.component';
 import { IOrdersHistoryItem } from '../shared/types/types';
-import { OrderHistoryService } from '../service/order-history-service.service';
+import { OrderHistoryService } from 'src/app/service/order-history-service.service';
 import { Router } from '@angular/router';
 import { validateAllFormFields } from '../shared/form.helpers';
 

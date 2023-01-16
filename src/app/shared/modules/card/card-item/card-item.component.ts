@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/service/cart.service';
 import { FoodWithAmountInterface } from 'src/app/shared/types/types';
@@ -9,7 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './card-item.component.html',
   styleUrls: ['./card-item.component.scss'],
 })
-export class CardItemComponent implements OnInit {
+export class CardItemComponent {
   @Input()
   food: FoodWithAmountInterface | null = null;
   public foodAmount: number = 1;
@@ -51,6 +51,4 @@ export class CardItemComponent implements OnInit {
 
     this.foodAmount = 1;
   }
-
-  ngOnInit(): void {}
 }
