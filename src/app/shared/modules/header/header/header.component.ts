@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { map, Observable, reduce } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { CartService } from 'src/app/service/cart.service';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { ThemeService } from 'src/app/service/theme.service';
@@ -41,25 +41,19 @@ export class HeaderComponent implements OnInit {
     this.theme = themeName;
 
     if (this.theme === 'default') {
-      this.child.nativeElement.classList.remove('dark');
-
-      void this.child.nativeElement.offsetWidth;
-
       this.child.nativeElement.classList.add('default');
     } else {
-      this.child.nativeElement.classList.remove('default');
-
-      void this.child.nativeElement.offsetWidth;
-
       this.child.nativeElement.classList.add('dark');
     }
 
     setTimeout(() => {
+      this.child.nativeElement.classList.remove('dark');
+      this.child.nativeElement.classList.remove('default');
       this.themeService.setTheme(themeName);
       this.localStorageService.setLocalstorageItem(
         LocalStorageKeys.theme,
         themeName
       );
-    }, 1000);
+    }, 750);
   }
 }
