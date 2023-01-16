@@ -74,6 +74,7 @@ span {
 
   &:hover {
     color: var(--secondary);
+    transition: var(--transition);
   }
 
   @media screen and (min-width: 480px) {
@@ -83,29 +84,8 @@ span {
 
 .mode-wrapper {
   position: absolute;
-  top: 18px;
+  bottom: -50px;
   right: 18px;
-}
-
-.dark-mode {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: var(--mainFont);
-  border-radius: 50%;
-  opacity: 0.8;
-  clip-path: circle(0% at 50% 50%);
-}
-
-.dark {
-  animation: circle 1s 1;
-  animation-delay: 0s;
-  animation-timing-function: ease-in;
-}
-
-.default {
-  animation: circle 2s 1 reverse;
-  animation-delay: -1s;
 }
 
 span {

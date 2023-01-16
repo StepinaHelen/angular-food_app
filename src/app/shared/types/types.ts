@@ -59,4 +59,5 @@ export interface ITheme {
   background: string;
   borderColor: string;
   boxShadow: string;
+  transition: string;
 }
