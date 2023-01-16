@@ -74,6 +74,7 @@ span {
 
   &:hover {
     color: var(--secondary);
+    transition: var(--transition);
   }
 
   @media screen and (min-width: 480px) {
@@ -83,10 +84,29 @@ span {
 
 .mode-wrapper {
   position: absolute;
-  top: 18px;
+  bottom: -50px;
   right: 18px;
-}
+  background-color: var(--background);
+  box-shadow: var(--boxShadow);
+  border-radius: 50%;
+  padding: 5px;
+  color: var(--primary);
 
-span {
-  color: var(--white);
+  &.dark {
+    background-color: var(--secondaryFont);
+    color: var(--secondary);
+    opacity: 0.7;
+    box-shadow: none;
+  }
+  span {
+    margin: 3px 0px 0px 1px;
+    font-size: 24px;
+  }
+  @media screen and (min-width: 768px) {
+    bottom: -80px;
+    span {
+      font-size: 40px;
+      margin: 4px 0px 0px 3px;
+    }
+  }
 }

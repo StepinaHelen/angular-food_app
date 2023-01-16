@@ -15,7 +15,7 @@
       </a>
     </div>
   </div>
-  <div class="mode-wrapper">
+  <div class="mode-wrapper" [ngClass]="{ dark: theme === 'dark' }">
     <span
       *ngIf="theme === 'dark'"
       class="material-symbols-outlined"
