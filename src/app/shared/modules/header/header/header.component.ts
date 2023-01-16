@@ -54,6 +54,6 @@ export class HeaderComponent implements OnInit {
         LocalStorageKeys.theme,
         themeName
       );
-    }, 650);
+    }, 700);
   }
 }
