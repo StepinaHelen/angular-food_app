@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { map, Observable, reduce } from 'rxjs';
 import { CartService } from 'src/app/service/cart.service';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
@@ -12,10 +12,13 @@ import { ITHEMES } from 'src/app/shared/types/types';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild('animation') child: ElementRef<HTMLDivElement>;
   cartItemAmount$: Observable<number>;
   theme: keyof ITHEMES =
     this.localStorageService.getLocalStorageItem(LocalStorageKeys.theme) ||
     'default';
+
+  isDefault = this.theme === 'default';
 
   constructor(
     private cartService: CartService,
@@ -36,10 +39,27 @@ export class HeaderComponent implements OnInit {
 
   changeTheme(themeName: keyof ITHEMES) {
     this.theme = themeName;
-    this.themeService.setTheme(themeName);
-    this.localStorageService.setLocalstorageItem(
-      LocalStorageKeys.theme,
-      themeName
-    );
+
+    if (this.theme === 'default') {
+      this.child.nativeElement.classList.remove('dark');
+
+      void this.child.nativeElement.offsetWidth;
+
+      this.child.nativeElement.classList.add('default');
+    } else {
+      this.child.nativeElement.classList.remove('default');
+
+      void this.child.nativeElement.offsetWidth;
+
+      this.child.nativeElement.classList.add('dark');
+    }
+
+    setTimeout(() => {
+      this.themeService.setTheme(themeName);
+      this.localStorageService.setLocalstorageItem(
+        LocalStorageKeys.theme,
+        themeName
+      );
+    }, 1000);
   }
 }

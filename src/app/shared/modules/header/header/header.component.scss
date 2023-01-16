@@ -87,6 +87,39 @@ span {
   right: 18px;
 }
 
+.dark-mode {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--mainFont);
+  border-radius: 50%;
+  opacity: 0.8;
+  clip-path: circle(0% at 50% 50%);
+}
+
+.dark {
+  animation: circle 1s 1;
+  animation-delay: 0s;
+  animation-timing-function: ease-in;
+}
+
+.default {
+  animation: circle 2s 1 reverse;
+  animation-delay: -1s;
+}
+
 span {
   color: var(--white);
+}
+
+@keyframes circle {
+  0% {
+    clip-path: circle(0%);
+    transform: scale(0);
+  }
+
+  100% {
+    clip-path: circle(75%);
+    transform: scale(100);
+  }
 }
