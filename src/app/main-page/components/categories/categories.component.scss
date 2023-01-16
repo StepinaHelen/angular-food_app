@@ -19,6 +19,7 @@
     line-height: 23px;
     &:hover {
       background-color: var(--secondary);
+      transition: var(--transition);
     }
   }
 }
@@ -34,6 +35,7 @@ span {
   color: var(--primary);
   &:hover {
     color: var(--secondary);
+    transition: var(--transition);
     cursor: pointer;
   }
 }

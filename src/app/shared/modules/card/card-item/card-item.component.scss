@@ -7,6 +7,10 @@
 .delete-icon {
   color: var(--primary);
   font-size: 2rem;
+  &:hover {
+    color: var(--secondary);
+    transition: var(--transition);
+  }
 }
 
 .card-image-container {
@@ -48,6 +52,7 @@
 
       &:hover {
         background-color: var(--secondary);
+        transition: var(--transition);
       }
     }
 

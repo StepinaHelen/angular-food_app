@@ -12,6 +12,7 @@ export const THEMES: ITHEMES = {
     borderColor: '#747474',
     boxShadow:
       '0px 2px 1px rgb(0 0 0 / 20%), 0px 1px 1px rgb(0 0 0 / 14%),0px 1px 3px rgb(0 0 0 / 12%)',
+    transition: '500ms ease-in-out',
   },
   dark: {
     primary: '#6b068a',
@@ -25,5 +26,6 @@ export const THEMES: ITHEMES = {
     borderColor: '#747474',
     boxShadow:
       'inset 2px 2px 5px rgb(124 40 201 / 50%), 1px 1px 5px rgb(201 8 223)',
+    transition: '500ms ease-in-out',
   },
 };
