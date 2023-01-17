@@ -45,7 +45,6 @@ export class FoodServiceService {
     item: FoodWithAmountInterface | null
   ): Observable<FoodWithAmountInterface[]> {
     this.spinnerService.loadingOn();
-    console.log('jjj');
     const listCollection = this.afs.collection<FoodWithAmountInterface>(
       'foods',
       (ref) => {

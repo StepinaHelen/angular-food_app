@@ -2,16 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FoodWithAmountInterface } from 'src/app/shared/types/types';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
-const foods: FoodWithAmountInterface = {
-  category: 'pizza',
-  img: 'https://kfoods.com/images1/newrecipeicon/seafood-pizza_4999.jpg',
-  price: 90,
-  title: 'Seafood pizza',
-  id: '1',
-  type: 'create',
-  amount: 1,
-};
+import { FoodItemWithAmountMock } from 'src/app/shared/testing-moks/testing-mocks';
 
 import { CardItemComponent } from './card-item.component';
 
@@ -28,7 +19,7 @@ describe('CardItemComponent', () => {
 
     fixture = TestBed.createComponent(CardItemComponent);
     component = fixture.componentInstance;
-    component.food = foods; // input
+    component.food = FoodItemWithAmountMock;
     postElement = fixture.nativeElement;
     fixture.detectChanges();
   });
@@ -39,17 +30,17 @@ describe('CardItemComponent', () => {
 
   it('should display title', () => {
     const h1 = postElement.querySelector('h1');
-    expect(h1?.textContent).toContain(foods.title);
+    expect(h1?.textContent).toContain(FoodItemWithAmountMock.title);
   });
   it('should display price', () => {
     const price = postElement.querySelector('.card-content-price');
-    expect(price?.textContent).toContain(foods.price);
+    expect(price?.textContent).toContain(FoodItemWithAmountMock.price);
   });
   it('should display amount', () => {
     const amount = postElement.querySelector(
       '.card-amount-container-text-count'
     );
-    expect(amount?.textContent).toContain(foods.amount);
+    expect(amount?.textContent).toContain(FoodItemWithAmountMock.amount);
   });
 
   it('should increment food amount', () => {
