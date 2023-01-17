@@ -1,30 +1,33 @@
 <header>
   <div class="layout wrapper">
     <a [routerLink]="'/'">
-      <span class="material-symbols-outlined"> fastfood </span>
+      <span class="material-symbols-outlined">fastfood</span>
     </a>
     <h2>Simple food</h2>
     <div class="icon-container">
       <a class="cart-link" [routerLink]="'/cart'">
         <div class="cart-amount">{{ cartItemAmount$ | async }}</div>
-        <span class="material-symbols-outlined"> shopping_cart </span>
+        <span class="material-symbols-outlined">shopping_cart</span>
       </a>
       <hr />
       <a [routerLink]="'/order-history'">
-        <span class="material-symbols-outlined"> receipt_long </span>
+        <span class="material-symbols-outlined">receipt_long</span>
       </a>
     </div>
   </div>
   <div class="mode-wrapper">
+    <div #animation class="dark-mode"></div>
     <span
-      *ngIf="theme === 'dark'"
+      #dark
+      [ngClass]="{ 'display-none': isDefault }"
       class="material-symbols-outlined"
       (click)="changeTheme('default')"
     >
       light_mode
     </span>
     <span
-      *ngIf="theme === 'default'"
+      [ngClass]="{ 'display-none': !isDefault }"
+      #default
       class="material-symbols-outlined"
       (click)="changeTheme('dark')"
     >
