@@ -6,13 +6,19 @@ import { ThemeService } from 'src/app/service/theme.service';
 import { LocalStorageKeys } from 'src/app/service/types';
 import { ITHEMES } from 'src/app/shared/types/types';
 
+export interface AnimateThemeChangeElements {
+  previousElement: HTMLSpanElement;
+  currentElement: HTMLSpanElement;
+  animationLayer: HTMLDivElement;
+}
+
 @Component({
   selector: 'food-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  @ViewChild('animation') child: ElementRef<HTMLDivElement>;
+  @ViewChild('animationLayer') animationLayer: ElementRef<HTMLDivElement>;
   @ViewChild('dark') dark: ElementRef<HTMLSpanElement>;
   @ViewChild('default') default: ElementRef<HTMLSpanElement>;
 
@@ -40,31 +46,21 @@ export class HeaderComponent implements OnInit {
       );
   }
 
-  changeTheme(themeName: keyof ITHEMES) {
-    this.theme = themeName;
+  setThemeWithAnimation(
+    elements: AnimateThemeChangeElements,
+    themeName: keyof ITHEMES
+  ) {
+    const { previousElement, currentElement, animationLayer } = elements;
 
-    if (this.theme === 'default') {
-      this.child.nativeElement.classList.add('animate-bg');
-      this.dark.nativeElement.classList.remove('fade-in');
-      this.dark.nativeElement.classList.add('fade-out');
-    } else {
-      this.child.nativeElement.classList.add('animate-bg');
-      this.default.nativeElement.classList.remove('fade-in');
-      this.default.nativeElement.classList.add('fade-out');
-    }
+    animationLayer.classList.add('animate-bg');
+    previousElement.classList.remove('fade-in');
+    previousElement.classList.add('fade-out');
 
     setTimeout(() => {
-      this.child.nativeElement.classList.remove('animate-bg');
-
-      if (this.theme === 'default') {
-        this.dark.nativeElement.classList.add('display-none');
-        this.default.nativeElement.classList.add('fade-in');
-        this.default.nativeElement.classList.remove('display-none', 'fade-out');
-      } else {
-        this.default.nativeElement.classList.add('display-none');
-        this.dark.nativeElement.classList.add('fade-in');
-        this.dark.nativeElement.classList.remove('display-none', 'fade-out');
-      }
+      animationLayer.classList.remove('animate-bg');
+      previousElement.classList.add('display-none');
+      currentElement.classList.add('fade-in');
+      currentElement.classList.remove('display-none', 'fade-out');
 
       this.themeService.setTheme(themeName);
       this.localStorageService.setLocalstorageItem(
@@ -72,5 +68,23 @@ export class HeaderComponent implements OnInit {
         themeName
       );
     }, 700);
+  }
+
+  changeTheme(themeName: keyof ITHEMES) {
+    this.theme = themeName;
+
+    const elements: AnimateThemeChangeElements = {
+      previousElement:
+        this.theme === 'default'
+          ? this.dark.nativeElement
+          : this.default.nativeElement,
+      currentElement:
+        this.theme === 'dark'
+          ? this.dark.nativeElement
+          : this.default.nativeElement,
+      animationLayer: this.animationLayer.nativeElement,
+    };
+
+    this.setThemeWithAnimation(elements, this.theme);
   }
 }
