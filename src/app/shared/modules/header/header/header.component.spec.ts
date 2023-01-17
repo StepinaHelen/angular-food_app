@@ -6,6 +6,8 @@ import { HeaderComponent } from './header.component';
 import { CartPageComponent } from 'src/app/cart-page/cart-page.component';
 import { Router, RouterModule } from '@angular/router';
 import { inject } from '@angular/core/testing';
+import { Location } from '@angular/common';
+import { OrderHistoryPageComponent } from 'src/app/order-history-page/order-history-page.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -16,9 +18,10 @@ describe('HeaderComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [HeaderComponent],
       imports: [
-        // RouterTestingModule.withRoutes([
-        //   { path: 'cart', component: CartPageComponent },
-        // ]),
+        RouterTestingModule.withRoutes([
+          { path: 'cart', component: CartPageComponent },
+          { path: 'order-history', component: OrderHistoryPageComponent },
+        ]),
         RouterModule.forRoot([]),
       ],
     }).compileComponents();
@@ -38,47 +41,17 @@ describe('HeaderComponent', () => {
     expect(h2?.textContent).toContain('Simple food');
   });
 
-  // it('should route to the cart Page',
-  //   // fixture.debugElement?.query(By.css('.cart-link')).nativeElement.click();
-  //   // const href = element.querySelector('.cart-link')?.click();
-  //   // .querySelector('.cart-link')
-  //   // ?.getAttribute('href');
-  //   // console.log(location.href, location, 'll');
-  //   // expect(location.href).toEqual('/cart');
-  //   async(inject([Router, Location], (router: Router, location: Location) => {
-
-  //     let fixture = TestBed.createComponent(TestComponent);
-  //     fixture.detectChanges();
-
-  //     fixture.debugElement.query(By.css('a')).nativeElement.click();
-  //     fixture.whenStable().then(() => {
-  //       expect(location.path()).toEqual('/settings/testing/edit/1');
-  //       console.log('after expect');
-  //     });
-  //   }));
-  // );
-  // it('should go to url', inject(
-  //   [Router, Location],
-  //   (router: Router, location: Location) => {
-  //     // let fixture = TestBed.createComponent(TestComponent);
-  //     // fixture.detectChanges();
-
-  //     fixture.debugElement.query(By.css('.cart-link')).nativeElement.click();
-  //     fixture.whenStable().then(() => {
-  //       expect(location.href).toEqual('/cart');
-  //       console.log('after expect', location);
-  //     });
-  //   }
-  // ));
-
-  // WORK IN PROGRESS
-  it('Should navigate t', async () => {
-    // const location: Location = TestBed.get(Location);
+  it('should route to the cart Page', async () => {
     await fixture.debugElement
       .query(By.css('.cart-link'))
       .nativeElement.click();
-    fixture.detectChanges();
-    // expect(location.path()).toBe('');
-    console.log(location);
+    expect(location.pathname).toEqual('/cart');
+  });
+
+  it('should route to the Order History Page', async () => {
+    await fixture.debugElement
+      .query(By.css('.order-history-link'))
+      .nativeElement.click();
+    expect(location.pathname).toEqual('/order-history');
   });
 });
