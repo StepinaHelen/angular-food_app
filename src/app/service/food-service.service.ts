@@ -4,7 +4,7 @@ import { Observable, tap } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FoodWithAmountInterface } from '../shared/types/types';
 import { OrderByDirection } from 'firebase/firestore';
-import { SpinnerService } from './spinner.service';
+import { SpinnerService } from 'src/app/service/spinner.service';
 
 const DEFAULT_FETCH_LIMIT = 6;
 
