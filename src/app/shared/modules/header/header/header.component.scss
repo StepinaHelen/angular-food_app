@@ -97,12 +97,7 @@ span {
   background-color: var(--mainFont);
 }
 
-.default {
-  animation: circle 1s 1;
-  animation-timing-function: ease-in;
-}
-
-.dark {
+.animate-bg {
   animation: circle 1s 1;
   animation-timing-function: ease-in;
 }
@@ -116,5 +111,37 @@ span {
   100% {
     clip-path: circle(75%);
     transform: scale(100);
+  }
+}
+
+.fade-out {
+  animation: fadeOut 1s 1;
+}
+
+.fade-in {
+  animation: fadeIn 1s 1;
+}
+
+.display-none {
+  display: none;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
