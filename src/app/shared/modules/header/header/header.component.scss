@@ -86,27 +86,62 @@ span {
   position: absolute;
   bottom: -50px;
   right: 18px;
-  background-color: var(--background);
-  box-shadow: var(--boxShadow);
-  border-radius: 50%;
-  padding: 5px;
-  color: var(--primary);
+}
 
-  &.dark {
-    background-color: var(--secondaryFont);
-    color: var(--secondary);
-    opacity: 0.7;
-    box-shadow: none;
+.dark-mode {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  transform: scale(0);
+  background-color: var(--mainFont);
+}
+
+.animate-bg {
+  animation: circle 1s 1;
+  animation-timing-function: ease-in;
+}
+
+@keyframes circle {
+  0% {
+    clip-path: circle(0%);
+    transform: scale(0);
   }
-  span {
-    margin: 3px 0px 0px 1px;
-    font-size: 24px;
+
+  100% {
+    clip-path: circle(75%);
+    transform: scale(100);
   }
-  @media screen and (min-width: 768px) {
-    bottom: -80px;
-    span {
-      font-size: 40px;
-      margin: 4px 0px 0px 3px;
-    }
+}
+
+.fade-out {
+  animation: fadeOut 1s 1;
+}
+
+.fade-in {
+  animation: fadeIn 1s 1;
+}
+
+.display-none {
+  display: none;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
