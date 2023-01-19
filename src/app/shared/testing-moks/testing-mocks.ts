@@ -103,4 +103,3 @@ export const CartMock = {
   ],
   total: 1,
 };
-// export const CartItems = [FoodItemWithAmountMock];
