@@ -7,3 +7,5 @@ export const FoodItemWithAmountMock = {
   id: '2',
   type: 'added',
 };
+
+export const CartItems = [FoodItemWithAmountMock];
