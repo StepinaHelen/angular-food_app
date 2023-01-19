@@ -9,7 +9,7 @@ import { CartServiceInterface, LocalStorageKeys } from './types';
   providedIn: 'root',
 })
 export class CartService {
-  private subject = new BehaviorSubject<CartServiceInterface>(
+  public subject = new BehaviorSubject<CartServiceInterface>(
     this.localStorageService.getLocalStorageItem(LocalStorageKeys.cart) ?? {
       items: [],
       total: 0,

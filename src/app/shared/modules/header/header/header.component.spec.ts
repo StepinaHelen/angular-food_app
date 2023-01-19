@@ -54,4 +54,14 @@ describe('HeaderComponent', () => {
       .nativeElement.click();
     expect(location.pathname).toEqual('/order-history');
   });
+
+  it('should change the theme', async () => {
+    component.changeTheme('default');
+    expect(component.theme).toEqual('default');
+  });
+
+  it('should change the theme for Dark', async () => {
+    component.changeTheme('dark');
+    expect(component.theme).toEqual('dark');
+  });
 });
