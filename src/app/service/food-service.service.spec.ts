@@ -1,28 +1,44 @@
 import { TestBed } from '@angular/core/testing';
 import { AngularFirestore, Query } from '@angular/fire/compat/firestore';
 import { SpinnerService } from 'src/app/service/spinner.service';
-
+import { FoodItemsWithAmountMock } from '../shared/testing-moks/testing-mocks';
 import { FoodServiceService } from './food-service.service';
+import { of } from 'rxjs';
 
-describe('FoodServiceService', () => {
+const collectionStub = {
+  valueChanges: jasmine
+    .createSpy('valueChanges')
+    .and.returnValue(of([FoodItemsWithAmountMock])),
+  stateChanges: jasmine
+    .createSpy('stateChanges')
+    .and.returnValue(of(FoodItemsWithAmountMock)),
+};
+
+const angularFiresotreStub = {
+  collection: jasmine.createSpy('collection').and.returnValue(collectionStub),
+};
+
+describe('OrderHistoryService', () => {
   let service: FoodServiceService;
-  let angularFirestoreSpy: jasmine.SpyObj<AngularFirestore>;
+  let angularFirestore: AngularFirestore;
 
   beforeEach(() => {
-    const spy = jasmine.createSpyObj('AngularFirestore', ['collection']);
     TestBed.configureTestingModule({
       providers: [
         FoodServiceService,
-        { provide: AngularFirestore, useValue: spy },
+        { provide: AngularFirestore, useValue: angularFiresotreStub },
       ],
     });
     service = TestBed.inject(FoodServiceService);
-    angularFirestoreSpy = TestBed.inject(
-      AngularFirestore
-    ) as jasmine.SpyObj<AngularFirestore>;
+    angularFirestore = TestBed.get(AngularFirestore);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('should call function getFoodsList', () => {
+    service.getFoodsList('pizza', 'desc', null);
+    expect(angularFiresotreStub.collection).toHaveBeenCalled();
   });
 });
