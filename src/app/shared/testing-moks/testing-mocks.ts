@@ -8,6 +8,27 @@ export const FoodItemWithAmountMock = {
   type: 'added',
 };
 
+export const FoodItemsWithAmountMock = [
+  {
+    category: 'pizza',
+    img: 'https://kfoods.com/images1/newrecipeicon/seafood-pizza_4999.jpg',
+    price: 10,
+    title: 'Seafood pizza',
+    amount: 2,
+    id: '1',
+    type: 'added',
+  },
+  {
+    category: 'pizza',
+    img: 'https://kfoods.com/images1/newrecipeicon/seafood-pizza_4999.jpg',
+    price: 20,
+    title: 'Seafood pizza',
+    amount: 1,
+    id: '2',
+    type: 'added',
+  },
+];
+
 export const ItemHistoryDataMock = [
   {
     city: '44444444',
