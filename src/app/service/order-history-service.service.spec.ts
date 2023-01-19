@@ -16,7 +16,6 @@ const collectionStub = {
   valueChanges: jasmine
     .createSpy('valueChanges')
     .and.returnValue(of(ItemHistoryDataMock)),
-  pipe: jasmine.createSpy('pipe').and.returnValue(ItemHistoryDataMock),
 };
 
 const angularFiresotreStub = {
@@ -42,14 +41,14 @@ describe('OrderHistoryService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should call function', () => {
+  it('should call function addOrderItemToHistory', () => {
     service.addOrderItemToHistory(ItemForHistoryOrderMock);
     expect(angularFiresotreStub.collection).toHaveBeenCalledWith(
       'ordersHistory'
     );
   });
 
-  it('should call function2', () => {
+  it('should call function getHistoryOrderItem', () => {
     service.getHistoryOrderItem();
     expect(angularFiresotreStub.collection).toHaveBeenCalledWith(
       'ordersHistory'

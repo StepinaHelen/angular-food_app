@@ -88,3 +88,18 @@ export const ItemForHistoryOrderMock = {
     },
   ],
 };
+
+export const CartMock = {
+  items: [
+    {
+      category: 'pizza',
+      img: 'https://kfoods.com/images1/newrecipeicon/seafood-pizza_4999.jpg',
+      price: 90,
+      title: 'Seafood pizza',
+      amount: 1,
+      id: '12',
+      type: 'added',
+    },
+  ],
+  total: 1,
+};
