@@ -3,13 +3,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CartService } from '../service/cart.service';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { of } from 'rxjs';
-import { CartItems } from '../shared/testing-moks/testing-mocks';
+import { CartMock } from '../shared/testing-moks/testing-mocks';
 import { CardModule } from '../shared/modules/card/card.module';
 
-const totalCartAmount = 10;
-
 const mockCartService = {
-  getCartData: () => of({ items: CartItems, total: totalCartAmount }),
+  getCartData: () => of(CartMock),
 };
 
 describe('Cart Page Component', () => {
@@ -40,11 +38,11 @@ describe('Cart Page Component', () => {
 
   it('Should display total amount', () => {
     const totalElement = element.querySelector('.total');
-    expect(totalElement?.textContent).toContain(`${totalCartAmount}$`);
+    expect(totalElement?.textContent).toContain(`${CartMock.total}$`);
   });
 
   it('Should render cart items', () => {
     const price = element.querySelector('.card-content-price');
-    expect(price?.textContent).toContain(`${CartItems[0].price}$`);
+    expect(price?.textContent).toContain(`${CartMock.items[0].price}$`);
   });
 });
