@@ -103,3 +103,17 @@ export const CartMock = {
   ],
   total: 1,
 };
+
+export const firstName = 'Bong';
+export const lastName = 'Johnson';
+export const phone = '123123123123';
+export const city = 'Mr. Fox';
+export const street = 'HEllo 123';
+
+export const formData = {
+  firstName,
+  lastName,
+  phone,
+  city,
+  street,
+};

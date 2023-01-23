@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { calculateTotal } from '../shared/cart.helpers';
+import { calculateTotal } from '../shared/helpers/cart.helpers';
 import { FoodWithAmountInterface } from '../shared/types/types';
 import { LocalStorageService } from './local-storage.service';
 import { CartServiceInterface, LocalStorageKeys } from './types';

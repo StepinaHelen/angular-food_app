@@ -2,7 +2,7 @@ import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrderHistoryService } from 'src/app/service/order-history-service.service';
 import { ButtonComponent } from '../shared/modules/button/button.component';
-import { findElementByTestId } from '../shared/testing-moks/helpers';
+import { findElementByTestId } from '../shared/helpers/testing-helpers';
 import { formData } from '../shared/testing-moks/testing-mocks';
 import { FormInputComponent } from './components/form-input/form-input.component';
 import { FormComponent } from './components/form/form.component';
