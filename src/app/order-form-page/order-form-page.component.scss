@@ -4,21 +4,26 @@ h2 {
   line-height: 47px;
   color: var(--primary);
 }
+
 .wrapper {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
   margin-bottom: 100px;
+
   @media screen and (min-width: 1200px) {
     flex-wrap: wrap;
   }
+
   &_btn {
     text-align: center;
+
     @media screen and (min-width: 768px) {
       text-align: right;
     }
   }
 }
+
 food-form::ng-deep {
   width: 100%;
   @media screen and (min-width: 1200px) {
@@ -26,6 +31,7 @@ food-form::ng-deep {
     margin-right: 30px;
   }
 }
+
 food-orders-items::ng-deep {
   width: 100%;
   @media screen and (min-width: 1200px) {
