@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-
 import { AngularFireModule } from '@angular/fire/compat';
 import { firebaseConfig } from 'src/environments/environment';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -15,6 +15,7 @@ describe('AppComponent', () => {
         NoopAnimationsModule,
       ],
       declarations: [AppComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     }).compileComponents();
   });
 

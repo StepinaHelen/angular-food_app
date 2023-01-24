@@ -3,6 +3,7 @@ import { OrdersHistoryDataComponent } from './orders-history-data.component';
 import { OrderHistoryService } from 'src/app/service/order-history-service.service';
 import { ItemHistoryDataMock } from '../../../shared/testing-moks/testing-mocks';
 import { of } from 'rxjs';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('OrdersHistoryDataComponent', () => {
   let component: OrdersHistoryDataComponent;
@@ -18,6 +19,7 @@ describe('OrdersHistoryDataComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [OrdersHistoryDataComponent],
       providers: [{ provide: OrderHistoryService, useValue: spy }],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(OrdersHistoryDataComponent);

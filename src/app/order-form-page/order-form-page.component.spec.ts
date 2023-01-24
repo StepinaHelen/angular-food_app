@@ -7,6 +7,7 @@ import { formData } from '../shared/testing-moks/testing-mocks';
 import { FormInputComponent } from './components/form-input/form-input.component';
 import { FormComponent } from './components/form/form.component';
 import { OrderFormPageComponent } from './order-form-page.component';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('OrderFormPageComponent', () => {
   let component: OrderFormPageComponent;
@@ -31,6 +32,7 @@ describe('OrderFormPageComponent', () => {
       providers: [
         { provide: OrderHistoryService, useValue: orderHistoryService },
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(OrderFormPageComponent);

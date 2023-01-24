@@ -1,13 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
-
 import { HeaderComponent } from './header.component';
 import { CartPageComponent } from 'src/app/cart-page/cart-page.component';
-import { Router, RouterModule } from '@angular/router';
-import { inject } from '@angular/core/testing';
-import { Location } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { OrderHistoryPageComponent } from 'src/app/order-history-page/order-history-page.component';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -24,6 +22,7 @@ describe('HeaderComponent', () => {
         ]),
         RouterModule.forRoot([]),
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);

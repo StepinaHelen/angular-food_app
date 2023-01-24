@@ -21,6 +21,23 @@ export function queryByCss<T>(
   return debugElement;
 }
 
+export function getByText<T>(
+  fixture: ComponentFixture<T>,
+  tagName: string,
+  text: string
+) {
+  const debugElement = fixture.debugElement.query(
+    (debugEl) =>
+      debugEl.nativeElement.textContent === text && debugEl.name === tagName
+  );
+
+  if (!debugElement) {
+    throw new Error(`queryByCss: Element with text: ${text} not found`);
+  }
+
+  return debugElement;
+}
+
 export function findElementByTestId<T>(
   fixture: ComponentFixture<T>,
   testId: string
