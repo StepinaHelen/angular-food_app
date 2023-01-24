@@ -1,4 +1,4 @@
-import { FoodItemsWithAmountMock } from './testing-moks/testing-mocks';
+import { FoodItemsWithAmountMock } from '../testing-moks/testing-mocks';
 import { calculateTotal } from './cart.helpers';
 
 describe('calculate Total Price', () => {
