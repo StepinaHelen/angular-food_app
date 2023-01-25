@@ -7,14 +7,17 @@ footer {
 
 div {
   margin: 0 auto;
+
   p {
     padding: 20px 0;
     text-align: center;
     margin: 0px;
   }
+
   span {
     color: var(--error);
   }
+
   a {
     display: inline-block;
     text-decoration: underline;
