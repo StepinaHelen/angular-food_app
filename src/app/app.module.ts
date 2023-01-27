@@ -16,6 +16,8 @@ import { CartPageModule } from './cart-page/cart-page.module';
 import { CartService } from './service/cart.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SpinnerModule } from './shared/modules/spinner/spinner.module';
+import { LogInPageModule } from './log-in-page/log-in-page.module';
+import { RegisterPageModule } from './register-page/register-page.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,9 +33,11 @@ import { SpinnerModule } from './shared/modules/spinner/spinner.module';
     OrderHistoryPageModule,
     CartPageModule,
     SpinnerModule,
+    LogInPageModule,
+    RegisterPageModule,
   ],
 
-  providers: [CartService],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

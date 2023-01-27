@@ -1,0 +1,25 @@
+<div class="layout">
+  <form [formGroup]="loginForm" autocomplete="off">
+    <h2>Sign-up page</h2>
+    <food-input-form
+      label="Email"
+      [control]="loginForm.controls.email"
+    ></food-input-form>
+    <div class="input-wrap">
+      <span (click)="showPassword()" class="material-symbols-sharp">{{
+        isVisiblePassword ? "visibility" : "visibility_off"
+      }}</span>
+      <food-input-form
+        label="Password"
+        [control]="loginForm.controls.password"
+        [type]="isVisiblePassword ? 'text' : 'password'"
+      ></food-input-form>
+    </div>
+    <food-button
+      type="submit"
+      (click)="login()"
+      buttonText="Login"
+      className="auth"
+    ></food-button>
+  </form>
+</div>

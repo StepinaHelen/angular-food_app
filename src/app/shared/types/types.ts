@@ -24,6 +24,17 @@ export interface FormGoupInterface {
   street: FormControl<string>;
 }
 
+export interface IFormGoupLogin {
+  email: FormControl<string>;
+  password: FormControl<string>;
+}
+
+export interface IFormGoupRegister {
+  email: FormControl<string>;
+  password: FormControl<string>;
+  confirmPassword: FormControl<string>;
+}
+
 export interface IForm {
   firstName: string;
   lastName: string;

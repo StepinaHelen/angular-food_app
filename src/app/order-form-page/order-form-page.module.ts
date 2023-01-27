@@ -6,7 +6,7 @@ import { OrdersItemsModule } from '../shared/modules/orders-items/orders-items.m
 import { OrderFormPageComponent } from './order-form-page.component';
 import { ButtonModule } from '../shared/modules/button/button.module';
 import { RouterModule, Routes } from '@angular/router';
-import { FormInputComponent } from './components/form-input/form-input.component';
+import { InputFormModule } from '../shared/modules/input-form/input-form.module';
 
 const routes: Routes = [
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [FormComponent, OrderFormPageComponent, FormInputComponent],
+  declarations: [FormComponent, OrderFormPageComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -25,6 +25,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     OrdersItemsModule,
     ButtonModule,
+    InputFormModule,
   ],
   exports: [OrderFormPageComponent],
 })

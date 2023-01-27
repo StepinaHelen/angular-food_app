@@ -1,0 +1,38 @@
+<div class="layout">
+  <form [formGroup]="registerForm" autocomplete="off">
+    <h2>Sign-up page</h2>
+    <food-input-form
+      label="Email"
+      [control]="registerForm.controls.email"
+    ></food-input-form>
+    <div class="input-wrap">
+      <span (click)="showPassword()" class="material-symbols-sharp">{{
+        isVisiblePassword ? "visibility" : "visibility_off"
+      }}</span>
+      <food-input-form
+        label="Password"
+        [control]="registerForm.controls.password"
+        [type]="isVisiblePassword ? 'text' : 'password'"
+      ></food-input-form>
+    </div>
+    <div class="input-wrap">
+      <span (click)="showConfirnedPassword()" class="material-symbols-sharp">{{
+        isVisibleConfirmedPassword ? "visibility" : "visibility_off"
+      }}</span>
+      <food-input-form
+        label="Confirm password"
+        [control]="registerForm.controls.confirmPassword"
+        [type]="isVisibleConfirmedPassword ? 'text' : 'password'"
+        autocomplete="off"
+      >
+      </food-input-form>
+    </div>
+    <food-button
+      type="submit"
+      (click)="register()"
+      buttonText="Login"
+      className="auth"
+    ></food-button>
+  </form>
+  <mat-icon svgIcon="thumb-up"></mat-icon>
+</div>

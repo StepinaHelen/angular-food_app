@@ -1,13 +1,14 @@
 <div class="field-wrapper">
-  <label [for]="inputId"> {{ label }} </label>
-  <input
-    [ngClass]="{
-      invalid: control.invalid && (control.dirty || control.touched)
-    }"
-    [id]="inputId"
-    type="text"
-    [formControl]="control"
-  />
+  <label>
+    {{ label }}
+    <input
+      [ngClass]="{
+        invalid: control.invalid && (control.dirty || control.touched)
+      }"
+      [type]="type"
+      [formControl]="control"
+    />
+  </label>
   <div class="error-wrapper" *ngFor="let error of control.errors | keyvalue">
     <p
       class="error-mesage"

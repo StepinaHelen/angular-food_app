@@ -1,17 +1,17 @@
 <h2>Order summaries:</h2>
 <form [formGroup]="orderForm" autocomplete="off">
-  <form-input
+  <food-input-form
     label="First Name"
     [control]="orderForm.controls.firstName"
-  ></form-input>
-  <form-input
+  ></food-input-form>
+  <food-input-form
     label="Last Name"
     [control]="orderForm.controls.lastName"
-  ></form-input>
-  <form-input
+  ></food-input-form>
+  <food-input-form
     label="Phone Number"
     [control]="orderForm.controls.phone"
-  ></form-input>
-  <form-input label="City" [control]="orderForm.controls.city"></form-input>
-  <form-input label="Street" [control]="orderForm.controls.street"></form-input>
+  ></food-input-form>
+  <food-input-form label="City" [control]="orderForm.controls.city"></food-input-form>
+  <food-input-form label="Street" [control]="orderForm.controls.street"></food-input-form>
 </form>
