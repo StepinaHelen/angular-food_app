@@ -1,3 +1,5 @@
+import { IIcons } from './types/types';
+
 export const CATEGORIES: string[] = [
   'All',
   'Pizza',
@@ -5,6 +7,12 @@ export const CATEGORIES: string[] = [
   'Drinks',
   'Noodles',
   'Salads',
+];
+
+export const icons: IIcons[] = [
+  { name: 'facebook', src: '../assets/icons/icon-facebook.svg' },
+  { name: 'github', src: '../assets/icons/icon-github.svg' },
+  { name: 'google', src: '../assets/icons/icon-google.svg' },
 ];
 
 export const DEFAULT_FETCH_LIMIT = 6;

@@ -25,6 +25,17 @@ export interface FormGoupInterface {
   street: FormControl<string>;
 }
 
+export interface IFormGoupLogin {
+  email: FormControl<string>;
+  password: FormControl<string>;
+}
+
+export interface IFormGoupRegister {
+  email: FormControl<string>;
+  password: FormControl<string>;
+  confirmPassword: FormControl<string>;
+}
+
 export interface IForm {
   firstName: string;
   lastName: string;
@@ -63,6 +74,10 @@ export interface ITheme {
   transition: string;
 }
 
+export interface IIcons {
+  name: string;
+  src: string;
+}
 export interface FoodFilterInterface {
   category: string;
   sort: OrderByDirection;
