@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -15,7 +15,7 @@ import { AuthsService } from '../service/auth.service';
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.scss'],
 })
-export class RegisterPageComponent implements OnInit {
+export class RegisterPageComponent implements OnInit, OnDestroy {
   registerForm: FormGroup<IFormGoupRegister>;
   passwordSubscription: Subscription;
   isVisiblePassword: boolean = false;
@@ -56,5 +56,9 @@ export class RegisterPageComponent implements OnInit {
 
   showConfirnedPassword() {
     this.isVisibleConfirmedPassword = !this.isVisibleConfirmedPassword;
+  }
+
+  ngOnDestroy() {
+    this.passwordSubscription.unsubscribe();
   }
 }

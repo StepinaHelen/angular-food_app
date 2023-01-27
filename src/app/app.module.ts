@@ -1,29 +1,14 @@
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
-<<<<<<< HEAD
-
-import { AppComponent } from './app.component';
-
 import { firebaseConfig } from 'src/environments/environment';
-
-import { FooterModule } from './shared/modules/footer/footer/footer.module';
-import { OrderFormPageModule } from './order-form-page/order-form-page.module';
-import { MainPageModule } from './main-page/main-page.module';
-import { HeaderModule } from './shared/modules/header/header/header.module';
-import { OrderHistoryPageModule } from './order-history-page/order-history-page.module';
 import { CartPageModule } from './cart-page/cart-page.module';
-=======
 import { BrowserModule } from '@angular/platform-browser';
->>>>>>> main
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { firebaseConfig } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CartPageModule } from './cart-page/cart-page.module';
 import { MainPageModule } from './main-page/main-page.module';
 import { OrderFormPageModule } from './order-form-page/order-form-page.module';
 import { OrderHistoryPageModule } from './order-history-page/order-history-page.module';
-import { CartService } from './service/cart.service';
 import { FooterModule } from './shared/modules/footer/footer/footer.module';
 import { HeaderModule } from './shared/modules/header/header/header.module';
 import { SidenavModule } from './shared/modules/sidenav/sidenav.module';

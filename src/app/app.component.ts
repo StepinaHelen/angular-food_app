@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { IIcons } from './shared/types/types';
+import { icons } from './shared/constants';
 
 @Component({
   selector: 'app-root',
@@ -14,17 +15,13 @@ export class AppComponent {
     private domSanitizer: DomSanitizer
   ) {}
   title = 'angular-food_app';
-  icons: IIcons[] = [
-    { name: 'facebook', src: '../assets/icons/icon-facebook.svg' },
-    { name: 'github', src: '../assets/icons/icon-github.svg' },
-    { name: 'google', src: '../assets/icons/icon-google.svg' },
-  ];
+  iconsSvg: IIcons[] = icons;
 
   ngOnInit() {
-    this.registerIcons(this.icons);
+    this.registerIcons(this.iconsSvg);
   }
 
-  registerIcons(icons: any[]) {
+  registerIcons(icons: IIcons[]) {
     icons.forEach((icon) => {
       this.matIconRegistry.addSvgIcon(
         icon.name,
