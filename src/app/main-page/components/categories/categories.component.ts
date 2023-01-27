@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { CATEGORIES } from '../../../shared/constants';
 import { OrderByDirection } from 'firebase/firestore';
-
+import { CATEGORIES } from '../../../shared/constants';
+  
 @Component({
   selector: 'food-categories',
   templateUrl: './categories.component.html',
