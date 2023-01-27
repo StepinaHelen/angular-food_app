@@ -1,6 +1,6 @@
+import { DebugElement } from '@angular/core';
 import { ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
 export function testIdSelector(testId: string): string {
   return `[data-testid="${testId}"]`;
