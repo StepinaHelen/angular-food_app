@@ -1,11 +1,11 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { By } from '@angular/platform-browser';
-import { HeaderComponent } from './header.component';
-import { CartPageComponent } from 'src/app/cart-page/cart-page.component';
-import { RouterModule } from '@angular/router';
-import { OrderHistoryPageComponent } from 'src/app/order-history-page/order-history-page.component';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { CartPageComponent } from 'src/app/cart-page/cart-page.component';
+import { OrderHistoryPageComponent } from 'src/app/order-history-page/order-history-page.component';
+import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;

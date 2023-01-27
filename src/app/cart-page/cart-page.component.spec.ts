@@ -1,10 +1,10 @@
-import { CartPageComponent } from './cart-page.component';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CartService } from '../service/cart.service';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { CartMock } from '../shared/testing-moks/testing-mocks';
+import { CartService } from '../service/cart.service';
 import { CardModule } from '../shared/modules/card/card.module';
+import { CartMock } from '../shared/testing-moks/testing-mocks';
+import { CartPageComponent } from './cart-page.component';
 
 const mockCartService = {
   getCartData: () => of(CartMock),
