@@ -1,0 +1,25 @@
+<nav
+  class="side-nav"
+  [ngClass]="{
+    show: (sidenavService.sidenav$ | async),
+    hide: !(sidenavService.sidenav$ | async)
+  }"
+>
+  <ul class="side-nav-list">
+    <ng-container [ngSwitch]="userRole$ | async">
+      <food-user-links
+        [cartItemAmount$]="cartItemAmount$"
+        *ngSwitchCase="'client'"
+      ></food-user-links>
+      <food-admin-links
+        [cartItemAmount$]="cartItemAmount$"
+        *ngSwitchCase="'admin'"
+      >
+      </food-admin-links>
+      <food-unauthorized-links
+        [cartItemAmount$]="cartItemAmount$"
+        *ngSwitchDefault
+      ></food-unauthorized-links>
+    </ng-container>
+  </ul>
+</nav>

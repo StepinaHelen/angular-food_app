@@ -1,0 +1,53 @@
+span {
+  color: var(--mainFont);
+  font-size: 24px;
+  cursor: pointer;
+
+  @media screen and (min-width: 480px) {
+    font-size: 32px;
+  }
+}
+
+.cart-amount {
+  width: 20px;
+  height: 20px;
+  background-color: var(--secondary);
+  border-radius: 50%;
+  color: var(--mainFont);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  position: absolute;
+  right: 20px;
+  bottom: 25px;
+}
+
+.link {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--mainFont);
+  gap: 8px;
+
+  > p {
+    flex-basis: 3.5rem;
+  }
+
+  &:hover {
+    > span,
+    p {
+      color: var(--secondary);
+      transition: var(--transition);
+    }
+  }
+}
+
+.link-active {
+  > span,
+  p {
+    color: var(--secondary);
+    transition: var(--transition);
+  }
+}
