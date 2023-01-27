@@ -8,6 +8,7 @@ import {
 import { IFormGoupRegister } from '../shared/types/types';
 import { Subscription } from 'rxjs';
 import { CustomValidators } from '../shared/validators/custom-validators';
+import { AuthsService } from '../service/auth.service';
 
 @Component({
   selector: 'app-register-page',

@@ -13,11 +13,12 @@ import { MainPageModule } from './main-page/main-page.module';
 import { HeaderModule } from './shared/modules/header/header/header.module';
 import { OrderHistoryPageModule } from './order-history-page/order-history-page.module';
 import { CartPageModule } from './cart-page/cart-page.module';
-import { CartService } from './service/cart.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SpinnerModule } from './shared/modules/spinner/spinner.module';
 import { LogInPageModule } from './log-in-page/log-in-page.module';
 import { RegisterPageModule } from './register-page/register-page.module';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,7 @@ import { RegisterPageModule } from './register-page/register-page.module';
     NoopAnimationsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
     FooterModule,
     HeaderModule,
     OrderFormPageModule,
@@ -35,6 +37,7 @@ import { RegisterPageModule } from './register-page/register-page.module';
     SpinnerModule,
     LogInPageModule,
     RegisterPageModule,
+    HttpClientModule,
   ],
 
   providers: [],

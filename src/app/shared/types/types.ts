@@ -72,3 +72,8 @@ export interface ITheme {
   boxShadow: string;
   transition: string;
 }
+
+export interface IIcons {
+  name: string;
+  src: string;
+}
