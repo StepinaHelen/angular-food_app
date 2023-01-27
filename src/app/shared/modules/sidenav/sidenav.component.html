@@ -6,20 +6,21 @@
   }"
 >
   <ul class="side-nav-list">
-    <ng-container [ngSwitch]="userRole$ | async">
-      <food-user-links
-        [cartItemAmount$]="cartItemAmount$"
-        *ngSwitchCase="'client'"
-      ></food-user-links>
-      <food-admin-links
-        [cartItemAmount$]="cartItemAmount$"
-        *ngSwitchCase="'admin'"
+    <li class="side-nav-item">
+      <a
+        class="link"
+        [routerLink]="this.navLinks.cart"
+        [routerLinkActive]="['link-active']"
       >
-      </food-admin-links>
-      <food-unauthorized-links
-        [cartItemAmount$]="cartItemAmount$"
-        *ngSwitchDefault
-      ></food-unauthorized-links>
+        <div class="cart-amount">{{ cartItemAmount$ | async }}</div>
+        <p>Cart</p>
+        <span class="material-symbols-outlined">shopping_cart</span>
+      </a>
+    </li>
+    <ng-container [ngSwitch]="userRole$ | async">
+      <food-user-links *ngSwitchCase="'client'"></food-user-links>
+      <food-admin-links *ngSwitchCase="'admin'"> </food-admin-links>
+      <food-unauthorized-links *ngSwitchDefault></food-unauthorized-links>
     </ng-container>
   </ul>
 </nav>

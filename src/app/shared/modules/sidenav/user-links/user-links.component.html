@@ -1,17 +1,6 @@
 <li>
   <a
     class="link"
-    [routerLink]="this.navLinks.user.cart"
-    [routerLinkActive]="['link-active']"
-  >
-    <div class="cart-amount">{{ cartItemAmount$ | async }}</div>
-    <p>Cart</p>
-    <span class="material-symbols-outlined">shopping_cart</span>
-  </a>
-</li>
-<li>
-  <a
-    class="link"
     [routerLink]="this.navLinks.user.orderHistory"
     [routerLinkActive]="['link-active']"
   >

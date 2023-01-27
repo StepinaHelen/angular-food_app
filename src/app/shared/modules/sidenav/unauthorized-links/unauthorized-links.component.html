@@ -1,15 +1,4 @@
-<li class="side-nav-item">
-  <a
-    class="link"
-    [routerLink]="this.navLinks.unathorized.cart"
-    [routerLinkActive]="['link-active']"
-  >
-    <div class="cart-amount">{{ cartItemAmount$ | async }}</div>
-    <p>Cart</p>
-    <span class="material-symbols-outlined">shopping_cart</span>
-  </a>
-</li>
-<li class="side-nav-item">
+<li>
   <a
     class="link"
     [routerLink]="this.navLinks.unathorized.login"
@@ -18,6 +7,8 @@
     <p>Log in</p>
     <span class="material-symbols-outlined">login</span>
   </a>
+</li>
+<li>
   <a
     class="link"
     [routerLink]="this.navLinks.unathorized.signUp"

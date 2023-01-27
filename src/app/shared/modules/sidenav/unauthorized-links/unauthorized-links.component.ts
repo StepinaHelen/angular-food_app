@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
 import { navLinks } from 'src/app/shared/constants';
 
 @Component({
@@ -8,7 +7,5 @@ import { navLinks } from 'src/app/shared/constants';
   styleUrls: ['./unauthorized-links.component.scss', '../link.styles.scss'],
 })
 export class UnauthorizedLinksComponent {
-  @Input()
-  cartItemAmount$: Observable<number>;
   navLinks = navLinks;
 }

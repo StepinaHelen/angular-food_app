@@ -10,14 +10,13 @@ export const CATEGORIES: string[] = [
 export const DEFAULT_FETCH_LIMIT = 6;
 
 const userLinks = {
-  cart: 'cart',
   orderHistory: 'order-history',
   logout: 'logout',
 };
 
 export const navLinks = {
+  cart: 'cart',
   unathorized: {
-    cart: 'cart',
     signUp: 'sign-up',
     login: 'login',
   },
