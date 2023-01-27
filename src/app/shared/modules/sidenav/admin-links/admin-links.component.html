@@ -1,0 +1,31 @@
+<li class="side-nav-item">
+  <a
+    class="link"
+    [routerLink]="this.navLinks.admin.cart"
+    [routerLinkActive]="['link-active']"
+  >
+    <div class="cart-amount">{{ cartItemAmount$ | async }}</div>
+    <p>Cart</p>
+    <span class="material-symbols-outlined">shopping_cart</span>
+  </a>
+</li>
+<li class="side-nav-item">
+  <a
+    class="link"
+    [routerLink]="this.navLinks.admin.orderHistory"
+    [routerLinkActive]="['link-active']"
+  >
+    <p>Orders</p>
+    <span class="material-symbols-outlined">receipt_long</span>
+  </a>
+</li>
+<li class="side-nav-item">
+  <a
+    class="link"
+    [routerLink]="this.navLinks.admin.dashboard"
+    [routerLinkActive]="['link-active']"
+  >
+    <p>Dashboard</p>
+    <span class="material-symbols-outlined">dashboard</span>
+  </a>
+</li>
