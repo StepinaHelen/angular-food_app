@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardItemComponent } from './card-item/card-item.component';
-import { ButtonModule } from '../button/button.module';
-import { CardListComponent } from './card-list/card-list.component';
+import { NgModule } from '@angular/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ButtonModule } from '../button/button.module';
+import { CardItemComponent } from './card-item/card-item.component';
+import { CardListComponent } from './card-list/card-list.component';
 
 @NgModule({
   declarations: [CardItemComponent, CardListComponent],
