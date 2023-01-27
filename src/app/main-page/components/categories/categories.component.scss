@@ -1,6 +1,5 @@
 .categories {
   display: flex;
-
   justify-content: space-between;
   align-items: center;
   padding: 60px 0;
@@ -16,23 +15,28 @@
     padding: 8px 23px;
     font-weight: 500;
     font-size: 20px;
-    line-height: 23px;
+    line-height: 24px;
+
     &:hover {
       background-color: var(--secondary);
       transition: var(--transition);
     }
   }
 }
+
 ul {
   display: flex;
   flex-wrap: wrap;
+
   li {
     margin-right: 15px;
   }
 }
+
 span {
   font-size: 40px;
   color: var(--primary);
+
   &:hover {
     color: var(--secondary);
     transition: var(--transition);

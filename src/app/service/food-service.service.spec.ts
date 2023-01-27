@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
-import { AngularFirestore, Query } from '@angular/fire/compat/firestore';
-import { SpinnerService } from 'src/app/service/spinner.service';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FoodItemsWithAmountMock } from '../shared/testing-moks/testing-mocks';
 import { FoodServiceService } from './food-service.service';
 import { of } from 'rxjs';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 const collectionStub = {
   valueChanges: jasmine
@@ -28,6 +28,7 @@ describe('OrderHistoryService', () => {
         FoodServiceService,
         { provide: AngularFirestore, useValue: angularFiresotreStub },
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     });
     service = TestBed.inject(FoodServiceService);
     angularFirestore = TestBed.get(AngularFirestore);

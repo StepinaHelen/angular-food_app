@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { CartService } from 'src/app/service/cart.service';
-import { FormComponent } from './components/form/form.component';
-import { IOrdersHistoryItem } from '../shared/types/types';
 import { OrderHistoryService } from 'src/app/service/order-history-service.service';
-import { Router } from '@angular/router';
-import { validateAllFormFields } from '../shared/form.helpers';
+import { validateAllFormFields } from '../shared/helpers/form.helpers';
+import { IOrdersHistoryItem } from '../shared/types/types';
+import { FormComponent } from './components/form/form.component';
 
 @Component({
   selector: 'food-order-form-page',

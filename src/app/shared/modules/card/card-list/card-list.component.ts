@@ -1,9 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {
-  FoodInterface,
-  FoodWithAmountInterface,
-} from 'src/app/shared/types/types';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FoodWithAmountInterface } from 'src/app/shared/types/types';
+
 @Component({
   selector: 'food-card-list',
   templateUrl: './card-list.component.html',

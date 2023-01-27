@@ -1,4 +1,5 @@
 import { FormControl } from '@angular/forms';
+import { OrderByDirection } from 'firebase/firestore';
 
 export interface FoodInterfaceInput {
   category: string;
@@ -76,4 +77,14 @@ export interface ITheme {
 export interface IIcons {
   name: string;
   src: string;
+}
+export interface FoodFilterInterface {
+  category: string;
+  sort: OrderByDirection;
+  cursor: FoodWithAmountInterface | null;
+}
+
+export enum UserRole {
+  client = 'client',
+  admin = 'admin',
 }

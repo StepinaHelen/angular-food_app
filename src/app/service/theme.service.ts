@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { THEMES } from '../shared/config/theme.config';
-import { ITHEMES, ITheme } from '../shared/types/types';
+import { ITheme, ITHEMES } from '../shared/types/types';
 
 @Injectable({
   providedIn: 'root',

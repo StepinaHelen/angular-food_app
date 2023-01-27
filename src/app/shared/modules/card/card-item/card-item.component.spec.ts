@@ -1,10 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { FoodWithAmountInterface } from 'src/app/shared/types/types';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FoodItemWithAmountMock } from 'src/app/shared/testing-moks/testing-mocks';
-
 import { CardItemComponent } from './card-item.component';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('CardItemComponent', () => {
   let component: CardItemComponent;
@@ -15,6 +14,7 @@ describe('CardItemComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [CardItemComponent],
       imports: [MatSnackBarModule, NoopAnimationsModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CardItemComponent);

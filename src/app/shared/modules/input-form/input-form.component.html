@@ -11,7 +11,7 @@
   </label>
   <div class="error-wrapper" *ngFor="let error of control.errors | keyvalue">
     <p
-      class="error-mesage"
+      class="error-message"
       *ngIf="(control.hasError(error.key) && control.touched) || control.dirty"
     >
       {{ generateErrors(control.errors, error.key) }}

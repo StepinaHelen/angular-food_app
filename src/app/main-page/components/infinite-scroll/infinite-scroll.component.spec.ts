@@ -1,5 +1,5 @@
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { InfiniteScrollComponent } from './infinite-scroll.component';
 
 describe('InfiniteScrollComponent', () => {
@@ -8,9 +8,9 @@ describe('InfiniteScrollComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InfiniteScrollComponent ]
-    })
-    .compileComponents();
+      declarations: [InfiniteScrollComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(InfiniteScrollComponent);
     component = fixture.componentInstance;

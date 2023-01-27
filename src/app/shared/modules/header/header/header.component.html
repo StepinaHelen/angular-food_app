@@ -5,33 +5,37 @@
     </a>
     <h2>Simple food</h2>
     <div class="icon-container">
-      <a class="cart-link" [routerLink]="'/cart'">
-        <div class="cart-amount">{{ cartItemAmount$ | async }}</div>
-        <span class="material-symbols-outlined">shopping_cart</span>
-      </a>
-      <hr />
-      <a class="order-history-link" [routerLink]="'/order-history'">
-        <span class="material-symbols-outlined">receipt_long</span>
-      </a>
+      <div class="mode-wrapper">
+        <div #animationLayer class="dark-mode"></div>
+        <span
+          #dark
+          [ngClass]="{ 'display-none': isDefault }"
+          class="material-symbols-outlined"
+          (click)="changeTheme('default')"
+        >
+          light_mode
+        </span>
+        <span
+          [ngClass]="{ 'display-none': !isDefault }"
+          #default
+          class="material-symbols-outlined"
+          (click)="changeTheme('dark')"
+        >
+          dark_mode
+        </span>
+      </div>
+      <button (click)="toggleSideNav()" class="navbar-button">
+        <span
+          *ngIf="!(sidenavService.sidenav$ | async)"
+          class="material-symbols-outlined"
+          >menu</span
+        >
+        <span
+          *ngIf="sidenavService.sidenav$ | async"
+          class="material-symbols-outlined"
+          >menu_open</span
+        >
+      </button>
     </div>
-  </div>
-  <div class="mode-wrapper">
-    <div #animationLayer class="dark-mode"></div>
-    <span
-      #dark
-      [ngClass]="{ 'display-none': isDefault }"
-      class="material-symbols-outlined"
-      (click)="changeTheme('default')"
-    >
-      light_mode
-    </span>
-    <span
-      [ngClass]="{ 'display-none': !isDefault }"
-      #default
-      class="material-symbols-outlined"
-      (click)="changeTheme('dark')"
-    >
-      dark_mode
-    </span>
   </div>
 </header>

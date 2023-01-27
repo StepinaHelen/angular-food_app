@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OrderHistoryPageComponent } from './order-history-page.component';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OrdersHistoryDataComponent } from './components/orders-history-data/orders-history-data.component';
 import { OrdersItemsModule } from '../shared/modules/orders-items/orders-items.module';
+import { OrdersHistoryDataComponent } from './components/orders-history-data/orders-history-data.component';
+import { OrderHistoryPageComponent } from './order-history-page.component';
 
 const routes: Routes = [
   {

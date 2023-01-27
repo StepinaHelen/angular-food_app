@@ -1,5 +1,5 @@
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { OrderHistoryPageComponent } from './order-history-page.component';
 
 describe('OrderHistoryPageComponent', () => {
@@ -8,9 +8,9 @@ describe('OrderHistoryPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OrderHistoryPageComponent ]
-    })
-    .compileComponents();
+      declarations: [OrderHistoryPageComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(OrderHistoryPageComponent);
     component = fixture.componentInstance;
