@@ -7,12 +7,14 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { HeroComponent } from './components/hero/hero.component';
 import { InfiniteScrollComponent } from './components/infinite-scroll/infinite-scroll.component';
 import { MainPageComponent } from './main-page.component';
+import { AuthGuard } from '../shared/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     title: 'Home',
     component: MainPageComponent,
+    canActivate: [AuthGuard],
   },
 ];
 

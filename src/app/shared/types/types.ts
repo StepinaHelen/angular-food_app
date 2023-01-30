@@ -88,3 +88,10 @@ export enum UserRole {
   client = 'client',
   admin = 'admin',
 }
+
+export interface User {
+  uid: string;
+  email: string;
+  displayName: string;
+  photoURL: string;
+}

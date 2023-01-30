@@ -9,6 +9,7 @@ import { IFormGoupRegister } from '../shared/types/types';
 import { Subscription } from 'rxjs';
 import { CustomValidators } from '../shared/validators/custom-validators';
 import { AuthsService } from '../service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-page',
@@ -21,7 +22,11 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
   isVisiblePassword: boolean = false;
   isVisibleConfirmedPassword: boolean = false;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private authsService: AuthsService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -48,7 +53,12 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
       });
   }
 
-  register() {}
+  register() {
+    const { email, password } = this.registerForm.value;
+    if (email && password) {
+      this.authsService.signUp(email, password);
+    }
+  }
 
   showPassword() {
     this.isVisiblePassword = !this.isVisiblePassword;

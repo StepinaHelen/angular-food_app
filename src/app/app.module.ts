@@ -17,6 +17,7 @@ import { LogInPageModule } from './log-in-page/log-in-page.module';
 import { RegisterPageModule } from './register-page/register-page.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AuthsService } from './service/auth.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,7 +40,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     SidenavModule,
   ],
 
-  providers: [],
+  providers: [AuthsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
