@@ -14,7 +14,6 @@ import { OrderFormPageModule } from './order-form-page/order-form-page.module';
 import { OrderHistoryPageModule } from './order-history-page/order-history-page.module';
 import { RegisterPageModule } from './register-page/register-page.module';
 import { AuthsService } from './service/auth.service';
-import { SpinnerService } from './service/spinner.service';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { FooterModule } from './shared/modules/footer/footer/footer.module';
 import { HeaderModule } from './shared/modules/header/header/header.module';
@@ -48,7 +47,6 @@ import { SpinnerModule } from './shared/modules/spinner/spinner.module';
       multi: true,
       useClass: AuthInterceptor,
     },
-    SpinnerService,
   ],
   bootstrap: [AppComponent],
 })
