@@ -1,5 +1,9 @@
 import { Injectable, NgZone } from '@angular/core';
-import { FacebookAuthProvider, GithubAuthProvider } from 'firebase/auth';
+import {
+  FacebookAuthProvider,
+  GithubAuthProvider,
+  OAuthCredential,
+} from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import * as auth from 'firebase/auth';
@@ -8,30 +12,20 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { User } from '../shared/types/types';
+import { LocalStorageService } from './local-storage.service';
+import { LocalStorageKeys } from './types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthsService {
-  userData: any;
   constructor(
-    public afs: AngularFirestore,
-    public afAuth: AngularFireAuth,
-    public router: Router,
-    public ngZone: NgZone
-  ) {
-    this.afAuth.authState.subscribe((user) => {
-      if (user) {
-        console.log(user);
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user')!);
-      } else {
-        localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
-      }
-    });
-  }
+    private afs: AngularFirestore,
+    private afAuth: AngularFireAuth,
+    private router: Router,
+    private ngZone: NgZone,
+    private localStorageService: LocalStorageService
+  ) {}
 
   signIn(email: string, password: string) {
     return this.afAuth
@@ -62,8 +56,8 @@ export class AuthsService {
   }
 
   get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null ? true : false;
+    const token = JSON.parse(localStorage.getItem(LocalStorageKeys.token)!);
+    return token !== null ? true : false;
   }
 
   googleAuth() {
@@ -77,7 +71,6 @@ export class AuthsService {
   facebookAuth() {
     return this.authLogin(new FacebookAuthProvider()).then((res: any) => {
       if (res) {
-        console.log(this.router);
         this.router.navigateByUrl('/');
       }
     });
@@ -90,14 +83,18 @@ export class AuthsService {
       }
     });
   }
+
   authLogin(provider: any) {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
+        const credential = result.credential as OAuthCredential;
+        const token = credential.accessToken;
+        this.setUserData(result.user);
+        this.setToken(token);
         this.ngZone.run(() => {
           this.router.navigateByUrl('/');
         });
-        this.setUserData(result.user);
       })
       .catch((error) => {
         window.alert(error);
@@ -121,8 +118,23 @@ export class AuthsService {
 
   signOut() {
     return this.afAuth.signOut().then(() => {
-      localStorage.removeItem('user');
+      this.setToken(null);
       this.router.navigate(['login']);
     });
+  }
+
+  private setToken(resp: any) {
+    if (resp) {
+      this.localStorageService.setLocalstorageItem(
+        LocalStorageKeys.token,
+        resp
+      );
+    } else {
+      localStorage.clear();
+    }
+  }
+
+  get token() {
+    return localStorage.getItem('token');
   }
 }

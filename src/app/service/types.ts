@@ -5,6 +5,7 @@ export enum LocalStorageKeys {
   category = 'category',
   sort = 'sort',
   theme = 'theme',
+  token = 'token',
 }
 
 export interface CartServiceInterface {
