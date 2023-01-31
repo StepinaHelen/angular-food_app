@@ -15,8 +15,10 @@ import { SidenavModule } from './shared/modules/sidenav/sidenav.module';
 import { SpinnerModule } from './shared/modules/spinner/spinner.module';
 import { LogInPageModule } from './log-in-page/log-in-page.module';
 import { RegisterPageModule } from './register-page/register-page.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AuthsService } from './service/auth.service';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,8 +40,14 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     HttpClientModule,
     SidenavModule,
   ],
-
-  providers: [],
+  providers: [
+    AuthsService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: AuthInterceptor,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

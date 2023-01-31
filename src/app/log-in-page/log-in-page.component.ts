@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { AuthsService } from '../service/auth.service';
 import { IFormGoupLogin } from '../shared/types/types';
 
 @Component({
@@ -16,7 +17,7 @@ export class LogInPageComponent implements OnInit {
   loginForm: FormGroup<IFormGoupLogin>;
   isVisiblePassword: boolean = false;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private authsService: AuthsService) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -31,7 +32,12 @@ export class LogInPageComponent implements OnInit {
     });
   }
 
-  login() {}
+  login() {
+    const { email, password } = this.loginForm.value;
+    if (email && password) {
+      this.authsService.signIn(email, password);
+    }
+  }
 
   showPassword() {
     this.isVisiblePassword = !this.isVisiblePassword;

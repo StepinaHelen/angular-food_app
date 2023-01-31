@@ -9,8 +9,8 @@ import { SocialLinksModule } from '../shared/social-links/social-links.module';
 
 const routes: Routes = [
   {
-    path: 'register',
-    title: 'Registeration Page',
+    path: 'sign-up',
+    title: 'Sign-up Page',
     component: RegisterPageComponent,
   },
 ];
