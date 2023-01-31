@@ -14,8 +14,8 @@ export class OrderHistoryService {
     private spinnerService: SpinnerService
   ) {}
 
-  addOrderItemToHistory(orders: IOrderItemsHistory): void {
-    this.afs.collection('ordersHistory').add(orders);
+  addOrderItemToHistory(orders: IOrderItemsHistory) {
+    return this.afs.collection('ordersHistory').add(orders);
   }
 
   getHistoryOrderItem(): Observable<IOrderItemsHistory[]> {
