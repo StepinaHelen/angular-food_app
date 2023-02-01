@@ -17,6 +17,7 @@ export class OrderFormPageComponent implements OnInit, OnDestroy {
 
   orderList: IOrdersHistoryItem[];
   destroyed$: Subject<boolean> = new Subject();
+  isLoading: boolean = false;
 
   constructor(
     private orderHistoryService: OrderHistoryService,
@@ -33,13 +34,15 @@ export class OrderFormPageComponent implements OnInit, OnDestroy {
       });
   }
 
-  submitHandler() {
+  async submitHandler() {
     if (this.myForm.orderForm.valid) {
-      this.orderHistoryService.addOrderItemToHistory({
+      this.isLoading = true;
+      await this.orderHistoryService.addOrderItemToHistory({
         ...this.myForm.orderForm.getRawValue(),
         date: new Date().toString(),
         foods: this.orderList,
       });
+      this.isLoading = false;
       this.cartService.clearCart();
       this.myForm.orderForm.reset();
       this.router.navigate(['/order-history']);

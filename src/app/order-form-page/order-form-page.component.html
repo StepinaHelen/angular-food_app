@@ -3,11 +3,12 @@
     <food-form #orderForm></food-form>
     <food-orders-items
       [foodItems]="orderList"
-      [withShadow]=true
+      [withShadow]="true"
     ></food-orders-items>
   </div>
   <div class="wrapper_btn">
     <food-button
+      [isDisabled]="isLoading"
       type="submit"
       (click)="submitHandler()"
       buttonText="Order"
