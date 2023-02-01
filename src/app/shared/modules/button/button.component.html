@@ -1,12 +1,12 @@
 <button
-  [disabled]="spinnerService.spinner$ | async"
+  [disabled]="isDisabled"
   data-testid="food-button"
   [class]="'button' + ' ' + className"
 >
-  <ng-container *ngIf="spinnerService.spinner$ | async">
+  <ng-container *ngIf="isDisabled">
     <food-button-spinner></food-button-spinner>
   </ng-container>
-  <ng-container *ngIf="!(spinnerService.spinner$ | async)">
+  <ng-container *ngIf="!isDisabled">
     {{ buttonText }}
   </ng-container>
 </button>

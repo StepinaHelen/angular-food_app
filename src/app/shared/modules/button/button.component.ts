@@ -8,22 +8,10 @@ import { SpinnerService } from 'src/app/service/spinner.service';
   providers: [SpinnerService],
 })
 export class ButtonComponent implements OnInit {
-  constructor(public spinnerService: SpinnerService) {}
+  constructor() {}
 
-  private _isDisabled: boolean;
-
-  @Input() set isDisabled(value: boolean) {
-    this._isDisabled = value;
-    if (value === true) {
-      this.spinnerService.loadingOn();
-    } else {
-      this.spinnerService.loadingOff();
-    }
-  }
-
-  get isDisabled(): boolean {
-    return this._isDisabled;
-  }
+  @Input()
+  isDisabled: boolean;
 
   @Input()
   buttonText: string = '';
