@@ -20,6 +20,7 @@ export const DEFAULT_FETCH_LIMIT = 6;
 const userLinks = {
   orderHistory: 'order-history',
   logout: 'logout',
+  profile: 'profile',
 };
 
 export const navLinks = {

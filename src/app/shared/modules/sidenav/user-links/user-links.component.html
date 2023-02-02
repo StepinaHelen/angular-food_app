@@ -11,9 +11,15 @@
 <li>
   <a
     class="link"
-    [routerLink]="this.navLinks.user.logout"
+    [routerLink]="this.navLinks.user.profile"
     [routerLinkActive]="['link-active']"
   >
+    <p>Profile</p>
+    <span class="material-symbols-outlined">account_circle</span>
+  </a>
+</li>
+<li>
+  <a class="link" (click)="logout()">
     <p>Log out</p>
     <span class="material-symbols-outlined">logout</span>
   </a>

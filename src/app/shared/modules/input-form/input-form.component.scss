@@ -17,7 +17,7 @@ label {
 input {
   border-radius: 5px;
   padding: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   margin-top: 12px;
   height: 52px;
   font-size: 24px;
@@ -39,14 +39,14 @@ input:focus {
   position: relative;
 }
 
-.error-mesage {
-  position: absolute;
-  top: 80px;
-  color: var(--error);
-  font-size: 12px;
-}
-
 .error-wrapper {
   display: flex;
   color: var(--error);
+}
+
+p {
+  color: var(--error);
+  font-size: 12px;
+  margin: 0;
+  margin-bottom: 16px;
 }

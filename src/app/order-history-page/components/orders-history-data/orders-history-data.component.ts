@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthsService } from 'src/app/service/auth.service';
 import { OrderHistoryService } from 'src/app/service/order-history-service.service';
-import {
-  IOrdersHistoryItem,
-  IOrderItemsHistory,
-} from 'src/app/shared/types/types';
+import { IOrderItemsHistory } from 'src/app/shared/types/types';
 
 @Component({
   selector: 'foods-orders-history-data',
@@ -14,9 +12,16 @@ import {
 export class OrdersHistoryDataComponent implements OnInit {
   ordersHistory$: Observable<IOrderItemsHistory[]>;
 
-  constructor(private orderHistoryService: OrderHistoryService) {}
+  constructor(
+    private orderHistoryService: OrderHistoryService,
+    private authsService: AuthsService
+  ) {}
 
   ngOnInit(): void {
-    this.ordersHistory$ = this.orderHistoryService.getHistoryOrderItem();
+    if (this.authsService.userId) {
+      this.ordersHistory$ = this.orderHistoryService.getHistoryOrderItem(
+        this.authsService.userId
+      );
+    }
   }
 }

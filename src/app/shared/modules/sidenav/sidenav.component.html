@@ -4,7 +4,15 @@
     show: (sidenavService.sidenav$ | async),
     hide: !(sidenavService.sidenav$ | async)
   }"
+  outsideClick
+  (outsideClick)="this.sidenavService.close()"
 >
+  <span
+    class="close"
+    (click)="this.sidenavService.close()"
+    class="material-symbols-outlined"
+    >close</span
+  >
   <ul class="side-nav-list">
     <li class="side-nav-item">
       <a
@@ -17,7 +25,7 @@
         <span class="material-symbols-outlined">shopping_cart</span>
       </a>
     </li>
-    <ng-container [ngSwitch]="userRole$ | async">
+    <ng-container [ngSwitch]="(authsService.user$ | async)?.role">
       <food-user-links *ngSwitchCase="'client'"></food-user-links>
       <food-admin-links *ngSwitchCase="'admin'"> </food-admin-links>
       <food-unauthorized-links *ngSwitchDefault></food-unauthorized-links>

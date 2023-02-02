@@ -28,11 +28,13 @@
         <span
           *ngIf="!(sidenavService.sidenav$ | async)"
           class="material-symbols-outlined"
+          exclude
           >menu</span
         >
         <span
           *ngIf="sidenavService.sidenav$ | async"
           class="material-symbols-outlined"
+          exclude
           >menu_open</span
         >
       </button>

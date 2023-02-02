@@ -5,6 +5,7 @@ import { SidenavComponent } from './sidenav.component';
 import { UnauthorizedLinksComponent } from './unauthorized-links/unauthorized-links.component';
 import { UserLinksComponent } from './user-links/user-links.component';
 import { AdminLinksComponent } from './admin-links/admin-links.component';
+import { OutsideClickDirective } from '../../directives/click-outside';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { AdminLinksComponent } from './admin-links/admin-links.component';
     UnauthorizedLinksComponent,
     UserLinksComponent,
     AdminLinksComponent,
+    OutsideClickDirective,
   ],
   imports: [CommonModule, RouterModule],
   exports: [SidenavComponent],
