@@ -14,14 +14,28 @@ export class OrderHistoryService {
     private spinnerService: SpinnerService
   ) {}
 
-  addOrderItemToHistory(orders: IOrderItemsHistory) {
-    return this.afs.collection('ordersHistory').add(orders);
+  addOrderItemToHistory(orders: IOrderItemsHistory, userId: string | null) {
+    let userRef = null;
+
+    if (userId) {
+      userRef = this.afs.collection('users').doc(userId).ref;
+    }
+
+    return this.afs
+      .collection('ordersHistory')
+      .add(userRef ? { ...orders, clientId: userRef } : orders);
   }
 
-  getHistoryOrderItem(): Observable<IOrderItemsHistory[]> {
+  getHistoryOrderItem(userId: string): Observable<IOrderItemsHistory[]> {
     this.spinnerService.loadingOn();
-    const listCollection =
-      this.afs.collection<IOrderItemsHistory>('ordersHistory');
+
+    const userRef = this.afs.collection('users').doc(userId).ref;
+    const listCollection = this.afs.collection<IOrderItemsHistory>(
+      'ordersHistory',
+      (ref) => {
+        return ref.where('clientId', '==', userRef);
+      }
+    );
 
     return listCollection.valueChanges().pipe(
       map((data) => {

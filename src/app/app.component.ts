@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { IIcons } from './shared/types/types';
+import { AuthsService } from './service/auth.service';
 import { icons } from './shared/constants';
+import { IIcons } from './shared/types/types';
 
 @Component({
   selector: 'app-root',
@@ -12,13 +13,15 @@ import { icons } from './shared/constants';
 export class AppComponent {
   constructor(
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    public authsService: AuthsService
   ) {}
   title = 'angular-food_app';
   iconsSvg: IIcons[] = icons;
 
   ngOnInit() {
     this.registerIcons(this.iconsSvg);
+    this.authsService.getCurrentUser(this.authsService.token);
   }
 
   registerIcons(icons: IIcons[]) {

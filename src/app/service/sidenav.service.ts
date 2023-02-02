@@ -13,4 +13,8 @@ export class SidenavService {
     const value = this.sidenav$.getValue();
     this.sidenav$.next(!value);
   }
+
+  close() {
+    this.sidenav$.next(false);
+  }
 }
