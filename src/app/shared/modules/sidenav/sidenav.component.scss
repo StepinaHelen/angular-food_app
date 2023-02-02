@@ -1,11 +1,17 @@
 .side-nav {
+  z-index: 100;
   position: fixed;
   right: 0;
-  top: 29px;
+  top: 0;
   width: 10rem;
-  height: calc(100% - 29px);
+  height: 100%;
   background-color: var(--secondaryFont);
   transition: transform 1s ease-in-out;
+  border: 1.5px solid var(--mainFont);
+}
+
+.close {
+  color: var(--secondaryFont);
 }
 
 .side-nav-list {
