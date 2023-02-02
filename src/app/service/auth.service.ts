@@ -15,7 +15,7 @@ import firebase from 'firebase/compat/app';
 import { User, UserRole } from '../shared/types/types';
 import { LocalStorageService } from './local-storage.service';
 import { LocalStorageKeys } from './types';
-import { BehaviorSubject, Observable, take, tap } from 'rxjs';
+import { BehaviorSubject, Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -33,8 +33,10 @@ export class AuthsService {
   ) {}
 
   handleSuccessLogin(result: firebase.auth.UserCredential) {
-    this.setToken(result.user?.uid);
-    this.getCurrentUser(result.user?.uid ?? null);
+    this.setUserId(result.user?.uid);
+
+    const user = result.user;
+    this.userSubject.next(user);
 
     this.ngZone.run(() => {
       this.router.navigate(['/']);
@@ -66,6 +68,7 @@ export class AuthsService {
       this.ngZone.run(() => {
         this.router.navigate(['/']);
       });
+
       this.setUserData(result.user);
     } catch (error) {
       if (error instanceof Error) {
@@ -75,10 +78,10 @@ export class AuthsService {
   }
 
   get isLoggedIn(): boolean {
-    const token = this.localStorageService.getLocalStorageItem(
-      LocalStorageKeys.token
+    const userId = this.localStorageService.getLocalStorageItem(
+      LocalStorageKeys.userId
     );
-    return token !== null ? true : false;
+    return userId !== null ? true : false;
   }
 
   googleAuth() {
@@ -107,19 +110,17 @@ export class AuthsService {
 
   getCurrentUser(token: string | null) {
     if (!token) {
-      return;
+      return of(undefined);
     }
 
-    this.afs
+    return this.afs
       .doc<User>(`users/${token}`)
       .valueChanges()
       .pipe(
-        take(1),
         tap((data) => {
           this.userSubject.next(data ?? null);
         })
-      )
-      .subscribe();
+      );
   }
 
   setUserData(user: firebase.User | null) {
@@ -147,7 +148,7 @@ export class AuthsService {
   async signOut() {
     try {
       await this.afAuth.signOut();
-      this.setToken(null);
+      this.setUserId(null);
       this.userSubject.next(null);
       this.router.navigate(['login']);
     } catch (error) {
@@ -157,20 +158,20 @@ export class AuthsService {
     }
   }
 
-  private setToken(token: string | null | undefined) {
-    if (token) {
+  private setUserId(userId: string | null | undefined) {
+    if (userId) {
       this.localStorageService.setLocalstorageItem(
-        LocalStorageKeys.token,
-        token
+        LocalStorageKeys.userId,
+        userId
       );
     } else {
       localStorage.clear();
     }
   }
 
-  get token() {
+  get userId() {
     return this.localStorageService.getLocalStorageItem<string>(
-      LocalStorageKeys.token
+      LocalStorageKeys.userId
     );
   }
 }

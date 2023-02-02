@@ -20,7 +20,7 @@ export class AuthInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const req = request.clone({
       setParams: {
-        auth: `${this.authsService.token}`,
+        auth: `${this.authsService.userId}`,
       },
     });
 

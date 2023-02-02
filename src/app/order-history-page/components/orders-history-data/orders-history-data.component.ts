@@ -18,9 +18,9 @@ export class OrdersHistoryDataComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.authsService.token) {
+    if (this.authsService.userId) {
       this.ordersHistory$ = this.orderHistoryService.getHistoryOrderItem(
-        this.authsService.token
+        this.authsService.userId
       );
     }
   }
