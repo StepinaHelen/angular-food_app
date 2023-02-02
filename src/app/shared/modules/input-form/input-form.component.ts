@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ValidationErrors, FormControl } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'food-input-form',
@@ -22,6 +22,7 @@ export class InputFormComponent implements OnInit {
       minlength: `The minimum length for this field is ${controlErrors?.['minlength']?.requiredLength}`,
       pattern: 'The field is not valid',
       match: 'Field Password and Confirm Password must to be equal',
+      email: 'Invalid email address',
     };
     return errors[key];
   }
