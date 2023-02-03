@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { take } from 'rxjs';
 import { AuthsService } from './service/auth.service';
 import { icons } from './shared/constants';
 import { IIcons } from './shared/types/types';
@@ -22,10 +21,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.registerIcons(this.iconsSvg);
-    this.authsService
-      .getCurrentUser(this.authsService.userId)
-      .pipe(take(1))
-      .subscribe();
+    this.authsService.getCurrentUser(this.authsService.userId);
   }
 
   registerIcons(icons: IIcons[]) {
