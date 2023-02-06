@@ -15,7 +15,7 @@ import firebase from 'firebase/compat/app';
 import { User, UserRole } from '../shared/types/types';
 import { LocalStorageService } from './local-storage.service';
 import { LocalStorageKeys } from './types';
-import { BehaviorSubject, Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, Observable, of, take, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -36,7 +36,7 @@ export class AuthsService {
     this.setUserId(result.user?.uid);
 
     const user = result.user;
-    this.userSubject.next(user);
+    this.getCurrentUser(user?.uid ?? null);
 
     this.ngZone.run(() => {
       this.router.navigate(['/']);
@@ -101,6 +101,7 @@ export class AuthsService {
       const authLoginResult = await this.afAuth.signInWithPopup(provider);
 
       this.handleSuccessLogin(authLoginResult);
+      this.setUserData(authLoginResult.user);
     } catch (error) {
       if (error instanceof Error) {
         window.alert(error.message);
@@ -108,19 +109,21 @@ export class AuthsService {
     }
   }
 
-  getCurrentUser(token: string | null) {
-    if (!token) {
+  getCurrentUser(userId: string | null) {
+    if (!userId) {
       return of(undefined);
     }
 
     return this.afs
-      .doc<User>(`users/${token}`)
+      .doc<User>(`users/${userId}`)
       .valueChanges()
       .pipe(
+        take(1),
         tap((data) => {
           this.userSubject.next(data ?? null);
         })
-      );
+      )
+      .subscribe();
   }
 
   setUserData(user: firebase.User | null) {
