@@ -45,6 +45,13 @@ export interface IForm {
   date: string;
 }
 
+export interface IAddingForm {
+  title: FormControl<string>;
+  price: FormControl<string>;
+  img: FormControl<string>;
+  category: FormControl<string>;
+}
+
 export interface IOrderItemsHistory extends IForm {
   foods: IOrdersHistoryItem[];
 }

@@ -1,5 +1,11 @@
 <div class="layout">
-  <food-hero></food-hero>
+  <food-hero *ngIf="(authsService.user$ | async)?.role !== 'admin'"></food-hero>
+  <food-button
+    *ngIf="(authsService.user$ | async)?.role === 'admin'"
+    className="addProduct"
+    [buttonText]="'+  Add new product'"
+    (click)="addProduct()"
+  ></food-button>
   <food-categories
     (selectedCategory)="filterItemsHandler($event)"
     (sortItems)="sortedItemsHandler($event)"

@@ -1,0 +1,27 @@
+<h2>Add new product</h2>
+<form [formGroup]="addingForm" autocomplete="off">
+  <food-input-form
+    label="Title"
+    [control]="addingForm.controls.title"
+  ></food-input-form>
+  <food-input-form
+    label="Last Name"
+    [control]="addingForm.controls.price"
+  ></food-input-form>
+  <food-input-form
+    label="Image"
+    type="file"
+    (change)="fileChangeEvent($event)"
+    [control]="addingForm.controls.img"
+  ></food-input-form>
+  <img *ngIf="src" [src]="src" alt="your image" />
+  <food-select-form
+    label="Category"
+    [control]="addingForm.controls.category"
+  ></food-select-form>
+
+  <food-button
+  [buttonText]="'Add product'"
+  (click)="addProduct()"
+></food-button>
+</form>

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CartService } from 'src/app/service/cart.service';
 import { FoodWithAmountInterface } from 'src/app/shared/types/types';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthsService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'food-card-item',
@@ -14,12 +15,20 @@ export class CardItemComponent {
   food: FoodWithAmountInterface | null = null;
   public foodAmount: number = 1;
   isCart = this.router.url === '/cart';
+  role = 'client';
 
   constructor(
     private cartService: CartService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authsService: AuthsService
   ) {}
+
+  ngOnInit() {
+    this.authsService.user$.subscribe((user) => {
+      this.role = user?.role ? user?.role : 'client';
+    });
+  }
 
   decrement() {
     if (this.foodAmount === 1) {
@@ -51,4 +60,6 @@ export class CardItemComponent {
 
     this.foodAmount = 1;
   }
+
+  handleEdit() {}
 }

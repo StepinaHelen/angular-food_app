@@ -7,16 +7,8 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { HeroComponent } from './components/hero/hero.component';
 import { InfiniteScrollComponent } from './components/infinite-scroll/infinite-scroll.component';
 import { MainPageComponent } from './main-page.component';
-import { AuthGuard } from '../shared/guards/auth.guard';
-
-const routes: Routes = [
-  {
-    path: '',
-    title: 'Home',
-    component: MainPageComponent,
-    canActivate: [AuthGuard],
-  },
-];
+import { MatDialogModule } from '@angular/material/dialog';
+import { ProductModalModule } from '../shared/modules/product-modal/product-modal.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +17,13 @@ const routes: Routes = [
     CategoriesComponent,
     InfiniteScrollComponent,
   ],
-  imports: [CommonModule, RouterModule.forChild(routes), CardModule],
+  imports: [
+    CommonModule,
+    CardModule,
+    ButtonModule,
+    MatDialogModule,
+    ProductModalModule,
+  ],
   exports: [ButtonModule, InfiniteScrollComponent],
 })
 export class MainPageModule {}

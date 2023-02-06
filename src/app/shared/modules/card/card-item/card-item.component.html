@@ -7,7 +7,7 @@
     <p class="card-content-price">
       Price: <span> {{ food.price }}$ </span>
     </p>
-    <div class="card-amount-container">
+    <div class="card-amount-container" *ngIf="role !== 'admin'">
       <p class="card-amount-container-text">Amount:</p>
       <button
         *ngIf="!isCart"
@@ -36,8 +36,8 @@
     <food-button
       *ngIf="!isCart"
       class="left"
-      (click)="handleAdd()"
-      [buttonText]="'Add'"
+      (click)="role === 'admin' ? handleEdit() : handleAdd()"
+      [buttonText]="role === 'admin' ? 'Edit' : 'Add'"
     ></food-button>
   </div>
 </li>

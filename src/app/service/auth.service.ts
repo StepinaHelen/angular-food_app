@@ -21,7 +21,7 @@ import { BehaviorSubject, Observable, of, take, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthsService {
-  private userSubject = new BehaviorSubject<User | null>(null);
+  public userSubject = new BehaviorSubject<User | null>(null);
   user$: Observable<User | null> = this.userSubject.asObservable();
 
   constructor(

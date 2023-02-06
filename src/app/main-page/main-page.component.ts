@@ -1,15 +1,20 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { OrderByDirection } from 'firebase/firestore';
 import { BehaviorSubject, map, Observable, switchMap } from 'rxjs';
 import { FoodServiceService } from 'src/app/service/food-service.service';
+import { AuthsService } from '../service/auth.service';
 import { LocalStorageService } from '../service/local-storage.service';
 import { SpinnerService } from '../service/spinner.service';
 import { LocalStorageKeys } from '../service/types';
 import { DEFAULT_FETCH_LIMIT } from '../shared/constants';
+import { ProductModalComponent } from '../shared/modules/product-modal/product-modal.component';
 import {
   FoodFilterInterface,
   FoodWithAmountInterface,
 } from '../shared/types/types';
+
+// import { MatDialogRef, MatDialogConfig } from '@angular/material';
 
 @Component({
   selector: 'food-main-page',
@@ -39,7 +44,9 @@ export class MainPageComponent implements OnInit, OnDestroy {
   constructor(
     private foodServiceService: FoodServiceService,
     private localStorageService: LocalStorageService,
-    private spinnerService: SpinnerService
+    private spinnerService: SpinnerService,
+    public authsService: AuthsService,
+    private matDialog: MatDialog
   ) {}
 
   ngOnDestroy(): void {
@@ -93,5 +100,15 @@ export class MainPageComponent implements OnInit, OnDestroy {
         cursor: this.foods[this.foods.length - 1],
       });
     }
+  }
+
+  addProduct() {
+    this.matDialog
+      .open(ProductModalComponent)
+      .afterClosed()
+      .subscribe((data) => {
+        console.log(data, 'hh');
+      });
+    // this.matDialogRef.;
   }
 }
