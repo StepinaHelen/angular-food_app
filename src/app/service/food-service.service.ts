@@ -73,4 +73,12 @@ export class FoodServiceService {
       })
     );
   }
+
+  addFood(food: any): void {
+    this.afs.collection('foods').add(food);
+  }
+
+  deleteFoodItem(id: string): any {
+    return this.afs.doc('foods/' + id).delete();
+  }
 }

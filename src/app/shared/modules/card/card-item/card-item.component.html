@@ -1,6 +1,19 @@
 <li [ngClass]="{ 'cart-layout': isCart }" class="card" *ngIf="food">
+  <div
+    *ngIf="role === 'admin'"
+    class="delete-btn"
+    (click)="deleteProduct(food.id)"
+  >
+    <span class="material-symbols-sharp"> delete </span>
+  </div>
   <div class="card-image-container">
-    <img class="card-image" [src]="food.img" />
+    <ng-template #image
+      ><img class="card-image" [src]="food.img"
+    /></ng-template>
+    <quill-view-html
+      *ngIf="food.img.includes('<p>'); else image"
+      [content]="food.img"
+    ></quill-view-html>
   </div>
   <div class="card-content">
     <h1>{{ food.title }}</h1>

@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/service/cart.service';
 import { FoodWithAmountInterface } from 'src/app/shared/types/types';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthsService } from 'src/app/service/auth.service';
+import { FoodServiceService } from 'src/app/service/food-service.service';
 
 @Component({
   selector: 'food-card-item',
@@ -17,11 +18,14 @@ export class CardItemComponent {
   isCart = this.router.url === '/cart';
   role = 'client';
 
+  @Output() deletedProduct: EventEmitter<string> = new EventEmitter();
+
   constructor(
     private cartService: CartService,
     private router: Router,
     private snackBar: MatSnackBar,
-    private authsService: AuthsService
+    private authsService: AuthsService,
+    private foodServiceService: FoodServiceService
   ) {}
 
   ngOnInit() {
@@ -62,4 +66,8 @@ export class CardItemComponent {
   }
 
   handleEdit() {}
+
+  deleteProduct(id: string) {
+    this.deletedProduct.emit(id);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -8,6 +8,7 @@ import {
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IAddingForm } from '../../types/types';
 import { CATEGORIES } from '../../constants';
+import { FoodServiceService } from 'src/app/service/food-service.service';
 
 @Component({
   selector: 'app-product-modal',
@@ -16,12 +17,18 @@ import { CATEGORIES } from '../../constants';
 })
 export class ProductModalComponent implements OnInit {
   addingForm: FormGroup<IAddingForm>;
-  src: any;
+  submitted = false;
+
+  quillConfiguration = {
+    toolbar: [['image']],
+  };
+
+  @ViewChild('editor') editor: HTMLElement;
 
   constructor(
     public dialogRef: MatDialogRef<ProductModalComponent>,
-    private fb: FormBuilder
-     // @Inject(MAT_DIALOG_DATA) public data: any
+    private fb: FormBuilder, // @Inject(MAT_DIALOG_DATA) public data: any
+    private foodServiceService: FoodServiceService
   ) {}
 
   ngOnInit(): void {
@@ -32,7 +39,7 @@ export class ProductModalComponent implements OnInit {
       }),
       img: new FormControl<string>('', {
         nonNullable: true,
-        validators: [Validators.required, Validators.minLength(3)],
+        validators: [Validators.required],
       }),
       price: new FormControl<string>('', {
         nonNullable: true,
@@ -48,15 +55,20 @@ export class ProductModalComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  fileChangeEvent(event: Event) {
-    const target = event.target as HTMLInputElement;
-    const files = target.files as FileList;
-    const reader = new FileReader();
-    reader.onload = () => (this.src = reader.result);
-    reader.readAsDataURL(files[0]);
-  }
-
   addProduct() {
-    console.log(this.addingForm.value);
+    if (!this.addingForm.valid) {
+      return;
+    } else {
+      this.submitted = true;
+      const { category, price, title, img } = this.addingForm.value;
+      const newProduct = {
+        category,
+        img,
+        price,
+        title,
+      };
+      this.foodServiceService.addFood(newProduct);
+      this.submitted = false;
+    }
   }
 }

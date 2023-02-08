@@ -1,6 +1,26 @@
+li {
+  position: relative;
+}
 .delete-button {
   border: none;
   background: none;
+  cursor: pointer;
+}
+.delete-btn {
+  span {
+    font-size: 45px;
+    color: var(--primary);
+    &:hover {
+      color: var(--secondary);
+    }
+  }
+  box-shadow: var(--boxShadow);
+  background-color: var(--background);
+  border-radius: 50%;
+  padding: 5px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
   cursor: pointer;
 }
 

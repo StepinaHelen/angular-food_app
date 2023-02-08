@@ -14,8 +14,6 @@ import {
   FoodWithAmountInterface,
 } from '../shared/types/types';
 
-// import { MatDialogRef, MatDialogConfig } from '@angular/material';
-
 @Component({
   selector: 'food-main-page',
   templateUrl: './main-page.component.html',
@@ -104,11 +102,11 @@ export class MainPageComponent implements OnInit, OnDestroy {
 
   addProduct() {
     this.matDialog
-      .open(ProductModalComponent)
+      .open(ProductModalComponent, {
+        height: '800px',
+        width: '900px',
+      })
       .afterClosed()
-      .subscribe((data) => {
-        console.log(data, 'hh');
-      });
-    // this.matDialogRef.;
+      .subscribe((data) => {});
   }
 }
