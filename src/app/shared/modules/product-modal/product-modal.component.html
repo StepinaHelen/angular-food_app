@@ -1,12 +1,14 @@
-<h2>Add new product</h2>
+<h2>{{ data.type === "edit" ? "Edit product" : "Add new product" }}</h2>
+<span class="material-symbols-sharp close" (click)="close()"> close </span>
 <form [formGroup]="addingForm" autocomplete="off" enctype="multipart/form-data">
   <food-input-form
     label="Title"
     [control]="addingForm.controls.title"
   ></food-input-form>
   <food-input-form
-    label="Last Name"
+    label="Price"
     [control]="addingForm.controls.price"
+    [type]="'number'"
   ></food-input-form>
   <div class="form-control">
     <label for="image">Image:</label>
@@ -25,8 +27,9 @@
     [control]="addingForm.controls.category"
   ></food-select-form>
   <food-button
-    [buttonText]="'Add product'"
-    (click)="addProduct()"
-    [isDisabled]="addingForm.invalid || submitted"
+    [buttonText]="data.type === 'edit' ? 'Save' : 'Add product'"
+    (click)="data.type === 'edit' ? saveProduct() : addProduct()"
+    [disabled]="addingForm.invalid || submitted"
+    [className]="'modalBtn'"
   ></food-button>
 </form>

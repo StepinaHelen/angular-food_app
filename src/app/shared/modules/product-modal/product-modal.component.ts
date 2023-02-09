@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, EventEmitter, Output } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -23,52 +23,93 @@ export class ProductModalComponent implements OnInit {
     toolbar: [['image']],
   };
 
-  @ViewChild('editor') editor: HTMLElement;
-
   constructor(
     public dialogRef: MatDialogRef<ProductModalComponent>,
-    private fb: FormBuilder, // @Inject(MAT_DIALOG_DATA) public data: any
-    private foodServiceService: FoodServiceService
+    private fb: FormBuilder,
+    private foodServiceService: FoodServiceService,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   ngOnInit(): void {
-    this.addingForm = this.fb.group({
-      title: new FormControl<string>('', {
-        nonNullable: true,
-        validators: [Validators.required, Validators.minLength(3)],
-      }),
-      img: new FormControl<string>('', {
-        nonNullable: true,
-        validators: [Validators.required],
-      }),
-      price: new FormControl<string>('', {
-        nonNullable: true,
-        validators: [Validators.required, Validators.max(1000)],
-      }),
-      category: new FormControl<string>('Drinks', {
-        nonNullable: true,
-      }),
-    });
-  }
-
-  confirmSelection() {
-    this.dialogRef.close();
+    if (this.data.type === 'edit') {
+      let { title, img, price, category } = this.data.food;
+      category = category.charAt(0).toUpperCase() + category.slice(1);
+      this.addingForm = this.fb.group({
+        title: new FormControl<string>(title, {
+          nonNullable: true,
+          validators: [Validators.required, Validators.minLength(3)],
+        }),
+        img: new FormControl<string>(img, {
+          nonNullable: true,
+          validators: [Validators.required],
+        }),
+        price: new FormControl<string>(price, {
+          nonNullable: true,
+          validators: [Validators.required, Validators.max(1000)],
+        }),
+        category: new FormControl<string>(category, {
+          nonNullable: true,
+        }),
+      });
+    } else {
+      this.addingForm = this.fb.group({
+        title: new FormControl<string>('', {
+          nonNullable: true,
+          validators: [Validators.required, Validators.minLength(3)],
+        }),
+        img: new FormControl<string>('', {
+          nonNullable: true,
+          validators: [Validators.required],
+        }),
+        price: new FormControl<string>('', {
+          nonNullable: true,
+          validators: [Validators.required, Validators.max(1000)],
+        }),
+        category: new FormControl<string>('Drinks', {
+          nonNullable: true,
+        }),
+      });
+    }
   }
 
   addProduct() {
     if (!this.addingForm.valid) {
       return;
     } else {
-      this.submitted = true;
-      const { category, price, title, img } = this.addingForm.value;
-      const newProduct = {
-        category,
-        img,
-        price,
-        title,
-      };
+      const newProduct = this.getDataProduct();
       this.foodServiceService.addFood(newProduct);
       this.submitted = false;
+      this.dialogRef.close();
     }
+  }
+
+  getDataProduct() {
+    this.submitted = true;
+    let { category, price, title, img } = this.addingForm.value;
+    const product = {
+      category: category
+        ? category?.charAt(0).toLocaleLowerCase() + category?.slice(1)
+        : '',
+      img: img ? img : '',
+      price: price ? Number(price) : 0,
+      title: title ? title : '',
+    };
+    return product;
+  }
+
+  saveProduct() {
+    const id = this.data.food.id;
+    if (!this.addingForm.valid) {
+      return;
+    } else {
+      const updatedProduct = this.getDataProduct();
+      this.foodServiceService.updateFoodItem(id, updatedProduct);
+      this.submitted = false;
+      this.dialogRef.close({ ...updatedProduct, id });
+    }
+  }
+
+  close() {
+    this.dialogRef.close();
   }
 }

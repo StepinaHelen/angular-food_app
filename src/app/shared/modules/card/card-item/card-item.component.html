@@ -49,7 +49,7 @@
     <food-button
       *ngIf="!isCart"
       class="left"
-      (click)="role === 'admin' ? handleEdit() : handleAdd()"
+      (click)="role === 'admin' ? handleEdit(food.id) : handleAdd()"
       [buttonText]="role === 'admin' ? 'Edit' : 'Add'"
     ></food-button>
   </div>

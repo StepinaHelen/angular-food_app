@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { OrderByDirection } from 'firebase/firestore';
 import { BehaviorSubject, map, Observable, switchMap } from 'rxjs';
 import { FoodServiceService } from 'src/app/service/food-service.service';
@@ -103,10 +103,12 @@ export class MainPageComponent implements OnInit, OnDestroy {
   addProduct() {
     this.matDialog
       .open(ProductModalComponent, {
-        height: '800px',
+        height: '720px',
         width: '900px',
+        data: {
+          type: 'create',
+        },
       })
-      .afterClosed()
-      .subscribe((data) => {});
+      .afterClosed();
   }
 }

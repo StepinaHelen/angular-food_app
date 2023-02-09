@@ -1,0 +1,15 @@
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+span {
+  font-size: 40px;
+  color: var(--primary);
+  &:hover {
+    color: var(--secondary);
+  }
+}
+:host {
+  position: relative;
+}

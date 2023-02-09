@@ -14,6 +14,9 @@ export class ButtonComponent implements OnInit {
   isDisabled: boolean;
 
   @Input()
+  disabled: boolean;
+
+  @Input()
   buttonText: string = '';
 
   @Input()

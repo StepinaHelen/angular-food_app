@@ -5,6 +5,9 @@ import { FoodWithAmountInterface } from 'src/app/shared/types/types';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthsService } from 'src/app/service/auth.service';
 import { FoodServiceService } from 'src/app/service/food-service.service';
+import { ProductModalComponent } from '../../product-modal/product-modal.component';
+import { MatDialog } from '@angular/material/dialog';
+import { switchMap, take } from 'rxjs';
 
 @Component({
   selector: 'food-card-item',
@@ -19,13 +22,15 @@ export class CardItemComponent {
   role = 'client';
 
   @Output() deletedProduct: EventEmitter<string> = new EventEmitter();
+  @Output() updatedProduct: EventEmitter<string> = new EventEmitter();
 
   constructor(
     private cartService: CartService,
     private router: Router,
     private snackBar: MatSnackBar,
     private authsService: AuthsService,
-    private foodServiceService: FoodServiceService
+    private foodServiceService: FoodServiceService,
+    private matDialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -65,7 +70,30 @@ export class CardItemComponent {
     this.foodAmount = 1;
   }
 
-  handleEdit() {}
+  handleEdit(id: string) {
+    this.foodServiceService
+      .getFoodItemById(id)
+      .pipe(
+        take(1),
+        switchMap((food) => {
+          return this.matDialog
+            .open(ProductModalComponent, {
+              height: '720px',
+              width: '900px',
+              data: {
+                type: 'edit',
+                food,
+              },
+            })
+            .afterClosed();
+        })
+      )
+      .subscribe((data) => {
+        if (data) {
+          this.updatedProduct.emit(data);
+        }
+      });
+  }
 
   deleteProduct(id: string) {
     this.deletedProduct.emit(id);

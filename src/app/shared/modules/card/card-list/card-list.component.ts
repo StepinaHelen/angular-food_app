@@ -24,4 +24,15 @@ export class CardListComponent implements OnInit {
     this.foodServiceService.deleteFoodItem(id);
     this.foods = this.foods.filter((food) => food.id !== id);
   }
+
+  update(product: any) {
+    this.foods = this.foods.map((food) => {
+      console.log(food.id, product);
+      if (food.id === product.id) {
+        return product;
+      } else {
+        return food;
+      }
+    });
+  }
 }
