@@ -15,7 +15,7 @@ export const icons: IIcons[] = [
   { name: 'google', src: '../assets/icons/icon-google.svg' },
 ];
 
-export const DEFAULT_FETCH_LIMIT = 6;
+export const DEFAULT_FETCH_LIMIT = 3;
 
 const userLinks = {
   orderHistory: 'order-history',

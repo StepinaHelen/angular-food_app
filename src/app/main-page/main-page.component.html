@@ -10,7 +10,7 @@
     (selectedCategory)="filterItemsHandler($event)"
     (sortItems)="sortedItemsHandler($event)"
   ></food-categories>
-  <infinite-scroll (scrolled)="fetchMore()">
-    <food-card-list [foods]="foods"></food-card-list>
-  </infinite-scroll>
+  <!-- <infinite-scroll (scrolled)="fetchMore()"> -->
+  <food-card-list [foods]="foods"></food-card-list>
+  <!-- </infinite-scroll> -->
 </div>

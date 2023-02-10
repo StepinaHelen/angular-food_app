@@ -52,17 +52,13 @@ export class FoodServiceService {
       (ref) => {
         const categorizedRef = this.categorize(fieldCategory, ref);
         const orderedRef = this.orderBy(order, categorizedRef);
-        const paginatedRef = this.paginate(
-          DEFAULT_FETCH_LIMIT,
-          item,
-          orderedRef
-        );
+        const paginatedRef = this.paginate(25, item, orderedRef);
 
         return paginatedRef;
       }
     );
 
-    return listCollection.stateChanges().pipe(
+    return listCollection.snapshotChanges().pipe(
       map((dataRes) => {
         return dataRes.map((list) => ({
           ...list.payload.doc.data(),

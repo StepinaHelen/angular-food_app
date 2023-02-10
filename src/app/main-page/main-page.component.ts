@@ -9,35 +9,25 @@ import { SpinnerService } from '../service/spinner.service';
 import { LocalStorageKeys } from '../service/types';
 import { DEFAULT_FETCH_LIMIT } from '../shared/constants';
 import { ProductModalComponent } from '../shared/modules/product-modal/product-modal.component';
-import {
-  FoodFilterInterface,
-  FoodWithAmountInterface,
-} from '../shared/types/types';
+import { FoodWithAmountInterface } from '../shared/types/types';
 
 @Component({
   selector: 'food-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
 })
-export class MainPageComponent implements OnInit, OnDestroy {
-  initialValues: FoodFilterInterface = {
-    category:
-      this.localStorageService.getLocalStorageItem(LocalStorageKeys.category) ??
-      'all',
-    sort:
-      this.localStorageService.getLocalStorageItem(LocalStorageKeys.sort) ||
-      'asc',
-    cursor: null,
-  };
+export class MainPageComponent implements OnInit {
+  category: string =
+    this.localStorageService.getLocalStorageItem(LocalStorageKeys.category) ??
+    'all';
+  sort: OrderByDirection =
+    this.localStorageService.getLocalStorageItem(LocalStorageKeys.sort) ||
+    'asc';
 
-  public foods: FoodWithAmountInterface[] = [];
+  cursor: null | FoodWithAmountInterface = null;
+
   private hasMore = true;
-
-  private subject = new BehaviorSubject<FoodFilterInterface>(
-    this.initialValues
-  );
-
-  filter$: Observable<FoodFilterInterface> = this.subject.asObservable();
+  foods: FoodWithAmountInterface[] = [];
 
   constructor(
     private foodServiceService: FoodServiceService,
@@ -47,57 +37,55 @@ export class MainPageComponent implements OnInit, OnDestroy {
     private matDialog: MatDialog
   ) {}
 
-  ngOnDestroy(): void {
-    this.foods = [];
-    this.hasMore = true;
-    this.subject.next(this.initialValues);
+  ngOnInit(): void {
+    this.getFoods(this.category, this.sort, this.cursor);
   }
 
-  ngOnInit(): void {
-    this.spinnerService.loadingOn();
-
-    this.filter$
-      .pipe(
-        switchMap((data) => {
-          return this.foodServiceService
-            .getFoodsList(data.category, data.sort, data.cursor)
-            .pipe(
-              map((data) => {
-                if (data.length < DEFAULT_FETCH_LIMIT || data.length === 0) {
-                  this.hasMore = false;
-                }
-                this.foods.push(...data);
-              })
-            );
-        })
-      )
-      .subscribe();
+  getFoods(category: string, sort: OrderByDirection, cursor: any) {
+    this.foodServiceService
+      .getFoodsList(category, sort, cursor)
+      .subscribe((data) => {
+        this.foods = data;
+        // this.cursor = this.foods[this.foods.length - 1];
+      });
   }
 
   filterItemsHandler(category: string) {
-    this.foods = [];
-    const value = this.subject.getValue();
-    this.subject.next({ ...value, category, cursor: null });
+    this.category = category;
+    this.cursor = null;
+    this.getFoods(this.category, this.sort, this.cursor);
     this.localStorageService.setLocalstorageItem(
       LocalStorageKeys.category,
-      category
+      this.category
     );
   }
 
   sortedItemsHandler(sort: OrderByDirection) {
+    this.sort = sort;
     this.foods = [];
-    const value = this.subject.getValue();
-    this.subject.next({ ...value, sort, cursor: null });
+    this.cursor = null;
+    this.getFoods(this.category, this.sort, this.cursor);
+    this.localStorageService.setLocalstorageItem(
+      LocalStorageKeys.sort,
+      this.sort
+    );
+  }
+
+  fetchMoreItems(category: string, sort: OrderByDirection, cursor: any) {
+    this.foodServiceService
+      .getFoodsList(category, sort, cursor)
+      .subscribe((data) => {
+        if (data.length < DEFAULT_FETCH_LIMIT || data.length === 0) {
+          this.hasMore = false;
+        }
+        this.foods.push(...data);
+        this.cursor = this.foods[this.foods.length - 1];
+      });
   }
 
   fetchMore() {
-    if (this.hasMore) {
-      const value = this.subject.getValue();
-      this.subject.next({
-        ...value,
-        cursor: this.foods[this.foods.length - 1],
-      });
-    }
+    this.cursor = this.foods[this.foods.length - 1];
+    this.fetchMoreItems(this.category, this.sort, this.cursor);
   }
 
   addProduct() {
