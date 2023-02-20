@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -6,9 +6,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IAddingForm } from '../../types/types';
-import { CATEGORIES } from '../../constants';
+import { FoodInterface, IAddingForm } from '../../types/types';
 import { FoodServiceService } from 'src/app/service/food-service.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { CustomValidators } from '../../validators/custom-validators';
 
 @Component({
   selector: 'app-product-modal',
@@ -19,57 +20,49 @@ export class ProductModalComponent implements OnInit {
   addingForm: FormGroup<IAddingForm>;
   submitted = false;
 
-  quillConfiguration = {
-    toolbar: [['image']],
-  };
-
   constructor(
     public dialogRef: MatDialogRef<ProductModalComponent>,
     private fb: FormBuilder,
     private foodServiceService: FoodServiceService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA)
+    public data: { food: FoodInterface | undefined; type: 'edit' | 'add' },
+    private domSanitizer: DomSanitizer
   ) {}
 
+  initializeForm(
+    title?: string,
+    img?: string,
+    price?: string,
+    category: string = 'Drinks'
+  ) {
+    this.addingForm = this.fb.group({
+      title: new FormControl<string>(title ?? '', {
+        nonNullable: true,
+        validators: [Validators.required, Validators.minLength(3)],
+      }),
+      img: new FormControl<string>(img ?? '', {
+        nonNullable: true,
+        validators: [Validators.required],
+        asyncValidators: [CustomValidators.imageUrl()],
+      }),
+      price: new FormControl<string>(price ?? '', {
+        nonNullable: true,
+        validators: [Validators.required, Validators.max(1000)],
+      }),
+      category: new FormControl<string>(category, {
+        nonNullable: true,
+      }),
+    });
+  }
+
   ngOnInit(): void {
-    if (this.data.type === 'edit') {
-      let { title, img, price, category } = this.data.food;
+    let { title, img, price, category } = this.data.food ?? {};
+
+    if (category) {
       category = category.charAt(0).toUpperCase() + category.slice(1);
-      this.addingForm = this.fb.group({
-        title: new FormControl<string>(title, {
-          nonNullable: true,
-          validators: [Validators.required, Validators.minLength(3)],
-        }),
-        img: new FormControl<string>(img, {
-          nonNullable: true,
-          validators: [Validators.required],
-        }),
-        price: new FormControl<string>(price, {
-          nonNullable: true,
-          validators: [Validators.required, Validators.max(1000)],
-        }),
-        category: new FormControl<string>(category, {
-          nonNullable: true,
-        }),
-      });
-    } else {
-      this.addingForm = this.fb.group({
-        title: new FormControl<string>('', {
-          nonNullable: true,
-          validators: [Validators.required, Validators.minLength(3)],
-        }),
-        img: new FormControl<string>('', {
-          nonNullable: true,
-          validators: [Validators.required],
-        }),
-        price: new FormControl<string>('', {
-          nonNullable: true,
-          validators: [Validators.required, Validators.max(1000)],
-        }),
-        category: new FormControl<string>('Drinks', {
-          nonNullable: true,
-        }),
-      });
     }
+
+    this.initializeForm(title, img, `${price}`, category);
   }
 
   addProduct() {
@@ -81,6 +74,10 @@ export class ProductModalComponent implements OnInit {
       this.submitted = false;
       this.dialogRef.close();
     }
+  }
+
+  imgUrl(url: string) {
+    return this.domSanitizer.bypassSecurityTrustUrl(url);
   }
 
   getDataProduct() {
@@ -98,8 +95,8 @@ export class ProductModalComponent implements OnInit {
   }
 
   saveProduct() {
-    const id = this.data.food.id;
-    if (!this.addingForm.valid) {
+    const id = this.data.food?.id;
+    if (!this.addingForm.valid || !id) {
       return;
     } else {
       const updatedProduct = this.getDataProduct();

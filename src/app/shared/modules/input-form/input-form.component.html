@@ -14,7 +14,7 @@
       class="error-message"
       *ngIf="(control.hasError(error.key) && control.touched) || control.dirty"
     >
-      {{ generateErrors(control.errors, error.key) }}
+      {{ handleErrors(control.errors, error.key) }}
     </p>
   </div>
 </div>
