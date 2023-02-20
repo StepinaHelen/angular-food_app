@@ -5,7 +5,10 @@ import { Observable, tap } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { SpinnerService } from 'src/app/service/spinner.service';
 import { DEFAULT_FETCH_LIMIT } from '../shared/constants';
-import { FoodWithAmountInterface } from '../shared/types/types';
+import {
+  FoodWithAmountInterface,
+  FoodInterfaceInput,
+} from '../shared/types/types';
 
 @Injectable({
   providedIn: 'root',
@@ -49,17 +52,13 @@ export class FoodServiceService {
       (ref) => {
         const categorizedRef = this.categorize(fieldCategory, ref);
         const orderedRef = this.orderBy(order, categorizedRef);
-        const paginatedRef = this.paginate(
-          DEFAULT_FETCH_LIMIT,
-          item,
-          orderedRef
-        );
+        const paginatedRef = this.paginate(25, item, orderedRef);
 
         return paginatedRef;
       }
     );
 
-    return listCollection.stateChanges().pipe(
+    return listCollection.snapshotChanges().pipe(
       map((dataRes) => {
         return dataRes.map((list) => ({
           ...list.payload.doc.data(),
@@ -72,5 +71,33 @@ export class FoodServiceService {
         this.spinnerService.loadingOff();
       })
     );
+  }
+
+  addFood(food: FoodInterfaceInput): void {
+    this.afs.collection('foods').add(food);
+  }
+
+  deleteFoodItem(id: string) {
+    this.afs.doc('foods/' + id).delete();
+  }
+
+  updateFoodItem(id: string, data: FoodInterfaceInput) {
+    this.afs.doc('foods/' + id).update(data);
+  }
+
+  getFoodItemById(id: string) {
+    return this.afs
+      .collection('foods')
+      .doc(id)
+      .snapshotChanges()
+      .pipe(
+        map((item) => {
+          return {
+            ...(item.payload.data() as FoodInterfaceInput),
+            id: item.payload.id,
+            amount: 1,
+          };
+        })
+      );
   }
 }
