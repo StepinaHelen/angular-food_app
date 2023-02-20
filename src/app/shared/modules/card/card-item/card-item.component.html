@@ -7,13 +7,7 @@
     <span class="material-symbols-sharp"> delete </span>
   </div>
   <div class="card-image-container">
-    <ng-template #image
-      ><img class="card-image" [src]="food.img"
-    /></ng-template>
-    <quill-view-html
-      *ngIf="food.img.includes('<p>'); else image"
-      [content]="food.img"
-    ></quill-view-html>
+    <img class="card-image" [src]="food.img" />
   </div>
   <div class="card-content">
     <h1>{{ food.title }}</h1>
