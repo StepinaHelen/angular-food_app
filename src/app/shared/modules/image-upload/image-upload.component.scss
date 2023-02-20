@@ -1,0 +1,24 @@
+.file-input {
+  display: none;
+}
+
+.file-button {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  background-color: var(--primary);
+  border-radius: 4px;
+  color: var(--secondaryFont);
+  margin-bottom: 20px;
+}
+
+.error-wrapper {
+  display: flex;
+  color: var(--error);
+}
+
+p {
+  color: var(--error);
+  font-size: 12px;
+  margin: 0;
+}
