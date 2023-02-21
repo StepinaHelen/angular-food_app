@@ -19,7 +19,6 @@ import { FooterModule } from './shared/modules/footer/footer/footer.module';
 import { HeaderModule } from './shared/modules/header/header/header.module';
 import { SidenavModule } from './shared/modules/sidenav/sidenav.module';
 import { SpinnerModule } from './shared/modules/spinner/spinner.module';
-import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,7 +39,6 @@ import { QuillModule } from 'ngx-quill';
     RegisterPageModule,
     HttpClientModule,
     SidenavModule,
-    QuillModule.forRoot(),
   ],
   providers: [
     AuthsService,

@@ -1,0 +1,15 @@
+<input
+  class="file-input"
+  (change)="fileChange($event)"
+  #fileInput
+  type="file"
+/>
+<button (click)="onClick()" class="file-button">Select file</button>
+<div class="error-wrapper" *ngFor="let error of control.errors | keyvalue">
+  <p
+    class="error-message"
+    *ngIf="(control.hasError(error.key) && control.touched) || control.dirty"
+  >
+    {{ this.handleErrors(control.errors, error.key) }}
+  </p>
+</div>

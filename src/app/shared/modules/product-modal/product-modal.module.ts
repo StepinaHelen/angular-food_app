@@ -5,7 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputFormModule } from '../input-form/input-form.module';
 import { SelectFormModule } from '../select-form/select-form.module';
 import { ButtonModule } from '../button/button.module';
-import { QuillModule } from 'ngx-quill';
+import { ImageUploadModule } from '../image-upload/image-upload.module';
+import { TabComponentModule } from '../tab-component/tab-component.module';
 
 @NgModule({
   declarations: [ProductModalComponent],
@@ -16,7 +17,8 @@ import { QuillModule } from 'ngx-quill';
     InputFormModule,
     SelectFormModule,
     ButtonModule,
-    QuillModule.forRoot(),
+    ImageUploadModule,
+    TabComponentModule,
   ],
 })
 export class ProductModalModule {}

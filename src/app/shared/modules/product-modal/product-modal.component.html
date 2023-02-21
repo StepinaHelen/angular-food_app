@@ -11,16 +11,23 @@
     [type]="'number'"
   ></food-input-form>
   <div class="form-control">
-    <label for="image">Image:</label>
-    <quill-editor
-      #editor
-      formControlName="img"
-      placeholder="Your image will be show here..."
-      [modules]="quillConfiguration"
-    ></quill-editor>
-    <p *ngIf="addingForm.get('img')?.errors?.['required']">
-      The field is required
-    </p>
+    <label for="image">Image</label>
+    <food-tab-component>
+      <food-single-tab tabTitle="Upload">
+        <food-image-upload
+          formControlName="img"
+          [control]="addingForm.controls.img"
+        ></food-image-upload>
+      </food-single-tab>
+      <food-single-tab tabTitle="Url">
+        <food-input-form
+          label="Image Url"
+          [control]="addingForm.controls.img"
+          [type]="'text'"
+        ></food-input-form>
+      </food-single-tab>
+    </food-tab-component>
+    <img class="preview" [src]="imgUrl(addingForm.value.img ?? '')" />
   </div>
   <food-select-form
     label="Category"
