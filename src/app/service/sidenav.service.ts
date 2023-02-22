@@ -10,11 +10,6 @@ export class SidenavService {
   constructor() {}
 
   toggle() {
-    const value = this.sidenav$.getValue();
-    this.sidenav$.next(!value);
-  }
-
-  close() {
-    this.sidenav$.next(false);
+    this.sidenav$.next(true);
   }
 }

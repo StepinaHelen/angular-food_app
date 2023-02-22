@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { CartService } from '../service/cart.service';
-import { CardModule } from '../shared/modules/card/card.module';
+import { CardsModule } from '../shared/modules/card/card.module';
 import { CartMock } from '../shared/testing-moks/testing-mocks';
 import { CartPageComponent } from './cart-page.component';
 
@@ -17,7 +17,7 @@ describe('Cart Page Component', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [CardModule],
+      imports: [CardsModule],
       declarations: [CartPageComponent],
       providers: [{ provide: CartService, useValue: mockCartService }],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
