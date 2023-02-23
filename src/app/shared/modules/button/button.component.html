@@ -1,12 +1,10 @@
 <button
-  [disabled]="isDisabled || disabled"
+  pButton
+  type="button"
+  [class]="'p-button-secondary' + ' ' + className"
   data-testid="food-button"
-  [class]="'button' + ' ' + className"
->
-  <ng-container *ngIf="isDisabled">
-    <food-button-spinner></food-button-spinner>
-  </ng-container>
-  <ng-container *ngIf="!isDisabled">
-    {{ buttonText }}
-  </ng-container>
-</button>
+  [disabled]="isDisabled || disabled"
+  [label]="buttonText"
+  [loading]="isDisabled"
+  iconPos="right"
+></button>

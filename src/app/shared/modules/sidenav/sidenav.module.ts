@@ -6,6 +6,7 @@ import { UnauthorizedLinksComponent } from './unauthorized-links/unauthorized-li
 import { UserLinksComponent } from './user-links/user-links.component';
 import { AdminLinksComponent } from './admin-links/admin-links.component';
 import { OutsideClickDirective } from '../../directives/click-outside';
+import {SidebarModule} from 'primeng/sidebar';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { OutsideClickDirective } from '../../directives/click-outside';
     AdminLinksComponent,
     OutsideClickDirective,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, SidebarModule],
   exports: [SidenavComponent],
 })
 export class SidenavModule {}

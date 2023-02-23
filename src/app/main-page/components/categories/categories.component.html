@@ -1,7 +1,10 @@
 <div class="categories">
   <ul>
     <li *ngFor="let category of categories">
-      <button (click)="chooseCategory(category)">{{ category }}</button>
+      <food-button
+        (click)="chooseCategory(category)"
+        [buttonText]="category"
+      ></food-button>
     </li>
   </ul>
   <span class="material-symbols-outlined" (click)="sortItem()">

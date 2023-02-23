@@ -15,6 +15,7 @@
         >
           light_mode
         </span>
+
         <span
           [ngClass]="{ 'display-none': !isDefault }"
           #default
@@ -25,18 +26,7 @@
         </span>
       </div>
       <button (click)="toggleSideNav()" class="navbar-button">
-        <span
-          *ngIf="!(sidenavService.sidenav$ | async)"
-          class="material-symbols-outlined"
-          exclude
-          >menu</span
-        >
-        <span
-          *ngIf="sidenavService.sidenav$ | async"
-          class="material-symbols-outlined"
-          exclude
-          >menu_open</span
-        >
+        <span class="material-symbols-outlined" exclude>menu</span>
       </button>
     </div>
   </div>

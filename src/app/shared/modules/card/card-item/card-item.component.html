@@ -1,11 +1,13 @@
 <li [ngClass]="{ 'cart-layout': isCart }" class="card" *ngIf="food">
-  <div
+  <button
     *ngIf="role === 'admin'"
-    class="delete-btn"
+    pButton
+    type="button"
+    class="p-button-raised p-button-rounded delete-btn p-button-secondary"
+    icon="pi pi-trash"
     (click)="deleteProduct(food.id)"
-  >
-    <span class="material-symbols-sharp"> delete </span>
-  </div>
+  ></button>
+
   <div class="card-image-container">
     <img class="card-image" [src]="food.img" />
   </div>
@@ -16,25 +18,32 @@
     </p>
     <div class="card-amount-container" *ngIf="role !== 'admin'">
       <p class="card-amount-container-text">Amount:</p>
+
       <button
+        pButton
+        type="button"
         *ngIf="!isCart"
-        class="card-amount-container-button"
         (click)="decrement()"
+        class="p-button-secondary"
       >
-        -
+        <i *ngIf="!isCart" (click)="decrement()" class="pi pi-minus"></i>
       </button>
+
       <p *ngIf="isCart" class="card-amount-container-text-count">
         {{ food.amount }}
       </p>
       <p *ngIf="!isCart" class="card-amount-container-text-count">
         {{ foodAmount }}
       </p>
+
       <button
+        pButton
+        type="button"
         *ngIf="!isCart"
-        class="card-amount-container-button"
         (click)="increment()"
+        class="p-button-secondary"
       >
-        +
+        <i *ngIf="!isCart" (click)="decrement()" class="pi pi-plus"></i>
       </button>
     </div>
     <button (click)="handleDelete()" *ngIf="isCart" class="delete-button left">
