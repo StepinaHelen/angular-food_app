@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterPageComponent } from './register-page.component';
-import { ButtonModule } from '../shared/modules/button/button.module';
+import { ButtonsModule } from '../shared/modules/button/button.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputFormModule } from '../shared/modules/input-form/input-form.module';
 import { RouterModule, Routes } from '@angular/router';
@@ -23,7 +23,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     InputFormModule,
     RouterModule.forChild(routes),
-    ButtonModule,
+    ButtonsModule,
     SocialLinksModule,
   ],
 })

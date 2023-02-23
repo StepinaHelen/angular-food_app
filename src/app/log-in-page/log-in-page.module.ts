@@ -5,7 +5,7 @@ import { InputFormModule } from '../shared/modules/input-form/input-form.module'
 import { BrowserModule } from '@angular/platform-browser';
 import { LogInPageComponent } from './log-in-page.component';
 import { RouterModule, Routes } from '@angular/router';
-import { ButtonModule } from '../shared/modules/button/button.module';
+import { ButtonsModule } from '../shared/modules/button/button.module';
 import { SocialLinksModule } from '../shared/social-links/social-links.module';
 
 const routes: Routes = [
@@ -25,8 +25,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     InputFormModule,
     RouterModule.forChild(routes),
-    ButtonModule,
-    SocialLinksModule
+    ButtonsModule,
+    SocialLinksModule,
   ],
 })
 export class LogInPageModule {}

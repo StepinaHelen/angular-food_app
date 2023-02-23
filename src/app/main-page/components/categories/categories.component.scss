@@ -4,24 +4,6 @@
   align-items: center;
   margin: 0 auto;
   margin-top: 30px;
-
-  button {
-    background-color: var(--primary);
-    outline: none;
-    border: none;
-    border-radius: 5px;
-    color: var(--white);
-    cursor: pointer;
-    padding: 8px 23px;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 24px;
-
-    &:hover {
-      background-color: var(--secondary);
-      transition: var(--transition);
-    }
-  }
 }
 
 ul {
@@ -30,6 +12,7 @@ ul {
 
   li {
     margin-right: 15px;
+    margin-bottom: 15px;
   }
 }
 

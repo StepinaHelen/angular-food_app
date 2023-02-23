@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ButtonModule } from '../shared/modules/button/button.module';
-import { CardModule } from '../shared/modules/card/card.module';
+import { ButtonsModule } from '../shared/modules/button/button.module';
+import { CardsModule } from '../shared/modules/card/card.module';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { InfiniteScrollComponent } from './components/infinite-scroll/infinite-scroll.component';
@@ -19,11 +19,11 @@ import { ProductModalModule } from '../shared/modules/product-modal/product-moda
   ],
   imports: [
     CommonModule,
-    CardModule,
-    ButtonModule,
+    CardsModule,
+    ButtonsModule,
     MatDialogModule,
     ProductModalModule,
   ],
-  exports: [ButtonModule, InfiniteScrollComponent],
+  exports: [ButtonsModule, InfiniteScrollComponent],
 })
 export class MainPageModule {}

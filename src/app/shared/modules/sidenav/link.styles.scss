@@ -11,15 +11,15 @@ span {
 .cart-amount {
   width: 20px;
   height: 20px;
-  background-color: var(--secondary);
+  background-color: var(--primary);
   border-radius: 50%;
-  color: var(--mainFont);
+  color: var(--white);
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 12px;
   position: absolute;
-  right: 20px;
+  left: 20px;
   bottom: 25px;
 }
 
@@ -37,6 +37,11 @@ span {
 
   &:hover {
     > span,
+    p {
+      color: var(--secondary);
+      transition: var(--transition);
+    }
+    .shopping-cart-container > span,
     p {
       color: var(--secondary);
       transition: var(--transition);
