@@ -1,12 +1,13 @@
 import { Meta, Story, moduleMetadata } from '@storybook/angular';
 import { CardItemComponent } from '../app/shared/modules/card/card-item/card-item.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { CommonModule } from '@angular/common';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { firebaseConfig } from 'src/environments/environment';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ButtonModule } from 'src/app/shared/modules/button/button.module';
+import { ButtonsModule } from 'src/app/shared/modules/button/button.module';
+import { ButtonModule } from 'primeng/button';
+import { FoodItemWithAmountMock } from 'src/app/shared/testing-moks/testing-mocks';
 
 export default {
   title: 'CardItemComponent',
@@ -19,50 +20,38 @@ export default {
         AngularFireModule.initializeApp(firebaseConfig),
         AngularFireAuthModule,
         MatDialogModule,
+        ButtonsModule,
         ButtonModule,
       ],
     }),
   ],
+  argTypes: {
+    food: {
+      name: 'food',
+      type: { name: 'string', required: false },
+      defaultValue: FoodItemWithAmountMock,
+    },
+    role: {
+      name: 'role',
+      type: { name: 'string', required: false },
+      defaultValue: 'client',
+      options: ['client', 'admin'],
+      control: {
+        type: 'radio',
+      },
+    },
+    isCart: {
+      name: 'isCart',
+      type: { name: 'string', required: false },
+      defaultValue: false,
+      options: [false, true],
+      control: {
+        type: 'radio',
+      },
+    },
+  },
 } as Meta;
 
 const Template: Story = (args) => ({ props: args });
 
-export const CardStory = Template.bind({});
-export const CardStoryAdmin = Template.bind({});
-export const CartStory = Template.bind({});
-
-CartStory.args = {
-  food: {
-    category: 'Salad',
-    img: 'https://images.ctfassets.net/bffxiku554r1/5MAFeA66RfBSky4sFFDt0R/1cc78ac3477e95d2f52b55eb473097cd/GRO-Campaign_Dietary-Requirements_Vegetarian-Hero.jpg?fm=jpg&q=60&w=600&h=338',
-    price: '25',
-    title: 'Mix of salads',
-    amount: 1,
-  },
-  role: 'client',
-  isCart: true,
-};
-
-CardStory.args = {
-  food: {
-    category: 'Salad',
-    img: 'https://images.ctfassets.net/bffxiku554r1/5MAFeA66RfBSky4sFFDt0R/1cc78ac3477e95d2f52b55eb473097cd/GRO-Campaign_Dietary-Requirements_Vegetarian-Hero.jpg?fm=jpg&q=60&w=600&h=338',
-    price: '25',
-    title: 'Mix of salads',
-    amount: 1,
-  },
-  role: 'client',
-  isCart: false,
-};
-
-CardStoryAdmin.args = {
-  food: {
-    category: 'Salad',
-    img: 'https://images.ctfassets.net/bffxiku554r1/5MAFeA66RfBSky4sFFDt0R/1cc78ac3477e95d2f52b55eb473097cd/GRO-Campaign_Dietary-Requirements_Vegetarian-Hero.jpg?fm=jpg&q=60&w=600&h=338',
-    price: '25',
-    title: 'Mix of salads',
-    amount: 1,
-  },
-  role: 'admin',
-  isCart: false,
-};
+export const CardStoryDefault = Template.bind({});

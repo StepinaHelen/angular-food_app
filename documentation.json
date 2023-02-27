@@ -1968,7 +1968,7 @@
         },
         {
             "name": "SidenavService",
-            "id": "injectable-SidenavService-896e9efa00b36b6b999808537b0a253dc82d331f8ff9257a25e860e5800c0e377f0ac60401f72fae2039f0fff83f6e8e98cc9cd833b4ca65981d28fb5449c53c",
+            "id": "injectable-SidenavService-db7e9e5dfbdca0986afdffb1c0797c5f04f4beba16d1c9b4c3c79a4c9298ae4f7f47a182ac440cd5b7f6d0dea7bdf575837ddd27707a7560ed826e27c9be4f88",
             "file": "src/app/service/sidenav.service.ts",
             "properties": [
                 {
@@ -1987,16 +1987,6 @@
             ],
             "methods": [
                 {
-                    "name": "close",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 17,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
                     "name": "toggle",
                     "args": [],
                     "optional": false,
@@ -2011,7 +2001,7 @@
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { BehaviorSubject } from 'rxjs';\r\n\r\n@Injectable({\r\n  providedIn: 'root',\r\n})\r\nexport class SidenavService {\r\n  public sidenav$ = new BehaviorSubject<boolean>(false);\r\n\r\n  constructor() {}\r\n\r\n  toggle() {\r\n    const value = this.sidenav$.getValue();\r\n    this.sidenav$.next(!value);\r\n  }\r\n\r\n  close() {\r\n    this.sidenav$.next(false);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { BehaviorSubject } from 'rxjs';\r\n\r\n@Injectable({\r\n  providedIn: 'root',\r\n})\r\nexport class SidenavService {\r\n  public sidenav$ = new BehaviorSubject<boolean>(false);\r\n\r\n  constructor() {}\r\n\r\n  toggle() {\r\n    this.sidenav$.next(true);\r\n  }\r\n}\r\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -2738,7 +2728,7 @@
                     "styleUrl": "./admin-links.component.scss"
                 },
                 {
-                    "data": "span {\r\n  color: var(--mainFont);\r\n  font-size: 24px;\r\n  cursor: pointer;\r\n\r\n  @media screen and (min-width: 480px) {\r\n    font-size: 32px;\r\n  }\r\n}\r\n\r\n.cart-amount {\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: var(--secondary);\r\n  border-radius: 50%;\r\n  color: var(--mainFont);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-size: 12px;\r\n  position: absolute;\r\n  right: 20px;\r\n  bottom: 25px;\r\n}\r\n\r\n.link {\r\n  position: relative;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  color: var(--mainFont);\r\n  gap: 8px;\r\n\r\n  > p {\r\n    flex-basis: 3.5rem;\r\n  }\r\n\r\n  &:hover {\r\n    > span,\r\n    p {\r\n      color: var(--secondary);\r\n      transition: var(--transition);\r\n    }\r\n  }\r\n}\r\n\r\n.link-active {\r\n  > span,\r\n  p {\r\n    color: var(--secondary);\r\n    transition: var(--transition);\r\n  }\r\n}\r\n",
+                    "data": "span {\r\n  color: var(--mainFont);\r\n  font-size: 24px;\r\n  cursor: pointer;\r\n\r\n  @media screen and (min-width: 480px) {\r\n    font-size: 32px;\r\n  }\r\n}\r\n\r\n.cart-amount {\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: var(--primary);\r\n  border-radius: 50%;\r\n  color: var(--white);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-size: 12px;\r\n  position: absolute;\r\n  left: 20px;\r\n  bottom: 25px;\r\n}\r\n\r\n.link {\r\n  position: relative;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  color: var(--mainFont);\r\n  gap: 8px;\r\n\r\n  > p {\r\n    flex-basis: 3.5rem;\r\n  }\r\n\r\n  &:hover {\r\n    > span,\r\n    p {\r\n      color: var(--secondary);\r\n      transition: var(--transition);\r\n    }\r\n    .shopping-cart-container > span,\r\n    p {\r\n      color: var(--secondary);\r\n      transition: var(--transition);\r\n    }\r\n  }\r\n}\r\n\r\n.link-active {\r\n  > span,\r\n  p {\r\n    color: var(--secondary);\r\n    transition: var(--transition);\r\n  }\r\n}\r\n",
                     "styleUrl": "../link.styles.scss"
                 }
             ],
@@ -2996,7 +2986,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".button {\r\n  color: var(--white);\r\n  background-color: var(--primary);\r\n  padding: 5px 27px;\r\n  border-radius: 15px;\r\n  font-size: 24px;\r\n  line-height: 28px;\r\n  border: none;\r\n  outline: none;\r\n  cursor: pointer;\r\n\r\n  &.login {\r\n    padding: 9px 51px;\r\n  }\r\n  &.addProduct {\r\n    margin-left: auto;\r\n    margin-top: 30px;\r\n    display: flex;\r\n    padding: 10px 27px;\r\n  }\r\n  &.modalBtn {\r\n    margin-left: auto;\r\n    margin-top: 50px;\r\n    display: flex;\r\n    padding: 10px 27px;\r\n  }\r\n  &:disabled {\r\n    opacity: 0.7;\r\n  }\r\n\r\n  &:hover {\r\n    background-color: var(--secondary);\r\n    transition: var(--transition);\r\n  }\r\n\r\n  &.categories {\r\n    margin-bottom: 12px;\r\n    padding: 4px 12px;\r\n    margin-right: 12px;\r\n  }\r\n\r\n  &.cardItem {\r\n    padding: 5px 27px;\r\n  }\r\n\r\n  &.goToOrder {\r\n    padding: 13px 54px;\r\n    font-weight: 600;\r\n  }\r\n\r\n  &.order {\r\n    padding: 9px 70px;\r\n    font-size: 32px;\r\n    line-height: 38px;\r\n    margin-bottom: 40px;\r\n  }\r\n  &.auth {\r\n    padding: 13px 40px;\r\n  }\r\n}\r\n",
+                    "data": "button {\r\n  &.login {\r\n    padding: 9px 51px;\r\n  }\r\n  &.addProduct {\r\n    margin-left: auto;\r\n    margin-top: 30px;\r\n    display: flex;\r\n  }\r\n  &.modalBtn {\r\n    margin-left: auto;\r\n    margin-top: 50px;\r\n    display: flex;\r\n    padding: 10px 27px;\r\n  }\r\n  &:disabled {\r\n    opacity: 0.7;\r\n  }\r\n\r\n  &.categories {\r\n    margin-bottom: 12px;\r\n    padding: 4px 12px;\r\n    margin-right: 12px;\r\n  }\r\n\r\n  &.cardItem {\r\n    padding: 5px 27px;\r\n  }\r\n\r\n  &.goToOrder {\r\n    padding: 13px 54px;\r\n    font-weight: 600;\r\n  }\r\n\r\n  &.order {\r\n    padding: 9px 70px;\r\n    font-size: 32px;\r\n    line-height: 38px;\r\n    margin-bottom: 40px;\r\n  }\r\n  &.auth {\r\n    padding: 13px 40px;\r\n  }\r\n}\r\n",
                     "styleUrl": "./button.component.scss"
                 }
             ],
@@ -3012,7 +3002,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<button\r\n  [disabled]=\"isDisabled || disabled\"\r\n  data-testid=\"food-button\"\r\n  [class]=\"'button' + ' ' + className\"\r\n>\r\n  <ng-container *ngIf=\"isDisabled\">\r\n    <food-button-spinner></food-button-spinner>\r\n  </ng-container>\r\n  <ng-container *ngIf=\"!isDisabled\">\r\n    {{ buttonText }}\r\n  </ng-container>\r\n</button>\r\n"
+            "templateData": "<button\r\n  pButton\r\n  type=\"button\"\r\n  [class]=\"'p-button-secondary' + ' ' + className\"\r\n  data-testid=\"food-button\"\r\n  [disabled]=\"isDisabled || disabled\"\r\n  [label]=\"buttonText\"\r\n  [loading]=\"isDisabled\"\r\n  iconPos=\"right\"\r\n></button>\r\n"
         },
         {
             "name": "ButtonSpinnerComponent",
@@ -3277,7 +3267,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "li {\r\n  position: relative;\r\n}\r\n.delete-button {\r\n  border: none;\r\n  background: none;\r\n  cursor: pointer;\r\n}\r\n.delete-btn {\r\n  span {\r\n    font-size: 45px;\r\n    color: var(--primary);\r\n    &:hover {\r\n      color: var(--secondary);\r\n    }\r\n  }\r\n  box-shadow: var(--boxShadow);\r\n  background-color: var(--background);\r\n  border-radius: 50%;\r\n  padding: 5px;\r\n  position: absolute;\r\n  left: 20px;\r\n  top: 20px;\r\n  cursor: pointer;\r\n  z-index: 1000;\r\n}\r\n\r\n.delete-icon {\r\n  color: var(--primary);\r\n  font-size: 2rem;\r\n  &:hover {\r\n    color: var(--secondary);\r\n    transition: var(--transition);\r\n  }\r\n}\r\n\r\n.card-image-container {\r\n  flex-basis: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.card {\r\n  display: flex;\r\n  align-items: center;\r\n  box-shadow: var(--boxShadow);\r\n  flex-direction: column;\r\n  width: 100%;\r\n  background-color: var(--white);\r\n\r\n  &-image {\r\n    width: 100%;\r\n    height: 300px;\r\n    object-fit: cover;\r\n  }\r\n\r\n  &-amount-container {\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 0.5rem;\r\n\r\n    &-button {\r\n      background-color: var(--primary);\r\n      height: 20px;\r\n      width: 20px;\r\n      outline: none;\r\n      border: none;\r\n      border-radius: 5px;\r\n      color: #ffffff;\r\n      cursor: pointer;\r\n      display: flex;\r\n      justify-content: center;\r\n      align-items: center;\r\n\r\n      &:hover {\r\n        background-color: var(--secondary);\r\n        transition: var(--transition);\r\n      }\r\n    }\r\n\r\n    &-text,\r\n    &-text-count {\r\n      font-weight: bold;\r\n    }\r\n  }\r\n\r\n  &-content {\r\n    padding: 1rem;\r\n    width: 100%;\r\n    display: flex;\r\n    flex-direction: column;\r\n\r\n    &-price {\r\n      font-weight: bold;\r\n    }\r\n  }\r\n\r\n  &-content h1 {\r\n    margin-bottom: 20px;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n  }\r\n}\r\n\r\n.left {\r\n  margin-left: auto;\r\n}\r\n::ng-deep {\r\n  .mat-snack-bar-container {\r\n    background-color: var(--secondary);\r\n    font-weight: 600;\r\n\r\n    color: var(--white);\r\n    box-shadow: var(--boxShadow);\r\n\r\n    .mat-simple-snackbar-action {\r\n      color: var(--primary);\r\n      button {\r\n        font-size: 18px;\r\n        font-weight: 600;\r\n      }\r\n    }\r\n    .mat-simple-snackbar {\r\n      font-size: 18px;\r\n    }\r\n  }\r\n}\r\n\r\n.cart-layout {\r\n  flex-direction: column;\r\n\r\n  @media screen and (min-width: 768px) {\r\n    flex-direction: row;\r\n  }\r\n}\r\n",
+                    "data": "li {\r\n  position: relative;\r\n}\r\n.delete-button {\r\n  border: none;\r\n  background: none;\r\n  cursor: pointer;\r\n}\r\n.delete-btn {\r\n  position: absolute;\r\n  left: 20px;\r\n  top: 20px;\r\n  cursor: pointer;\r\n  z-index: 1000;\r\n}\r\n\r\n.delete-icon {\r\n  color: var(--primary);\r\n  font-size: 2rem;\r\n  &:hover {\r\n    color: var(--secondary);\r\n    transition: var(--transition);\r\n  }\r\n}\r\nbutton.p-element.p-button.p-component {\r\n  padding: 0.3rem;\r\n}\r\nbutton.p-element.p-button.p-component > i {\r\n  font-size: 0.5rem;\r\n}\r\n.card {\r\n  display: flex;\r\n  align-items: center;\r\n  box-shadow: var(--boxShadow);\r\n  flex-direction: column;\r\n  width: 100%;\r\n  background-color: var(--white);\r\n\r\n  &-image {\r\n    width: 100%;\r\n    height: 300px;\r\n    object-fit: cover;\r\n    &-container {\r\n      width: 100%;\r\n    }\r\n  }\r\n\r\n  &-amount-container {\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 0.5rem;\r\n\r\n    &-button {\r\n      background-color: var(--primary);\r\n      height: 20px;\r\n      width: 20px;\r\n      outline: none;\r\n      border: none;\r\n      border-radius: 5px;\r\n      color: #ffffff;\r\n      cursor: pointer;\r\n      display: flex;\r\n      justify-content: center;\r\n      align-items: center;\r\n\r\n      &:hover {\r\n        background-color: var(--secondary);\r\n        transition: var(--transition);\r\n      }\r\n    }\r\n\r\n    &-text,\r\n    &-text-count {\r\n      font-weight: bold;\r\n    }\r\n  }\r\n\r\n  &-content {\r\n    padding: 1rem;\r\n    width: 100%;\r\n    display: flex;\r\n    flex-direction: column;\r\n\r\n    &-price {\r\n      font-weight: bold;\r\n    }\r\n  }\r\n\r\n  &-content h1 {\r\n    margin-bottom: 20px;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n  }\r\n}\r\n\r\n.left {\r\n  margin-left: auto;\r\n}\r\n::ng-deep {\r\n  .mat-snack-bar-container {\r\n    background-color: var(--secondary);\r\n    font-weight: 600;\r\n\r\n    color: var(--white);\r\n    box-shadow: var(--boxShadow);\r\n\r\n    .mat-simple-snackbar-action {\r\n      color: var(--primary);\r\n      button {\r\n        font-size: 18px;\r\n        font-weight: 600;\r\n      }\r\n    }\r\n    .mat-simple-snackbar {\r\n      font-size: 18px;\r\n    }\r\n  }\r\n}\r\n\r\n.cart-layout {\r\n  flex-direction: column;\r\n\r\n  @media screen and (min-width: 768px) {\r\n    flex-direction: row;\r\n  }\r\n}\r\n",
                     "styleUrl": "./card-item.component.scss"
                 }
             ],
@@ -3383,7 +3373,7 @@
                     }
                 ]
             },
-            "templateData": "<li [ngClass]=\"{ 'cart-layout': isCart }\" class=\"card\" *ngIf=\"food\">\r\n  <div\r\n    *ngIf=\"role === 'admin'\"\r\n    class=\"delete-btn\"\r\n    (click)=\"deleteProduct(food.id)\"\r\n  >\r\n    <span class=\"material-symbols-sharp\"> delete </span>\r\n  </div>\r\n  <div class=\"card-image-container\">\r\n    <img class=\"card-image\" [src]=\"food.img\" />\r\n  </div>\r\n  <div class=\"card-content\">\r\n    <h1>{{ food.title }}</h1>\r\n    <p class=\"card-content-price\">\r\n      Price: <span> {{ food.price }}$ </span>\r\n    </p>\r\n    <div class=\"card-amount-container\" *ngIf=\"role !== 'admin'\">\r\n      <p class=\"card-amount-container-text\">Amount:</p>\r\n      <button\r\n        *ngIf=\"!isCart\"\r\n        class=\"card-amount-container-button\"\r\n        (click)=\"decrement()\"\r\n      >\r\n        -\r\n      </button>\r\n      <p *ngIf=\"isCart\" class=\"card-amount-container-text-count\">\r\n        {{ food.amount }}\r\n      </p>\r\n      <p *ngIf=\"!isCart\" class=\"card-amount-container-text-count\">\r\n        {{ foodAmount }}\r\n      </p>\r\n      <button\r\n        *ngIf=\"!isCart\"\r\n        class=\"card-amount-container-button\"\r\n        (click)=\"increment()\"\r\n      >\r\n        +\r\n      </button>\r\n    </div>\r\n    <button (click)=\"handleDelete()\" *ngIf=\"isCart\" class=\"delete-button left\">\r\n      <span class=\"material-symbols-outlined delete-icon\"> delete </span>\r\n    </button>\r\n    <food-button\r\n      *ngIf=\"!isCart\"\r\n      class=\"left\"\r\n      (click)=\"role === 'admin' ? handleEdit(food.id) : handleAdd()\"\r\n      [buttonText]=\"role === 'admin' ? 'Edit' : 'Add'\"\r\n    ></food-button>\r\n  </div>\r\n</li>\r\n"
+            "templateData": "<li [ngClass]=\"{ 'cart-layout': isCart }\" class=\"card\" *ngIf=\"food\">\r\n  <button\r\n    *ngIf=\"role === 'admin'\"\r\n    pButton\r\n    type=\"button\"\r\n    class=\"p-button-raised p-button-rounded delete-btn p-button-secondary\"\r\n    icon=\"pi pi-trash\"\r\n    (click)=\"deleteProduct(food.id)\"\r\n  ></button>\r\n\r\n  <div class=\"card-image-container\">\r\n    <img class=\"card-image\" [src]=\"food.img\" />\r\n  </div>\r\n  <div class=\"card-content\">\r\n    <h1>{{ food.title }}</h1>\r\n    <p class=\"card-content-price\">\r\n      Price: <span> {{ food.price }}$ </span>\r\n    </p>\r\n    <div class=\"card-amount-container\" *ngIf=\"role !== 'admin'\">\r\n      <p class=\"card-amount-container-text\">Amount:</p>\r\n\r\n      <button\r\n        pButton\r\n        type=\"button\"\r\n        *ngIf=\"!isCart\"\r\n        (click)=\"decrement()\"\r\n        class=\"p-button-secondary\"\r\n      >\r\n        <i *ngIf=\"!isCart\" (click)=\"decrement()\" class=\"pi pi-minus\"></i>\r\n      </button>\r\n\r\n      <p *ngIf=\"isCart\" class=\"card-amount-container-text-count\">\r\n        {{ food.amount }}\r\n      </p>\r\n      <p *ngIf=\"!isCart\" class=\"card-amount-container-text-count\">\r\n        {{ foodAmount }}\r\n      </p>\r\n\r\n      <button\r\n        pButton\r\n        type=\"button\"\r\n        *ngIf=\"!isCart\"\r\n        (click)=\"increment()\"\r\n        class=\"p-button-secondary\"\r\n      >\r\n        <i *ngIf=\"!isCart\" (click)=\"decrement()\" class=\"pi pi-plus\"></i>\r\n      </button>\r\n    </div>\r\n    <button\r\n      pButton\r\n      type=\"button\"\r\n      class=\"left p-button-secondary\"\r\n      icon=\"pi pi-trash\"\r\n      (click)=\"handleDelete()\"\r\n      *ngIf=\"isCart\"\r\n    ></button>\r\n    <food-button\r\n      *ngIf=\"!isCart\"\r\n      class=\"left\"\r\n      (click)=\"role === 'admin' ? handleEdit(food.id) : handleAdd()\"\r\n      [buttonText]=\"role === 'admin' ? 'Edit' : 'Add'\"\r\n    ></food-button>\r\n  </div>\r\n</li>\r\n"
         },
         {
             "name": "CardListComponent",
@@ -3766,7 +3756,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".categories {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  margin: 0 auto;\r\n  margin-top: 30px;\r\n\r\n  button {\r\n    background-color: var(--primary);\r\n    outline: none;\r\n    border: none;\r\n    border-radius: 5px;\r\n    color: var(--white);\r\n    cursor: pointer;\r\n    padding: 8px 23px;\r\n    font-weight: 500;\r\n    font-size: 20px;\r\n    line-height: 24px;\r\n\r\n    &:hover {\r\n      background-color: var(--secondary);\r\n      transition: var(--transition);\r\n    }\r\n  }\r\n}\r\n\r\nul {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n\r\n  li {\r\n    margin-right: 15px;\r\n  }\r\n}\r\n\r\nspan {\r\n  font-size: 40px;\r\n  color: var(--primary);\r\n\r\n  &:hover {\r\n    color: var(--secondary);\r\n    transition: var(--transition);\r\n    cursor: pointer;\r\n  }\r\n}\r\n",
+                    "data": ".categories {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  margin: 0 auto;\r\n  margin-top: 30px;\r\n}\r\n\r\nul {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n\r\n  li {\r\n    margin-right: 15px;\r\n    margin-bottom: 15px;\r\n  }\r\n}\r\n\r\nspan {\r\n  font-size: 40px;\r\n  color: var(--primary);\r\n\r\n  &:hover {\r\n    color: var(--secondary);\r\n    transition: var(--transition);\r\n    cursor: pointer;\r\n  }\r\n}\r\n",
                     "styleUrl": "./categories.component.scss"
                 }
             ],
@@ -3782,7 +3772,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"categories\">\r\n  <ul>\r\n    <li *ngFor=\"let category of categories\">\r\n      <button (click)=\"chooseCategory(category)\">{{ category }}</button>\r\n    </li>\r\n  </ul>\r\n  <span class=\"material-symbols-outlined\" (click)=\"sortItem()\">\r\n    sort_by_alpha\r\n  </span>\r\n</div>\r\n"
+            "templateData": "<div class=\"categories\">\r\n  <ul>\r\n    <li *ngFor=\"let category of categories\">\r\n      <food-button\r\n        (click)=\"chooseCategory(category)\"\r\n        [buttonText]=\"category\"\r\n      ></food-button>\r\n    </li>\r\n  </ul>\r\n  <span class=\"material-symbols-outlined\" (click)=\"sortItem()\">\r\n    sort_by_alpha\r\n  </span>\r\n</div>\r\n"
         },
         {
             "name": "FooterComponent",
@@ -4139,7 +4129,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "header {\r\n  position: relative;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);\r\n  z-index: 10;\r\n  background-color: var(--primary);\r\n  color: var(--secondary);\r\n  padding: 8px 0;\r\n\r\n  a {\r\n    color: var(--white);\r\n  }\r\n}\r\n\r\n.navbar-button {\r\n  background: none;\r\n  outline: none;\r\n  border: none;\r\n\r\n  &:focus-visible {\r\n    outline: 1px solid var(--secondary);\r\n  }\r\n\r\n  span {\r\n    color: var(--white);\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n.wrapper {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  margin: 0 auto;\r\n  position: relative;\r\n  padding: 0 15px;\r\n}\r\n\r\nh2 {\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n  font-family: \"Mansalva\", cursive;\r\n  margin: 0;\r\n  font-size: 24px;\r\n  line-height: 24px;\r\n  color: var(--white);\r\n\r\n  @media screen and (min-width: 768px) {\r\n    font-size: 32px;\r\n    line-height: 32px;\r\n  }\r\n}\r\n\r\n.icon-container {\r\n  display: flex;\r\n  align-items: center;\r\n\r\n  hr {\r\n    transform: rotate(180deg);\r\n    height: 56px;\r\n    margin-right: 8px;\r\n    margin-left: 8px;\r\n    border-radius: 3px;\r\n  }\r\n}\r\n\r\n.mode-wrapper {\r\n  position: relative;\r\n}\r\n\r\n.dark-mode {\r\n  position: absolute;\r\n  width: 100%;\r\n  height: 100%;\r\n  opacity: 0.8;\r\n  transform: scale(0);\r\n  background-color: var(--mainFont);\r\n}\r\n\r\n.animate-bg {\r\n  animation: circle 1s 1;\r\n  animation-timing-function: ease-in;\r\n}\r\n\r\n@keyframes circle {\r\n  0% {\r\n    clip-path: circle(0%);\r\n    transform: scale(0);\r\n  }\r\n\r\n  100% {\r\n    clip-path: circle(100%);\r\n    transform: scale(250);\r\n  }\r\n}\r\n\r\n.fade-out {\r\n  animation: fadeOut 1s 1;\r\n}\r\n\r\n.fade-in {\r\n  animation: fadeIn 1s 1;\r\n}\r\n\r\n.display-none {\r\n  display: none;\r\n}\r\n\r\n@keyframes fadeOut {\r\n  0% {\r\n    opacity: 1;\r\n  }\r\n\r\n  100% {\r\n    opacity: 0;\r\n  }\r\n}\r\n\r\n@keyframes fadeIn {\r\n  0% {\r\n    opacity: 0;\r\n  }\r\n\r\n  100% {\r\n    opacity: 1;\r\n  }\r\n}\r\n",
+                    "data": "header {\r\n  position: relative;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);\r\n  z-index: 10;\r\n  background-color: var(--primary);\r\n  color: var(--white);\r\n  padding: 8px 0;\r\n\r\n  a {\r\n    color: var(--white);\r\n  }\r\n}\r\n\r\n.navbar-button {\r\n  background: none;\r\n  outline: none;\r\n  border: none;\r\n\r\n  &:focus-visible {\r\n    outline: 1px solid var(--secondary);\r\n  }\r\n\r\n  span {\r\n    color: var(--white);\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n.wrapper {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  margin: 0 auto;\r\n  position: relative;\r\n  padding: 0 15px;\r\n}\r\n\r\nh2 {\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n  font-family: \"Mansalva\", cursive;\r\n  margin: 0;\r\n  font-size: 24px;\r\n  line-height: 24px;\r\n  color: var(--white);\r\n\r\n  @media screen and (min-width: 768px) {\r\n    font-size: 32px;\r\n    line-height: 32px;\r\n  }\r\n}\r\n\r\n.icon-container {\r\n  display: flex;\r\n  align-items: center;\r\n\r\n  hr {\r\n    transform: rotate(180deg);\r\n    height: 56px;\r\n    margin-right: 8px;\r\n    margin-left: 8px;\r\n    border-radius: 3px;\r\n  }\r\n}\r\n\r\n.mode-wrapper {\r\n  position: relative;\r\n}\r\n\r\n.dark-mode {\r\n  position: absolute;\r\n  width: 100%;\r\n  height: 100%;\r\n  opacity: 0.8;\r\n  transform: scale(0);\r\n  background-color: var(--mainFont);\r\n}\r\n\r\n.animate-bg {\r\n  animation: circle 1s 1;\r\n  animation-timing-function: ease-in;\r\n}\r\n\r\n@keyframes circle {\r\n  0% {\r\n    clip-path: circle(0%);\r\n    transform: scale(0);\r\n  }\r\n\r\n  100% {\r\n    clip-path: circle(100%);\r\n    transform: scale(250);\r\n  }\r\n}\r\n\r\n.fade-out {\r\n  animation: fadeOut 1s 1;\r\n}\r\n\r\n.fade-in {\r\n  animation: fadeIn 1s 1;\r\n}\r\n\r\n.display-none {\r\n  display: none;\r\n}\r\n\r\n@keyframes fadeOut {\r\n  0% {\r\n    opacity: 1;\r\n  }\r\n\r\n  100% {\r\n    opacity: 0;\r\n  }\r\n}\r\n\r\n@keyframes fadeIn {\r\n  0% {\r\n    opacity: 0;\r\n  }\r\n\r\n  100% {\r\n    opacity: 1;\r\n  }\r\n}\r\n",
                     "styleUrl": "./header.component.scss"
                 }
             ],
@@ -4203,7 +4193,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<header>\r\n  <div class=\"layout wrapper\">\r\n    <a [routerLink]=\"'/'\">\r\n      <span class=\"material-symbols-outlined\">fastfood</span>\r\n    </a>\r\n    <h2>Simple food</h2>\r\n    <div class=\"icon-container\">\r\n      <div class=\"mode-wrapper\">\r\n        <div #animationLayer class=\"dark-mode\"></div>\r\n        <span\r\n          #dark\r\n          [ngClass]=\"{ 'display-none': isDefault }\"\r\n          class=\"material-symbols-outlined\"\r\n          (click)=\"changeTheme('default')\"\r\n        >\r\n          light_mode\r\n        </span>\r\n        <span\r\n          [ngClass]=\"{ 'display-none': !isDefault }\"\r\n          #default\r\n          class=\"material-symbols-outlined\"\r\n          (click)=\"changeTheme('dark')\"\r\n        >\r\n          dark_mode\r\n        </span>\r\n      </div>\r\n      <button (click)=\"toggleSideNav()\" class=\"navbar-button\">\r\n        <span\r\n          *ngIf=\"!(sidenavService.sidenav$ | async)\"\r\n          class=\"material-symbols-outlined\"\r\n          exclude\r\n          >menu</span\r\n        >\r\n        <span\r\n          *ngIf=\"sidenavService.sidenav$ | async\"\r\n          class=\"material-symbols-outlined\"\r\n          exclude\r\n          >menu_open</span\r\n        >\r\n      </button>\r\n    </div>\r\n  </div>\r\n</header>\r\n"
+            "templateData": "<header>\r\n  <div class=\"layout wrapper\">\r\n    <a [routerLink]=\"'/'\">\r\n      <span class=\"material-symbols-outlined\">fastfood</span>\r\n    </a>\r\n    <h2>Simple food</h2>\r\n    <div class=\"icon-container\">\r\n      <div class=\"mode-wrapper\">\r\n        <div #animationLayer class=\"dark-mode\"></div>\r\n        <span\r\n          #dark\r\n          [ngClass]=\"{ 'display-none': isDefault }\"\r\n          class=\"material-symbols-outlined\"\r\n          (click)=\"changeTheme('default')\"\r\n        >\r\n          light_mode\r\n        </span>\r\n\r\n        <span\r\n          [ngClass]=\"{ 'display-none': !isDefault }\"\r\n          #default\r\n          class=\"material-symbols-outlined\"\r\n          (click)=\"changeTheme('dark')\"\r\n        >\r\n          dark_mode\r\n        </span>\r\n      </div>\r\n      <button (click)=\"toggleSideNav()\" class=\"navbar-button\">\r\n        <span class=\"material-symbols-outlined\" exclude>menu</span>\r\n      </button>\r\n    </div>\r\n  </div>\r\n</header>\r\n"
         },
         {
             "name": "HeroComponent",
@@ -5059,7 +5049,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"layout\">\r\n  <form [formGroup]=\"loginForm\" autocomplete=\"off\">\r\n    <h2>Login page</h2>\r\n    <food-input-form\r\n      label=\"Email\"\r\n      [control]=\"loginForm.controls.email\"\r\n    ></food-input-form>\r\n    <div class=\"input-wrap\">\r\n      <span (click)=\"showPassword()\" class=\"material-symbols-sharp\">{{\r\n        isVisiblePassword ? \"visibility\" : \"visibility_off\"\r\n      }}</span>\r\n      <food-input-form\r\n        label=\"Password\"\r\n        [control]=\"loginForm.controls.password\"\r\n        [type]=\"isVisiblePassword ? 'text' : 'password'\"\r\n      ></food-input-form>\r\n    </div>\r\n    <food-button\r\n      type=\"submit\"\r\n      (click)=\"login()\"\r\n      buttonText=\"Login\"\r\n      className=\"auth\"\r\n    ></food-button>\r\n  </form>\r\n  <food-social-links></food-social-links>\r\n</div>\r\n"
+            "templateData": "<div class=\"layout\">\r\n  <form [formGroup]=\"loginForm\" autocomplete=\"off\">\r\n    <h2>Login page</h2>\r\n    <food-input-form\r\n      label=\"Email\"\r\n      data-testid=\"email\"\r\n      [control]=\"loginForm.controls.email\"\r\n    ></food-input-form>\r\n    <div class=\"input-wrap\">\r\n      <span (click)=\"showPassword()\" class=\"material-symbols-sharp\">{{\r\n        isVisiblePassword ? \"visibility\" : \"visibility_off\"\r\n      }}</span>\r\n      <food-input-form\r\n        data-testid=\"password\"\r\n        label=\"Password\"\r\n        [control]=\"loginForm.controls.password\"\r\n        [type]=\"isVisiblePassword ? 'text' : 'password'\"\r\n      ></food-input-form>\r\n    </div>\r\n    <food-button\r\n      type=\"submit\"\r\n      (click)=\"login()\"\r\n      buttonText=\"Login\"\r\n      className=\"auth\"\r\n    ></food-button>\r\n  </form>\r\n  <food-social-links></food-social-links>\r\n</div>\r\n"
         },
         {
             "name": "MainPageComponent",
@@ -6552,7 +6542,7 @@
         },
         {
             "name": "SidenavComponent",
-            "id": "component-SidenavComponent-4d409d15bfbfd5d6f1cd9e7df8252b6c7fa69f9e45576117880f397d089f35f3023dd27264a11278c8efeb8226152d0418fbda5106db537993d4ba1a108a0299",
+            "id": "component-SidenavComponent-e524b2133b41bddc7226309d06e84388f9b951c981bab6fef2a9115d9a148608cdbb19aaba964ef4fde9e5e8bfa5b1db3ad2d319fd21e1fd4c2e9667fe8e8611",
             "file": "src/app/shared/modules/sidenav/sidenav.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -6575,7 +6565,7 @@
                     "defaultValue": "navLinks",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 16,
                     "type": "any",
                     "decorators": []
                 }
@@ -6589,7 +6579,7 @@
                     "type": "AuthsService",
                     "optional": false,
                     "description": "",
-                    "line": 21,
+                    "line": 24,
                     "modifierKind": [
                         123
                     ]
@@ -6601,7 +6591,17 @@
                     "type": "Observable<number>",
                     "optional": false,
                     "description": "",
-                    "line": 16
+                    "line": 17
+                },
+                {
+                    "name": "destroyed$",
+                    "defaultValue": "new Subject()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Subject<boolean>",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
                 },
                 {
                     "name": "sidenavService",
@@ -6610,20 +6610,40 @@
                     "type": "SidenavService",
                     "optional": false,
                     "description": "",
-                    "line": 20,
+                    "line": 23,
                     "modifierKind": [
                         123
                     ]
+                },
+                {
+                    "name": "value",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
                 {
                     "name": "ngOnInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 24,
+                    "line": 27,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -6635,15 +6655,15 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\nimport { Observable } from 'rxjs';\r\nimport { CartService } from 'src/app/service/cart.service';\r\nimport { SidenavService } from 'src/app/service/sidenav.service';\r\nimport { navLinks } from '../../constants';\r\nimport { AuthsService } from '../../../service/auth.service';\r\n\r\n@Component({\r\n  selector: 'food-sidenav',\r\n  templateUrl: './sidenav.component.html',\r\n  styleUrls: ['./sidenav.component.scss', './link.styles.scss'],\r\n})\r\nexport class SidenavComponent implements OnInit {\r\n  @Input()\r\n  navLinks = navLinks;\r\n  cartItemAmount$: Observable<number>;\r\n\r\n  constructor(\r\n    private cartService: CartService,\r\n    public sidenavService: SidenavService,\r\n    public authsService: AuthsService\r\n  ) {}\r\n\r\n  ngOnInit(): void {\r\n    this.cartItemAmount$ = this.cartService.getCartItemAmount();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input, OnInit, OnDestroy } from '@angular/core';\r\nimport { Observable } from 'rxjs';\r\nimport { CartService } from 'src/app/service/cart.service';\r\nimport { SidenavService } from 'src/app/service/sidenav.service';\r\nimport { navLinks } from '../../constants';\r\nimport { AuthsService } from '../../../service/auth.service';\r\nimport { takeUntil, Subject } from 'rxjs';\r\n\r\n@Component({\r\n  selector: 'food-sidenav',\r\n  templateUrl: './sidenav.component.html',\r\n  styleUrls: ['./sidenav.component.scss', './link.styles.scss'],\r\n})\r\nexport class SidenavComponent implements OnInit, OnDestroy {\r\n  @Input()\r\n  navLinks = navLinks;\r\n  cartItemAmount$: Observable<number>;\r\n  value: boolean = false;\r\n  destroyed$: Subject<boolean> = new Subject();\r\n\r\n  constructor(\r\n    private cartService: CartService,\r\n    public sidenavService: SidenavService,\r\n    public authsService: AuthsService\r\n  ) {}\r\n\r\n  ngOnInit(): void {\r\n    this.cartItemAmount$ = this.cartService.getCartItemAmount();\r\n    this.sidenavService.sidenav$\r\n      .pipe(takeUntil(this.destroyed$))\r\n      .subscribe((data) => {\r\n        this.value = data;\r\n      });\r\n  }\r\n\r\n  ngOnDestroy() {\r\n    this.destroyed$.next(true);\r\n    this.destroyed$.complete();\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".side-nav {\r\n  z-index: 100;\r\n  position: fixed;\r\n  right: 0;\r\n  top: 0;\r\n  width: 10rem;\r\n  height: 100%;\r\n  background-color: var(--secondaryFont);\r\n  transition: transform 1s ease-in-out;\r\n  border: 1.5px solid var(--mainFont);\r\n}\r\n\r\n.close {\r\n  color: var(--secondaryFont);\r\n}\r\n\r\n.side-nav-list {\r\n  display: flex;\r\n  flex-direction: column;\r\n  height: 100%;\r\n  justify-content: center;\r\n}\r\n\r\n.hide {\r\n  transform: translateX(100%);\r\n}\r\n\r\n.show {\r\n  transform: translateX(0);\r\n}\r\n",
+                    "data": ".close {\r\n  color: var(--secondaryFont);\r\n}\r\np-sidebar::ng-deep > div {\r\n  background-color: var(--secondaryFont);\r\n  transition: transform 1s ease-in-out;\r\n  border: 1.5px solid var(--mainFont);\r\n}\r\n\r\n.shopping-cart-container {\r\n  position: relative;\r\n}\r\n.hide {\r\n  transform: translateX(100%);\r\n}\r\n\r\n.show {\r\n  transform: translateX(0);\r\n}\r\n\r\np-sidebar::ng-deep > div > div.p-sidebar-content {\r\n  display: flex;\r\n  flex-direction: column;\r\n  height: 100%;\r\n  justify-content: center;\r\n}\r\n",
                     "styleUrl": "./sidenav.component.scss"
                 },
                 {
-                    "data": "span {\r\n  color: var(--mainFont);\r\n  font-size: 24px;\r\n  cursor: pointer;\r\n\r\n  @media screen and (min-width: 480px) {\r\n    font-size: 32px;\r\n  }\r\n}\r\n\r\n.cart-amount {\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: var(--secondary);\r\n  border-radius: 50%;\r\n  color: var(--mainFont);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-size: 12px;\r\n  position: absolute;\r\n  right: 20px;\r\n  bottom: 25px;\r\n}\r\n\r\n.link {\r\n  position: relative;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  color: var(--mainFont);\r\n  gap: 8px;\r\n\r\n  > p {\r\n    flex-basis: 3.5rem;\r\n  }\r\n\r\n  &:hover {\r\n    > span,\r\n    p {\r\n      color: var(--secondary);\r\n      transition: var(--transition);\r\n    }\r\n  }\r\n}\r\n\r\n.link-active {\r\n  > span,\r\n  p {\r\n    color: var(--secondary);\r\n    transition: var(--transition);\r\n  }\r\n}\r\n",
+                    "data": "span {\r\n  color: var(--mainFont);\r\n  font-size: 24px;\r\n  cursor: pointer;\r\n\r\n  @media screen and (min-width: 480px) {\r\n    font-size: 32px;\r\n  }\r\n}\r\n\r\n.cart-amount {\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: var(--primary);\r\n  border-radius: 50%;\r\n  color: var(--white);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-size: 12px;\r\n  position: absolute;\r\n  left: 20px;\r\n  bottom: 25px;\r\n}\r\n\r\n.link {\r\n  position: relative;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  color: var(--mainFont);\r\n  gap: 8px;\r\n\r\n  > p {\r\n    flex-basis: 3.5rem;\r\n  }\r\n\r\n  &:hover {\r\n    > span,\r\n    p {\r\n      color: var(--secondary);\r\n      transition: var(--transition);\r\n    }\r\n    .shopping-cart-container > span,\r\n    p {\r\n      color: var(--secondary);\r\n      transition: var(--transition);\r\n    }\r\n  }\r\n}\r\n\r\n.link-active {\r\n  > span,\r\n  p {\r\n    color: var(--secondary);\r\n    transition: var(--transition);\r\n  }\r\n}\r\n",
                     "styleUrl": "./link.styles.scss"
                 }
             ],
@@ -6673,7 +6693,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 16,
+                "line": 19,
                 "jsdoctags": [
                     {
                         "name": "cartService",
@@ -6705,9 +6725,10 @@
                 ]
             },
             "implements": [
-                "OnInit"
+                "OnInit",
+                "OnDestroy"
             ],
-            "templateData": "<nav\r\n  class=\"side-nav\"\r\n  [ngClass]=\"{\r\n    show: (sidenavService.sidenav$ | async),\r\n    hide: !(sidenavService.sidenav$ | async)\r\n  }\"\r\n  outsideClick\r\n  (outsideClick)=\"this.sidenavService.close()\"\r\n>\r\n  <span\r\n    class=\"close\"\r\n    (click)=\"this.sidenavService.close()\"\r\n    class=\"material-symbols-outlined\"\r\n    >close</span\r\n  >\r\n  <ul class=\"side-nav-list\">\r\n    <li class=\"side-nav-item\">\r\n      <a\r\n        class=\"link\"\r\n        [routerLink]=\"this.navLinks.cart\"\r\n        [routerLinkActive]=\"['link-active']\"\r\n      >\r\n        <div class=\"cart-amount\">{{ cartItemAmount$ | async }}</div>\r\n        <p>Cart</p>\r\n        <span class=\"material-symbols-outlined\">shopping_cart</span>\r\n      </a>\r\n    </li>\r\n    <ng-container [ngSwitch]=\"(authsService.user$ | async)?.role\">\r\n      <food-user-links *ngSwitchCase=\"'client'\"></food-user-links>\r\n      <food-admin-links *ngSwitchCase=\"'admin'\"> </food-admin-links>\r\n      <food-unauthorized-links *ngSwitchDefault></food-unauthorized-links>\r\n    </ng-container>\r\n  </ul>\r\n</nav>\r\n"
+            "templateData": "<p-sidebar [(visible)]=\"value\" position=\"right\">\r\n  <nav>\r\n    <ul class=\"side-nav-list\">\r\n      <li class=\"side-nav-item\">\r\n        <a\r\n          class=\"link\"\r\n          [routerLink]=\"this.navLinks.cart\"\r\n          [routerLinkActive]=\"['link-active']\"\r\n        >\r\n          \r\n          <p>Cart</p>\r\n          <div class=\"shopping-cart-container\">\r\n          <span class=\"material-symbols-outlined\">shopping_cart</span>\r\n          <div class=\"cart-amount\">{{ cartItemAmount$ | async }}</div>\r\n        </div>\r\n        </a>\r\n      </li>\r\n      <ng-container [ngSwitch]=\"(authsService.user$ | async)?.role\">\r\n        <food-user-links *ngSwitchCase=\"'client'\"></food-user-links>\r\n        <food-admin-links *ngSwitchCase=\"'admin'\"> </food-admin-links>\r\n        <food-unauthorized-links *ngSwitchDefault></food-unauthorized-links>\r\n      </ng-container>\r\n    </ul>\r\n  </nav>\r\n</p-sidebar>\r\n"
         },
         {
             "name": "SingleTabComponent",
@@ -6846,7 +6867,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".wrapper {\r\n  margin: 0 auto;\r\n  max-width: 600px;\r\n  &-icons {\r\n    display: flex;\r\n  }\r\n}\r\n.mat-icon::ng-deep {\r\n  width: 50px;\r\n  height: 50px;\r\n  margin-right: 20px;\r\n  cursor: pointer;\r\n}\r\n.mat-icon::ng-deep:not(:last-child) {\r\n  margin-right: 20px;\r\n}\r\n",
+                    "data": ".wrapper {\r\n  margin: 0 auto;\r\n  max-width: 600px;\r\n  &-icons {\r\n    display: flex;\r\n  }\r\n}\r\n.mat-icon::ng-deep {\r\n  width: 50px;\r\n  height: 50px;\r\n  margin-right: 20px;\r\n  cursor: pointer;\r\n}\r\n.mat-icon::ng-deep:not(:last-child) {\r\n  margin-right: 20px;\r\n}\r\nh2 {\r\n  color: var(--mainFont);\r\n}\r\n",
                     "styleUrl": "./social-links.component.scss"
                 }
             ],
@@ -7130,7 +7151,7 @@
                     "styleUrl": "./unauthorized-links.component.scss"
                 },
                 {
-                    "data": "span {\r\n  color: var(--mainFont);\r\n  font-size: 24px;\r\n  cursor: pointer;\r\n\r\n  @media screen and (min-width: 480px) {\r\n    font-size: 32px;\r\n  }\r\n}\r\n\r\n.cart-amount {\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: var(--secondary);\r\n  border-radius: 50%;\r\n  color: var(--mainFont);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-size: 12px;\r\n  position: absolute;\r\n  right: 20px;\r\n  bottom: 25px;\r\n}\r\n\r\n.link {\r\n  position: relative;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  color: var(--mainFont);\r\n  gap: 8px;\r\n\r\n  > p {\r\n    flex-basis: 3.5rem;\r\n  }\r\n\r\n  &:hover {\r\n    > span,\r\n    p {\r\n      color: var(--secondary);\r\n      transition: var(--transition);\r\n    }\r\n  }\r\n}\r\n\r\n.link-active {\r\n  > span,\r\n  p {\r\n    color: var(--secondary);\r\n    transition: var(--transition);\r\n  }\r\n}\r\n",
+                    "data": "span {\r\n  color: var(--mainFont);\r\n  font-size: 24px;\r\n  cursor: pointer;\r\n\r\n  @media screen and (min-width: 480px) {\r\n    font-size: 32px;\r\n  }\r\n}\r\n\r\n.cart-amount {\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: var(--primary);\r\n  border-radius: 50%;\r\n  color: var(--white);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-size: 12px;\r\n  position: absolute;\r\n  left: 20px;\r\n  bottom: 25px;\r\n}\r\n\r\n.link {\r\n  position: relative;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  color: var(--mainFont);\r\n  gap: 8px;\r\n\r\n  > p {\r\n    flex-basis: 3.5rem;\r\n  }\r\n\r\n  &:hover {\r\n    > span,\r\n    p {\r\n      color: var(--secondary);\r\n      transition: var(--transition);\r\n    }\r\n    .shopping-cart-container > span,\r\n    p {\r\n      color: var(--secondary);\r\n      transition: var(--transition);\r\n    }\r\n  }\r\n}\r\n\r\n.link-active {\r\n  > span,\r\n  p {\r\n    color: var(--secondary);\r\n    transition: var(--transition);\r\n  }\r\n}\r\n",
                     "styleUrl": "../link.styles.scss"
                 }
             ],
@@ -7197,7 +7218,7 @@
                     "styleUrl": "./user-links.component.scss"
                 },
                 {
-                    "data": "span {\r\n  color: var(--mainFont);\r\n  font-size: 24px;\r\n  cursor: pointer;\r\n\r\n  @media screen and (min-width: 480px) {\r\n    font-size: 32px;\r\n  }\r\n}\r\n\r\n.cart-amount {\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: var(--secondary);\r\n  border-radius: 50%;\r\n  color: var(--mainFont);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-size: 12px;\r\n  position: absolute;\r\n  right: 20px;\r\n  bottom: 25px;\r\n}\r\n\r\n.link {\r\n  position: relative;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  color: var(--mainFont);\r\n  gap: 8px;\r\n\r\n  > p {\r\n    flex-basis: 3.5rem;\r\n  }\r\n\r\n  &:hover {\r\n    > span,\r\n    p {\r\n      color: var(--secondary);\r\n      transition: var(--transition);\r\n    }\r\n  }\r\n}\r\n\r\n.link-active {\r\n  > span,\r\n  p {\r\n    color: var(--secondary);\r\n    transition: var(--transition);\r\n  }\r\n}\r\n",
+                    "data": "span {\r\n  color: var(--mainFont);\r\n  font-size: 24px;\r\n  cursor: pointer;\r\n\r\n  @media screen and (min-width: 480px) {\r\n    font-size: 32px;\r\n  }\r\n}\r\n\r\n.cart-amount {\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: var(--primary);\r\n  border-radius: 50%;\r\n  color: var(--white);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-size: 12px;\r\n  position: absolute;\r\n  left: 20px;\r\n  bottom: 25px;\r\n}\r\n\r\n.link {\r\n  position: relative;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  color: var(--mainFont);\r\n  gap: 8px;\r\n\r\n  > p {\r\n    flex-basis: 3.5rem;\r\n  }\r\n\r\n  &:hover {\r\n    > span,\r\n    p {\r\n      color: var(--secondary);\r\n      transition: var(--transition);\r\n    }\r\n    .shopping-cart-container > span,\r\n    p {\r\n      color: var(--secondary);\r\n      transition: var(--transition);\r\n    }\r\n  }\r\n}\r\n\r\n.link-active {\r\n  > span,\r\n  p {\r\n    color: var(--secondary);\r\n    transition: var(--transition);\r\n  }\r\n}\r\n",
                     "styleUrl": "../link.styles.scss"
                 }
             ],
@@ -7452,14 +7473,14 @@
             ]
         },
         {
-            "name": "ButtonModule",
-            "id": "module-ButtonModule-8cd7ab2d4195a723b719014d87dba5f6c40604fef519b9bc580b8fad7479db0b7e1b5d3f640b619e08dddf2aa87372afd8fb0c457fec94181a1fa829b6f3ec87",
+            "name": "ButtonsModule",
+            "id": "module-ButtonsModule-a39398a35a68ef4056dc0b46b354566be2024a8304fc777d1aa27e3ac5a31c325f890832c28843d8cae220c88c43e5f4d6a0510eaf6efd85288c753684181bd6",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/shared/modules/button/button.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { SpinnerModule } from '../spinner/spinner.module';\r\nimport { ButtonComponent } from './button.component';\r\n\r\n@NgModule({\r\n  declarations: [ButtonComponent],\r\n  imports: [CommonModule, SpinnerModule],\r\n  exports: [ButtonComponent],\r\n})\r\nexport class ButtonModule {}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { SpinnerModule } from '../spinner/spinner.module';\r\nimport { ButtonComponent } from './button.component';\r\nimport { ButtonModule } from 'primeng/button';\r\n\r\n@NgModule({\r\n  declarations: [ButtonComponent],\r\n  imports: [CommonModule, SpinnerModule, ButtonModule],\r\n  exports: [ButtonComponent],\r\n})\r\nexport class ButtonsModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -7500,14 +7521,14 @@
             ]
         },
         {
-            "name": "CardModule",
-            "id": "module-CardModule-7f2c32f0cde752a74d8f2e9ab922945b3fbc4badac1c058e2ca69d3b9ea1df9e2fb2f458550d788a2d99bcedb91f5a735a26ab3d1c31d162a8e45c1168a80ad6",
+            "name": "CardsModule",
+            "id": "module-CardsModule-e2b963f8429a2c8d2c5ff89d57f4d108c5c50011445e906dc253ba5e5e0c86dabf5946e46301f4433edfd0a0568e06f2e0c61fbe072c2ff0615ea1355eccacd7",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/shared/modules/card/card.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { MatSnackBarModule } from '@angular/material/snack-bar';\r\nimport { ButtonModule } from '../button/button.module';\r\nimport { CardItemComponent } from './card-item/card-item.component';\r\nimport { CardListComponent } from './card-list/card-list.component';\r\n\r\n@NgModule({\r\n  declarations: [CardItemComponent, CardListComponent],\r\n  imports: [CommonModule, ButtonModule, MatSnackBarModule],\r\n  exports: [CardItemComponent, CardListComponent],\r\n})\r\nexport class CardModule {}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { MatSnackBarModule } from '@angular/material/snack-bar';\r\nimport { ButtonsModule } from '../button/button.module';\r\nimport { CardItemComponent } from './card-item/card-item.component';\r\nimport { CardListComponent } from './card-list/card-list.component';\r\nimport { ButtonModule } from 'primeng/button';\r\n\r\n@NgModule({\r\n  declarations: [CardItemComponent, CardListComponent],\r\n  imports: [CommonModule, ButtonsModule, MatSnackBarModule, ButtonModule],\r\n  exports: [CardItemComponent, CardListComponent],\r\n})\r\nexport class CardsModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -7528,7 +7549,7 @@
                     "type": "imports",
                     "elements": [
                         {
-                            "name": "ButtonModule"
+                            "name": "ButtonsModule"
                         }
                     ]
                 },
@@ -7555,13 +7576,13 @@
         },
         {
             "name": "CartPageModule",
-            "id": "module-CartPageModule-8169234dd819be4666456ea3dc5f0539bc128a1d97d138f2166ff661e0793b3b474d5106adcb029c88dc9de562ed3a516b036c8b2734d56cdab5a0a7c5a20ad8",
+            "id": "module-CartPageModule-bd2abbed64bcb2857e5d73b7ee8a8e2a43fe3ba0070b069624242c9095dba194fde92492a8c68d69c462333610335327a21a55500cdf7c339578b680c5ac5424",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/cart-page/cart-page.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { RouterModule, Routes } from '@angular/router';\r\nimport { ButtonModule } from '../shared/modules/button/button.module';\r\nimport { CardModule } from '../shared/modules/card/card.module';\r\nimport { CartPageComponent } from './cart-page.component';\r\n\r\nconst routes: Routes = [\r\n  {\r\n    path: 'cart',\r\n    title: 'Cart',\r\n    component: CartPageComponent,\r\n  },\r\n];\r\n\r\n@NgModule({\r\n  declarations: [CartPageComponent],\r\n  imports: [\r\n    CommonModule,\r\n    RouterModule.forChild(routes),\r\n    CardModule,\r\n    ButtonModule,\r\n  ],\r\n})\r\nexport class CartPageModule {}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { RouterModule, Routes } from '@angular/router';\r\nimport { ButtonsModule } from '../shared/modules/button/button.module';\r\nimport { CardsModule } from '../shared/modules/card/card.module';\r\nimport { CartPageComponent } from './cart-page.component';\r\n\r\nconst routes: Routes = [\r\n  {\r\n    path: 'cart',\r\n    title: 'Cart',\r\n    component: CartPageComponent,\r\n  },\r\n];\r\n\r\n@NgModule({\r\n  declarations: [CartPageComponent],\r\n  imports: [\r\n    CommonModule,\r\n    RouterModule.forChild(routes),\r\n    CardsModule,\r\n    ButtonsModule,\r\n  ],\r\n})\r\nexport class CartPageModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -7579,10 +7600,10 @@
                     "type": "imports",
                     "elements": [
                         {
-                            "name": "ButtonModule"
+                            "name": "ButtonsModule"
                         },
                         {
-                            "name": "CardModule"
+                            "name": "CardsModule"
                         }
                     ]
                 },
@@ -7689,6 +7710,71 @@
             ]
         },
         {
+            "name": "IconRegistryModule",
+            "id": "module-IconRegistryModule-a8dc952e224b3ddc57b699056c1098deb129bfa2a101dbfc931a2ce954e91ec392d8ec2bb478e3a02e1f44a6618630c3cdcfe59b45dfd485d7f99b06b0da5249",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/shared/modules/icon-registry/icon-registry.module.ts",
+            "methods": [
+                {
+                    "name": "registerIcons",
+                    "args": [
+                        {
+                            "name": "icons",
+                            "type": "IIcons[]",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "icons",
+                            "type": "IIcons[]",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatIconRegistry } from '@angular/material/icon';\nimport { DomSanitizer } from '@angular/platform-browser';\nimport { IIcons } from '../../types/types';\nimport { icons } from '../../constants';\nimport { HttpClientModule } from '@angular/common/http';\n\n@NgModule({\n  imports: [CommonModule, HttpClientModule],\n})\nexport class IconRegistryModule {\n  iconsSvg: IIcons[] = icons;\n  constructor(\n    private matIconRegistry: MatIconRegistry,\n    private domSanitizer: DomSanitizer\n  ) {\n    this.registerIcons(this.iconsSvg);\n  }\n\n  registerIcons(icons: IIcons[]) {\n    icons.forEach((icon) => {\n      this.matIconRegistry.addSvgIcon(\n        icon.name,\n        this.domSanitizer.bypassSecurityTrustResourceUrl(icon.src)\n      );\n    });\n  }\n}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
             "name": "ImageUploadModule",
             "id": "module-ImageUploadModule-5de204bf1b7a4c736c12a9e73a94c428ba33fb5ddc8dfe14297dfb971b863acfb842209d8521d076763528a4a54eb47e05ae1f4a6023660d5b0fc5ae9db9da01",
             "description": "",
@@ -7778,13 +7864,13 @@
         },
         {
             "name": "LogInPageModule",
-            "id": "module-LogInPageModule-f899d4e8037788d60891e8a6b5e7e501602467f2ae44226c51ee851ba9acb1020ca3fbfafb442cbecfbf8e2dbd60ca35f09116abb4c859f4ceb10eea59fdcfd6",
+            "id": "module-LogInPageModule-6f37dcae24e3d356606812edce331c52a42468ca247211b61ce13c30f598bcdf002cdfcf64ee7a491da18d79dc7924cfe07d95c11b935b6b1c4864c6a4528796",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/log-in-page/log-in-page.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { InputFormModule } from '../shared/modules/input-form/input-form.module';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { LogInPageComponent } from './log-in-page.component';\r\nimport { RouterModule, Routes } from '@angular/router';\r\nimport { ButtonModule } from '../shared/modules/button/button.module';\r\nimport { SocialLinksModule } from '../shared/social-links/social-links.module';\r\n\r\nconst routes: Routes = [\r\n  {\r\n    path: 'login',\r\n    title: 'Login Form',\r\n    component: LogInPageComponent,\r\n  },\r\n];\r\n\r\n@NgModule({\r\n  declarations: [LogInPageComponent],\r\n  imports: [\r\n    CommonModule,\r\n    BrowserModule,\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    InputFormModule,\r\n    RouterModule.forChild(routes),\r\n    ButtonModule,\r\n    SocialLinksModule\r\n  ],\r\n})\r\nexport class LogInPageModule {}\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { InputFormModule } from '../shared/modules/input-form/input-form.module';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { LogInPageComponent } from './log-in-page.component';\r\nimport { RouterModule, Routes } from '@angular/router';\r\nimport { ButtonsModule } from '../shared/modules/button/button.module';\r\nimport { SocialLinksModule } from '../shared/social-links/social-links.module';\r\n\r\nconst routes: Routes = [\r\n  {\r\n    path: 'login',\r\n    title: 'Login Form',\r\n    component: LogInPageComponent,\r\n  },\r\n];\r\n\r\n@NgModule({\r\n  declarations: [LogInPageComponent],\r\n  imports: [\r\n    CommonModule,\r\n    BrowserModule,\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    InputFormModule,\r\n    RouterModule.forChild(routes),\r\n    ButtonsModule,\r\n    SocialLinksModule,\r\n  ],\r\n})\r\nexport class LogInPageModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -7802,7 +7888,7 @@
                     "type": "imports",
                     "elements": [
                         {
-                            "name": "ButtonModule"
+                            "name": "ButtonsModule"
                         },
                         {
                             "name": "InputFormModule"
@@ -7828,13 +7914,13 @@
         },
         {
             "name": "MainPageModule",
-            "id": "module-MainPageModule-89faa72a88e899d5ea53fdf61db43818a5f9673e6aa476b7f990c8c889c0c62b640f847f41f5df1f4aa94416fc2cf9b471a084bc1f416821feac7f92a7843f62",
+            "id": "module-MainPageModule-bf7967d565f7a43dc35dfdfea56edd8643e0ed1be0b79c80b94aac126de28a74b522422b1861a73f7ff0bf0ad21ba19f6858346741cc385cf4096182d2a16772",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/main-page/main-page.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { RouterModule, Routes } from '@angular/router';\r\nimport { ButtonModule } from '../shared/modules/button/button.module';\r\nimport { CardModule } from '../shared/modules/card/card.module';\r\nimport { CategoriesComponent } from './components/categories/categories.component';\r\nimport { HeroComponent } from './components/hero/hero.component';\r\nimport { InfiniteScrollComponent } from './components/infinite-scroll/infinite-scroll.component';\r\nimport { MainPageComponent } from './main-page.component';\r\nimport { MatDialogModule } from '@angular/material/dialog';\r\nimport { ProductModalModule } from '../shared/modules/product-modal/product-modal.module';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    MainPageComponent,\r\n    HeroComponent,\r\n    CategoriesComponent,\r\n    InfiniteScrollComponent,\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    CardModule,\r\n    ButtonModule,\r\n    MatDialogModule,\r\n    ProductModalModule,\r\n  ],\r\n  exports: [ButtonModule, InfiniteScrollComponent],\r\n})\r\nexport class MainPageModule {}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { RouterModule, Routes } from '@angular/router';\r\nimport { ButtonsModule } from '../shared/modules/button/button.module';\r\nimport { CardsModule } from '../shared/modules/card/card.module';\r\nimport { CategoriesComponent } from './components/categories/categories.component';\r\nimport { HeroComponent } from './components/hero/hero.component';\r\nimport { InfiniteScrollComponent } from './components/infinite-scroll/infinite-scroll.component';\r\nimport { MainPageComponent } from './main-page.component';\r\nimport { MatDialogModule } from '@angular/material/dialog';\r\nimport { ProductModalModule } from '../shared/modules/product-modal/product-modal.module';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    MainPageComponent,\r\n    HeroComponent,\r\n    CategoriesComponent,\r\n    InfiniteScrollComponent,\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    CardsModule,\r\n    ButtonsModule,\r\n    MatDialogModule,\r\n    ProductModalModule,\r\n  ],\r\n  exports: [ButtonsModule, InfiniteScrollComponent],\r\n})\r\nexport class MainPageModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -7861,10 +7947,10 @@
                     "type": "imports",
                     "elements": [
                         {
-                            "name": "ButtonModule"
+                            "name": "ButtonsModule"
                         },
                         {
-                            "name": "CardModule"
+                            "name": "CardsModule"
                         },
                         {
                             "name": "ProductModalModule"
@@ -7875,7 +7961,7 @@
                     "type": "exports",
                     "elements": [
                         {
-                            "name": "ButtonModule"
+                            "name": "ButtonsModule"
                         },
                         {
                             "name": "InfiniteScrollComponent"
@@ -7894,13 +7980,13 @@
         },
         {
             "name": "OrderFormPageModule",
-            "id": "module-OrderFormPageModule-138b2fd8f6d9a5fa89f38dbd9de6e89effc519d9649db9510ade906fe9c45fa58a7527d9e1c563e14676e010b1b421ced66b16e9bda7f58ffb8fbc9fc7a3fefd",
+            "id": "module-OrderFormPageModule-a06f9661f17c8489744285b0c196029baf522ccce28c6dd27074c85e1e97c01451dfb34f0e713f457438b684f7dd4bcf563adf1744b1ae2d81ba2d3f93461a9d",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/order-form-page/order-form-page.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { RouterModule, Routes } from '@angular/router';\r\nimport { InputFormModule } from '../shared/modules/input-form/input-form.module';\r\nimport { ButtonModule } from '../shared/modules/button/button.module';\r\nimport { OrdersItemsModule } from '../shared/modules/orders-items/orders-items.module';\r\nimport { FormComponent } from './components/form/form.component';\r\nimport { OrderFormPageComponent } from './order-form-page.component';\r\n\r\nconst routes: Routes = [\r\n  {\r\n    path: 'order-form',\r\n    title: 'Order Form',\r\n    component: OrderFormPageComponent,\r\n  },\r\n];\r\n\r\n@NgModule({\r\n  declarations: [FormComponent, OrderFormPageComponent],\r\n  imports: [\r\n    CommonModule,\r\n    FormsModule,\r\n    RouterModule.forChild(routes),\r\n    ReactiveFormsModule,\r\n    OrdersItemsModule,\r\n    ButtonModule,\r\n    InputFormModule,\r\n  ],\r\n  exports: [OrderFormPageComponent],\r\n})\r\nexport class OrderFormPageModule {}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { RouterModule, Routes } from '@angular/router';\r\nimport { InputFormModule } from '../shared/modules/input-form/input-form.module';\r\nimport { ButtonsModule } from '../shared/modules/button/button.module';\r\nimport { OrdersItemsModule } from '../shared/modules/orders-items/orders-items.module';\r\nimport { FormComponent } from './components/form/form.component';\r\nimport { OrderFormPageComponent } from './order-form-page.component';\r\n\r\nconst routes: Routes = [\r\n  {\r\n    path: 'order-form',\r\n    title: 'Order Form',\r\n    component: OrderFormPageComponent,\r\n  },\r\n];\r\n\r\n@NgModule({\r\n  declarations: [FormComponent, OrderFormPageComponent],\r\n  imports: [\r\n    CommonModule,\r\n    FormsModule,\r\n    RouterModule.forChild(routes),\r\n    ReactiveFormsModule,\r\n    OrdersItemsModule,\r\n    ButtonsModule,\r\n    InputFormModule,\r\n  ],\r\n  exports: [OrderFormPageComponent],\r\n})\r\nexport class OrderFormPageModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -7921,7 +8007,7 @@
                     "type": "imports",
                     "elements": [
                         {
-                            "name": "ButtonModule"
+                            "name": "ButtonsModule"
                         },
                         {
                             "name": "InputFormModule"
@@ -8042,13 +8128,13 @@
         },
         {
             "name": "ProductModalModule",
-            "id": "module-ProductModalModule-db1300e647f04809d1e72f994b8ba37f1409db63d7a2888236fc85d345d5e3460b3f82f9f4c7f021ca941979b7b8533e39ceef19cb17c14b4e5f8ff02640d547",
+            "id": "module-ProductModalModule-384fe1e5f38b72412a689257f36f6659ea542aa177a5dc13b9abf0075b448386843a02c185e7ff463a7d64332c7d32255604e6c58b821d46851161eda6d37af8",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/shared/modules/product-modal/product-modal.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { ProductModalComponent } from './product-modal.component';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { InputFormModule } from '../input-form/input-form.module';\r\nimport { SelectFormModule } from '../select-form/select-form.module';\r\nimport { ButtonModule } from '../button/button.module';\r\nimport { ImageUploadModule } from '../image-upload/image-upload.module';\r\nimport { TabComponentModule } from '../tab-component/tab-component.module';\r\n\r\n@NgModule({\r\n  declarations: [ProductModalComponent],\r\n  imports: [\r\n    CommonModule,\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    InputFormModule,\r\n    SelectFormModule,\r\n    ButtonModule,\r\n    ImageUploadModule,\r\n    TabComponentModule,\r\n  ],\r\n})\r\nexport class ProductModalModule {}\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { ProductModalComponent } from './product-modal.component';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { InputFormModule } from '../input-form/input-form.module';\r\nimport { SelectFormModule } from '../select-form/select-form.module';\r\nimport { ButtonsModule } from '../button/button.module';\r\nimport { ImageUploadModule } from '../image-upload/image-upload.module';\r\nimport { TabComponentModule } from '../tab-component/tab-component.module';\r\n\r\n@NgModule({\r\n  declarations: [ProductModalComponent],\r\n  imports: [\r\n    CommonModule,\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    InputFormModule,\r\n    SelectFormModule,\r\n    ButtonsModule,\r\n    ImageUploadModule,\r\n    TabComponentModule,\r\n  ],\r\n})\r\nexport class ProductModalModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -8066,7 +8152,7 @@
                     "type": "imports",
                     "elements": [
                         {
-                            "name": "ButtonModule"
+                            "name": "ButtonsModule"
                         },
                         {
                             "name": "ImageUploadModule"
@@ -8095,13 +8181,13 @@
         },
         {
             "name": "RegisterPageModule",
-            "id": "module-RegisterPageModule-ffd1cca38772e0ec80b7b772ae965ce38d32927223594d8b4e974c7939fc9b98259aceb70204a95f1231e6cd1249900bc23d25ff60fa66b08c63c244d73c7993",
+            "id": "module-RegisterPageModule-556b0dedf8eb86217f53ff2d007d7efb17b8424e4b4db6c1889a916d969bb98eb24fca79da1317964f456a3695d4fb38f00dde2940baed8e64d2f8571c16e5da",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/register-page/register-page.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { RegisterPageComponent } from './register-page.component';\r\nimport { ButtonModule } from '../shared/modules/button/button.module';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { InputFormModule } from '../shared/modules/input-form/input-form.module';\r\nimport { RouterModule, Routes } from '@angular/router';\r\nimport { SocialLinksModule } from '../shared/social-links/social-links.module';\r\n\r\nconst routes: Routes = [\r\n  {\r\n    path: 'sign-up',\r\n    title: 'Sign-up Page',\r\n    component: RegisterPageComponent,\r\n  },\r\n];\r\n\r\n@NgModule({\r\n  declarations: [RegisterPageComponent],\r\n  imports: [\r\n    CommonModule,\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    InputFormModule,\r\n    RouterModule.forChild(routes),\r\n    ButtonModule,\r\n    SocialLinksModule,\r\n  ],\r\n})\r\nexport class RegisterPageModule {}\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { RegisterPageComponent } from './register-page.component';\r\nimport { ButtonsModule } from '../shared/modules/button/button.module';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { InputFormModule } from '../shared/modules/input-form/input-form.module';\r\nimport { RouterModule, Routes } from '@angular/router';\r\nimport { SocialLinksModule } from '../shared/social-links/social-links.module';\r\n\r\nconst routes: Routes = [\r\n  {\r\n    path: 'sign-up',\r\n    title: 'Sign-up Page',\r\n    component: RegisterPageComponent,\r\n  },\r\n];\r\n\r\n@NgModule({\r\n  declarations: [RegisterPageComponent],\r\n  imports: [\r\n    CommonModule,\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    InputFormModule,\r\n    RouterModule.forChild(routes),\r\n    ButtonsModule,\r\n    SocialLinksModule,\r\n  ],\r\n})\r\nexport class RegisterPageModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -8119,7 +8205,7 @@
                     "type": "imports",
                     "elements": [
                         {
-                            "name": "ButtonModule"
+                            "name": "ButtonsModule"
                         },
                         {
                             "name": "InputFormModule"
@@ -8189,13 +8275,13 @@
         },
         {
             "name": "SidenavModule",
-            "id": "module-SidenavModule-333d6093f2026a4e6c7b306dda0c87c567db0b5e0183a3729823898ce1af1335aefee7073c679b472de030183af3da596e49c145f41d0358c8e60723e611939d",
+            "id": "module-SidenavModule-73663b23b11f788ef7a82ce345586b8497fcdaf60e8c6930176cdfa56eff779ce127c5824b9f93f7bf61a2dcfb6eb4976af3d1a1c709c1532563a98e8c233e61",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/shared/modules/sidenav/sidenav.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { RouterModule } from '@angular/router';\r\nimport { SidenavComponent } from './sidenav.component';\r\nimport { UnauthorizedLinksComponent } from './unauthorized-links/unauthorized-links.component';\r\nimport { UserLinksComponent } from './user-links/user-links.component';\r\nimport { AdminLinksComponent } from './admin-links/admin-links.component';\r\nimport { OutsideClickDirective } from '../../directives/click-outside';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    SidenavComponent,\r\n    UnauthorizedLinksComponent,\r\n    UserLinksComponent,\r\n    AdminLinksComponent,\r\n    OutsideClickDirective,\r\n  ],\r\n  imports: [CommonModule, RouterModule],\r\n  exports: [SidenavComponent],\r\n})\r\nexport class SidenavModule {}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { RouterModule } from '@angular/router';\r\nimport { SidenavComponent } from './sidenav.component';\r\nimport { UnauthorizedLinksComponent } from './unauthorized-links/unauthorized-links.component';\r\nimport { UserLinksComponent } from './user-links/user-links.component';\r\nimport { AdminLinksComponent } from './admin-links/admin-links.component';\r\nimport { OutsideClickDirective } from '../../directives/click-outside';\r\nimport {SidebarModule} from 'primeng/sidebar';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    SidenavComponent,\r\n    UnauthorizedLinksComponent,\r\n    UserLinksComponent,\r\n    AdminLinksComponent,\r\n    OutsideClickDirective,\r\n  ],\r\n  imports: [CommonModule, RouterModule, SidebarModule],\r\n  exports: [SidenavComponent],\r\n})\r\nexport class SidenavModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -8621,6 +8707,16 @@
                 "defaultValue": "'Johnson'"
             },
             {
+                "name": "LoginPageStory",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/LoginPage.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "navLinks",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -8670,6 +8766,16 @@
                 "defaultValue": "(args) => ({ props: args })"
             },
             {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/LoginPage.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "(args) => ({ props: args })"
+            },
+            {
                 "name": "THEMES",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -8677,7 +8783,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "ITHEMES",
-                "defaultValue": "{\r\n  default: {\r\n    primary: '#6b068a',\r\n    secondary: '#fd31c0',\r\n    secondaryShadow: '#350e42',\r\n    error: 'red',\r\n    mainFont: '#252525',\r\n    white: '#ffffff',\r\n    secondaryFont: '#ffffff',\r\n    background: 'rgba(255, 255, 255, 0.8)',\r\n    borderColor: '#747474',\r\n    boxShadow:\r\n      '0px 2px 1px rgb(0 0 0 / 20%), 0px 1px 1px rgb(0 0 0 / 14%),0px 1px 3px rgb(0 0 0 / 12%)',\r\n    transition: '500ms ease-in-out',\r\n  },\r\n  dark: {\r\n    primary: '#6b068a',\r\n    secondary: '#fd31c0',\r\n    secondaryShadow: '#350e42',\r\n    error: 'red',\r\n    mainFont: 'white',\r\n    white: '#ffffff',\r\n    secondaryFont: '#252525',\r\n    background: 'rgba(255, 255, 255, 0.8)',\r\n    borderColor: '#747474',\r\n    boxShadow:\r\n      'inset 2px 2px 5px rgb(124 40 201 / 50%), 1px 1px 5px rgb(201 8 223)',\r\n    transition: '500ms ease-in-out',\r\n  },\r\n}"
+                "defaultValue": "{\r\n  default: {\r\n    primary: '#64748B',\r\n    secondary: '#a8b8cf',\r\n    secondaryShadow: '#350e42',\r\n    error: 'red',\r\n    mainFont: '#252525',\r\n    white: '#ffffff',\r\n    secondaryFont: '#ffffff',\r\n    background: 'rgba(255, 255, 255, 0.8)',\r\n    borderColor: '#747474',\r\n    boxShadow:\r\n      '0px 2px 1px rgb(0 0 0 / 20%), 0px 1px 1px rgb(0 0 0 / 14%),0px 1px 3px rgb(0 0 0 / 12%)',\r\n    transition: '500ms ease-in-out',\r\n  },\r\n  dark: {\r\n    primary: '#64748B',\r\n    secondary: '#a8b8cf',\r\n    secondaryShadow: '#350e42',\r\n    error: 'red',\r\n    mainFont: 'white',\r\n    white: '#ffffff',\r\n    secondaryFont: '#252525',\r\n    background: 'rgba(255, 255, 255, 0.8)',\r\n    borderColor: '#747474',\r\n    boxShadow: 'inset 2px 2px 5px rgb(213 213 213), 1px 1px 5px #64748B',\r\n    transition: '500ms ease-in-out',\r\n  },\r\n}"
             },
             {
                 "name": "userLinks",
@@ -9220,6 +9326,28 @@
                     "defaultValue": "(formGroup: FormGroup) => {\r\n  Object.keys(formGroup.controls).forEach((field) => {\r\n    const control = formGroup.get(field);\r\n    if (control instanceof FormControl) {\r\n      control?.markAsTouched({ onlySelf: true });\r\n    } else if (control instanceof FormGroup) {\r\n      validateAllFormFields(control);\r\n    }\r\n  });\r\n}"
                 }
             ],
+            "src/stories/LoginPage.stories.ts": [
+                {
+                    "name": "LoginPageStory",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/LoginPage.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/LoginPage.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "(args) => ({ props: args })"
+                }
+            ],
             "src/app/shared/config/theme.config.ts": [
                 {
                     "name": "THEMES",
@@ -9229,7 +9357,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "ITHEMES",
-                    "defaultValue": "{\r\n  default: {\r\n    primary: '#6b068a',\r\n    secondary: '#fd31c0',\r\n    secondaryShadow: '#350e42',\r\n    error: 'red',\r\n    mainFont: '#252525',\r\n    white: '#ffffff',\r\n    secondaryFont: '#ffffff',\r\n    background: 'rgba(255, 255, 255, 0.8)',\r\n    borderColor: '#747474',\r\n    boxShadow:\r\n      '0px 2px 1px rgb(0 0 0 / 20%), 0px 1px 1px rgb(0 0 0 / 14%),0px 1px 3px rgb(0 0 0 / 12%)',\r\n    transition: '500ms ease-in-out',\r\n  },\r\n  dark: {\r\n    primary: '#6b068a',\r\n    secondary: '#fd31c0',\r\n    secondaryShadow: '#350e42',\r\n    error: 'red',\r\n    mainFont: 'white',\r\n    white: '#ffffff',\r\n    secondaryFont: '#252525',\r\n    background: 'rgba(255, 255, 255, 0.8)',\r\n    borderColor: '#747474',\r\n    boxShadow:\r\n      'inset 2px 2px 5px rgb(124 40 201 / 50%), 1px 1px 5px rgb(201 8 223)',\r\n    transition: '500ms ease-in-out',\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  default: {\r\n    primary: '#64748B',\r\n    secondary: '#a8b8cf',\r\n    secondaryShadow: '#350e42',\r\n    error: 'red',\r\n    mainFont: '#252525',\r\n    white: '#ffffff',\r\n    secondaryFont: '#ffffff',\r\n    background: 'rgba(255, 255, 255, 0.8)',\r\n    borderColor: '#747474',\r\n    boxShadow:\r\n      '0px 2px 1px rgb(0 0 0 / 20%), 0px 1px 1px rgb(0 0 0 / 14%),0px 1px 3px rgb(0 0 0 / 12%)',\r\n    transition: '500ms ease-in-out',\r\n  },\r\n  dark: {\r\n    primary: '#64748B',\r\n    secondary: '#a8b8cf',\r\n    secondaryShadow: '#350e42',\r\n    error: 'red',\r\n    mainFont: 'white',\r\n    white: '#ffffff',\r\n    secondaryFont: '#252525',\r\n    background: 'rgba(255, 255, 255, 0.8)',\r\n    borderColor: '#747474',\r\n    boxShadow: 'inset 2px 2px 5px rgb(213 213 213), 1px 1px 5px #64748B',\r\n    transition: '500ms ease-in-out',\r\n  },\r\n}"
                 }
             ]
         },
@@ -9743,7 +9871,7 @@
                 "linktype": "injectable",
                 "name": "SidenavService",
                 "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
@@ -10053,7 +10181,7 @@
                 "linktype": "component",
                 "name": "SidenavComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/7",
+                "coverageCount": "0/10",
                 "status": "low"
             },
             {
@@ -10424,6 +10552,26 @@
             },
             {
                 "filePath": "src/stories/CardComponent.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/LoginPage.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoginPageStory",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/LoginPage.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",

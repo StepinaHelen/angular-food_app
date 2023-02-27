@@ -9,7 +9,8 @@
     "test": "ng test",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006",
-    "build-storybook": "npm run docs:json && build-storybook"
+    "build-storybook": "npm run docs:json && build-storybook",
+    "test-storybook": "test-storybook"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +25,7 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "@storybook/jest": "^0.0.10",
     "firebase": "^9.15.0",
     "primeicons": "^6.0.1",
     "primeng": "^14.2.3",
@@ -40,11 +42,14 @@
     "@storybook/addon-actions": "^6.5.15",
     "@storybook/addon-essentials": "^6.5.15",
     "@storybook/addon-interactions": "^6.5.15",
+    "@storybook/addon-jest": "^6.5.16",
     "@storybook/addon-links": "^6.5.15",
     "@storybook/angular": "^6.5.15",
     "@storybook/builder-webpack5": "^6.5.15",
     "@storybook/manager-webpack5": "^6.5.15",
+    "@storybook/test-runner": "^0.9.4",
     "@storybook/testing-library": "^0.0.13",
+    "@testing-library/jest-dom": "^5.16.5",
     "@types/jasmine": "~4.0.0",
     "babel-loader": "^8.3.0",
     "jasmine-core": "~4.3.0",

@@ -3,6 +3,7 @@
     <h2>Login page</h2>
     <food-input-form
       label="Email"
+      data-testid="email"
       [control]="loginForm.controls.email"
     ></food-input-form>
     <div class="input-wrap">
@@ -10,6 +11,7 @@
         isVisiblePassword ? "visibility" : "visibility_off"
       }}</span>
       <food-input-form
+        data-testid="password"
         label="Password"
         [control]="loginForm.controls.password"
         [type]="isVisiblePassword ? 'text' : 'password'"
