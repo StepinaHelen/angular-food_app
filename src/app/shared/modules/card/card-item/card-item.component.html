@@ -46,9 +46,14 @@
         <i *ngIf="!isCart" (click)="decrement()" class="pi pi-plus"></i>
       </button>
     </div>
-    <button (click)="handleDelete()" *ngIf="isCart" class="delete-button left">
-      <span class="material-symbols-outlined delete-icon"> delete </span>
-    </button>
+    <button
+      pButton
+      type="button"
+      class="left p-button-secondary"
+      icon="pi pi-trash"
+      (click)="handleDelete()"
+      *ngIf="isCart"
+    ></button>
     <food-button
       *ngIf="!isCart"
       class="left"
